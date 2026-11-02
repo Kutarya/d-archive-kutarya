@@ -1,0 +1,21 @@
+// Kurulum ve yönetici yetkisi gerektirmeyen yerel Windows deneme paketi.
+const fs = require('node:fs');
+const path = require('node:path');
+const { execFileSync } = require('node:child_process');
+const root = path.resolve(__dirname, '..');
+const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+const target = path.join(root, 'builds', `Sube17-${pkg.version}-win-x64`);
+if (process.platform !== 'win32' || process.arch !== 'x64') throw new Error('Bu paket mevcut Windows x64 Electron çalışma zamanını kullanır.');
+if (fs.existsSync(target)) throw new Error(`Mevcut çıktı korunuyor: ${target}. Başka sürüm numarasıyla paketle veya çıktıyı kendin taşı.`);
+if (!fs.existsSync(path.join(root, 'dist', 'index.html'))) throw new Error('Önce npm run build çalıştır.');
+execFileSync(process.execPath, [path.join(root, 'scripts', 'check-publication.cjs')], { cwd: root, stdio: 'inherit' });
+fs.mkdirSync(path.dirname(target), { recursive: true });
+fs.cpSync(path.join(root, 'node_modules', 'electron', 'dist'), target, { recursive: true });
+const app = path.join(target, 'resources', 'app');
+fs.mkdirSync(app, { recursive: true });
+for (const directory of ['electron', 'dist']) fs.cpSync(path.join(root, directory), path.join(app, directory), { recursive: true });
+for (const file of ['asset-provenance.json', 'ART-DIRECTION.md', 'OYUN-RAPORU.md']) if (fs.existsSync(path.join(root, file))) fs.copyFileSync(path.join(root, file), path.join(app, file));
+fs.writeFileSync(path.join(app, 'package.json'), JSON.stringify({ name: pkg.name, version: pkg.version, description: pkg.description, main: 'electron/main.cjs' }, null, 2));
+fs.renameSync(path.join(target, 'electron.exe'), path.join(target, 'Sube17.exe'));
+fs.writeFileSync(path.join(target, 'BENI-OKU.txt'), '\ufeffŞUBE 17 — YEREL DENEME\r\n\r\nSube17.exe dosyasını aç. resources ve diğer dosyalar yan yana kalmalı.\r\nKurulum gerekmez. Kayıtlar Electron kullanıcı verisi içinde bu cihazda tutulur.\r\nAna menü vardiyayı duraklatır; oyun içi ayarlar duraklatmaz.\r\nBu paket imzalanmış bir mağaza sürümü değildir.\r\n');
+console.log(`Hazır: ${path.join(target, 'Sube17.exe')}`);

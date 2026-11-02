@@ -1,0 +1,12 @@
+Kutarya Block Arena 2.1.0
+
+index.html dosyasını güncel tarayıcıda aç.
+Botlarla Oyna: üç harita, serbest/takım çatışması ve dalga savunması; internet gerekmez.
+Online Oyna: internet gerekir. Oda oluştur, altı karakterli kodu arkadaşlarınla paylaş. 2–8 oyuncu katılabilir. Maçı oda sahibi başlatır.
+
+WASD hareket, fare nişan/ateş, sağ tık yakın nişan, Shift koş, Q atıl, Space zıpla, R doldur, 1–5 silah, G bomba, Tab skor, Esc menü.
+Online menü maçı durdurmaz. Dokunmatik kontroller Ayarlar’dan açılır.
+Oda geçicidir; sunucu yeniden başladığında oda kapanır. Kopmada 30 saniye yeniden bağlanma süresi bulunur.
+Profil/ayar kaydı ayrı sekmede veya indirilen HTML'de kullanılabilir. Site iframe'i kalıcı kaydı kısıtlar.
+Fiziksel telefon ve yüksek oyuncu yükü kabulü yapılmadı.
+https://kutarya.com/proje/pixelgun

@@ -1,0 +1,23 @@
+{
+  "gameId": "rus-ruleti",
+  "version": "1.0.1",
+  "entry": "/games/rus-ruleti/1.0.1/index.html",
+  "kind": "web",
+  "compression": "none",
+  "totalBytes": 71950,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 71244,
+      "sha256": "82a68625013f8d7fcfb7499cff734c3186bebc1873c2da2a39b856a36d465acf"
+    },
+    {
+      "path": "OKU.txt",
+      "bytes": 706,
+      "sha256": "2008ac9d2e7b1fc33e18c848b0f3c6ea3d60e7ef0b86081880035ff355671a55"
+    }
+  ],
+  "verified": true,
+  "createdAt": "2026-10-18T11:46:29.145Z",
+  "note": "13 kural testi, gerçek bulut protokolü/çok oyunculu, bot oyunu, mobil, kod/davet, hızlı eşleşme ve korumalı iframe kabulü geçti; fiziksel cihaz/yük testi yapılmadı."
+}

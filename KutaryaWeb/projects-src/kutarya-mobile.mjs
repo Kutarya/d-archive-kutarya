@@ -1,0 +1,48 @@
+// Gerçek Android uygulaması; mevcut katalog ve dosya sözleşmesi korunur.
+export const kutaryaMobile = {
+  id: "kutarya-mobile",
+  slug: "kutarya-mobile",
+  title: "Kutarya Mobile",
+  subtitle: "Konuş veya yaz; telefonundaki işlerini Kutarya Us ile yönet.",
+  description: [
+    "Kutarya Mobile, Android için geliştirilen kişisel asistan uygulamasıdır. Konuşmaların kaybolmaz; geçmiş bir konuşmayı bulup devam edebilirsin. Yeni ana ekrandaki günlük plan, kayıtlı hatırlatmalarını ve açık liste maddelerini gösterir. Yerel işler API anahtarı istemez; cihazda dil modeli indirilmez veya çalıştırılmaz.",
+    "Not, liste ve hatırlatmaları komutla veya doğrudan formlarla oluştur. Kayıtlarında ara, notlarını düzenle, liste maddelerini tamamla veya onayla kaldır. Rutinini kaydetmeden adımlarını gör; sekiz adıma kadar desteklenen işleri sırayla çalıştır ve gerektiğinde durdur. Kibar Türkçe ifadeler, eksik bilgiye sonraki mesajla yanıt verme ve ilgili komut önerileri desteklenir.",
+    "Ses hizmeti desteklediğinde konuşurken metni ve mikrofon seviyesini gör; metni düzeltip gönder veya hemen gönder tercihini aç. Açık/koyu/sistem teması, yanıtı kopyalama/not alma ve isteği yeniden kullanma bulunur. Kişisel kayıtlar cihazda şifreli saklanır. Genel AI, sınırlı konuşma bağlamı ve görsel/PDF yorumlama için kendi Gemini bağlantını ve aktarım tercihlerini açabilirsin.",
+    "Türkçe sayı sözcükleriyle matematik, birim/yüzde/sıcaklık/tarih hesapları ve 200 KB'a kadar UTF-8 metin dosyalarında kaynak cümlelerinden özet, sayım ve arama yerelde çalışır. Uygulama açma, medya sesi, donanım varsa fener ve Android ayarları; arama, mesaj, alarm, harita ve takvim için desteklenen telefon uygulamalarına aktarım vardır. Gerekli izin ve işlem onayları korunur.",
+    "1.2.0 imzalı APK ve kaynak kod paketiyle sunulur. 62 birim testi ve uçak modunda 32 Android emülatör testi geçti. 1.1 üzerine güncellemede eski şifreli not ve uygulama kapatılıp açıldığında konuşma korundu. Fiziksel telefonda Türkçe ses, hat/donanım ve canlı AI kalitesi henüz doğrulanmadı. Sürekli uyandırma sözcüğü veya bütün ekranlarda serbest otonom kontrol yoktur.",
+  ].join("\n\n"),
+  category: "uygulama",
+  kind: "mobile",
+  engine: "download",
+  technology: "Kotlin · Jetpack Compose · SQLite · Android Keystore",
+  platforms: ["android"],
+  license: "Kutarya — Tüm hakları saklıdır; kaynak kod inceleme amaçlı sunulur",
+  repository: "",
+  tags: ["Android", "Kutarya Us", "Asistan", "Çevrimdışı", "Ses", "Kaynak kod"],
+  requirements: "Android 8.0 / API 26 veya sonrası. Yerel komutlarda API gerekmez. Ses hizmetlerinin ve Türkçe paketlerin cihazda bulunması gerekir; yazıyla kullanım desteklenir. Genel AI için internet ve kendi Gemini erişimin gerekir; kota ve ücretler sağlayıcı hesabına bağlıdır.\n\nKaynak derleme: Android Studio, JDK 21, SDK 37, build-tools 36.0.0 ve Gradle 9.4.1. İlk eşitleme internet ister. Test ortamı Android API37/x86_64 emülatördür; bütün telefon modellerinde test edilmiş sayılmaz.",
+  controls: "Dosyalar bölümünden Kutarya-Mobile-1.2.0.apk dosyasını indir ve Android'de aç. 1.1 kuruluysa aynı imzalı paket üzerine güncellenebilir; eski 1.1 paketleri ayrıca korunur.\n\nAsistan ekranında konuş veya yaz. Örnekler: Bugün neler var?; Not al: alışverişi unutma; yirmi beş çarpı dört; iki kilometre kaç metre. Üstteki ızgaradan komutları, konuşmalar simgesinden geçmiş konuşmaları aç; + ile yeni konuşma başlat.\n\nHızlı iş kartları veya Kayıtlar'daki + düğmesiyle not/liste/hatırlatma formu aç. Rutinler'de desteklenen işleri adım adım kaydet. Sesle yazılan metin varsayılan olarak düzenlenebilir; göndermek için Gönder'e bas. Dosya ekleme yazı alanının yanındaki + düğmesindedir. Genel AI bağlantısı Ayarlar'dadır.\n\nKaynak ZIP'i çıkartıp settings.gradle.kts bulunan klasörü Android Studio'da aç. İmza ve API anahtarı kaynak paketinde yoktur. JSON yedeği şifresizdir; her türün son 200 kaydını içerir, sohbet ve API anahtarını içermez. Bu sürümde yedekten içe aktarma yoktur.",
+  changelog: "1.2.0 · Kalıcı konuşmalar, arama/devam etme ve son konuşmayı geri açma. Sınırlı ve özel veri kontrollü AI bağlamı. Yeni açık/koyu ana ekran, günlük plan ve doğrulanan görev adımları. Kibar Türkçe komutlar ve ilgili öneriler. Canlı ses metni/seviye ve düzeltip gönderme. Not/liste/hatırlatma formları, onaylı liste/madde silme, rutin plan doğrulaması ve aynı adlı rutinleri kayıt kimliğiyle çalıştırma. 31 araç; yerel LLM yok. 62 birim + 32 Android emülatör testi geçti; aynı imzalı güncelleme ve konuşma kalıcılığı doğrulandı.",
+  version: "1.2.0",
+  status: "draft",
+  featured: true,
+  order: 12,
+  color: "#136f5b",
+  devices: ["mobile"],
+  difficulty: "",
+  duration: "",
+  runtime: "",
+  cover: "",
+  gallery: [],
+  files: [],
+  versions: [],
+};
+export const kutaryaMobileFiles = [
+  { name: "Kutarya-Mobile-1.2.0.apk", role: "installer", platform: "android" },
+  { name: "Kutarya-Mobile-1.2.0-Kaynak.zip", role: "source", platform: "android" },
+];
+export const kutaryaMobileImages = [
+  { name: "01-asistan.png", source: "v1.2-release-home.png", role: "cover" },
+  { name: "02-konusma.png", source: "v1.2-release-chat.png", role: "gallery" },
+  { name: "03-koyu-tema.png", source: "v1.2-home-dark.png", role: "gallery" },
+  { name: "04-not-formu.png", source: "v1.2-note-form.png", role: "gallery" },
+];

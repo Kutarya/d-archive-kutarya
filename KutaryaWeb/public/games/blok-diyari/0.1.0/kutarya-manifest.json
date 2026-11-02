@@ -1,0 +1,23 @@
+{
+  "gameId": "blok-diyari",
+  "version": "0.1.0",
+  "entry": "/games/blok-diyari/0.1.0/index.html",
+  "kind": "web",
+  "compression": "none",
+  "totalBytes": 98890,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 96934,
+      "sha256": "aae95c3a887dfc6abb58bd46df4ae7de5d3a31b6e0108b5be895eb02c8470720"
+    },
+    {
+      "path": "OKU.txt",
+      "bytes": 1956,
+      "sha256": "09daff425aa4a31df21b92872c4ecd32f0c8fd3357b70073c258098d4ed79bc8"
+    }
+  ],
+  "verified": false,
+  "createdAt": "2026-10-05T06:17:55.098Z",
+  "note": "Dosya bütünlüğü kontrol edildi. Gerçek tarayıcı kabulü henüz yapılmadı."
+}

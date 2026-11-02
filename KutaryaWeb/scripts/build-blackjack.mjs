@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import { readFile, writeFile, mkdir, cp } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import vm from 'node:vm';
+import { transform } from 'lightningcss';
+import { zipSync, strToU8 } from 'fflate';
+export const bjOut = 'artifacts/releases/blackjack/2.0.0';
+const source = 'games-src/blackjack';
+assert(!existsSync('public/games/blackjack/2.0.0'), 'Runtime sabitlendi. Aynı sürüm yeniden üretilmez; yeni sürüm kullan.');
+const serviceFile = `${bjOut}/service.json`;
+const service = existsSync(serviceFile) ? JSON.parse(await readFile(serviceFile, 'utf8')) : null;
+if (service) { assert.equal(service.projectId, 'kutarya-ai-3169'); assert(/^https:\/\/kutarya-blackjack-[a-z0-9-]+\.run\.app$/.test(service.url)); }
+const endpoint = service?.url || '';
+const css = await readFile(`${source}/style.css`, 'utf8'); transform({ code: Buffer.from(css), filename: 'blackjack.css', errorRecovery: false });
+const core = (await readFile(`${source}/core.mjs`, 'utf8')).replaceAll('export ', '');
+const client = (await readFile(`${source}/client.js`, 'utf8')).replace('@blackjack-endpoint', endpoint);
+new vm.Script(core + '\n' + client);
+const html = (await readFile(`${source}/table.html`, 'utf8')).replace('/* @blackjack-style */', () => css).replace('// @blackjack-core', () => core).replace('// @blackjack-client', () => client);
+assert(!html.includes('@blackjack-'));
+const help = `Blackjack · Royal Night 2.0.0 — Kutarya\n\nindex.html dosyasını güncel tarayıcıda aç. Tek kişilik alıştırma ve günün beş turu internetsiz çalışır.\nOnline masalar ${endpoint ? 'internet ister; 2–5 kişi, masa kodu/davet ve açık masa listesi.' : 'henüz yayımlanmadı. Bu paket yerel inceleme sürümüdür.'}\n\nH kart çek, S dur, D ikiye katla, P eli böl. İlk iki kartta teslim olabilir, puanın yarısını geri alabilirsin.\nDört deste; dağıtıcı yumuşak 17 dahil 17’de durur. Doğal Blackjack 3:2. Bir kez bölme; bölünmüş aslara birer kart; bölünmüş 21 normal ödeme.\nYalnız sanal oyun puanı; ödeme/para/gerçek ödül yok.\nGünün meydan okuması Türkiye tarihli tohumla beş turdur; sonuç yalnız tarayıcında saklanır. Herkese açık sıralama değildir.\nOnline odalar geçici: 45 dakika, kopmada 30 saniye dönüş; servis yeniden başladığında kapanabilir.\nhttps://kutarya.com/proje/blackjack\n`;
+await mkdir(`${bjOut}/runtime`, { recursive: true }); await writeFile(`${bjOut}/runtime/index.html`, html); await writeFile(`${bjOut}/runtime/OKU.txt`, help);
+const name = `Kutarya-Blackjack-Royal-Night-2.0.0${endpoint ? '' : '-inceleme'}.zip`, zip = zipSync({ 'index.html': strToU8(html), 'OKU.txt': strToU8(help) }, { level: 9 });
+await writeFile(`${bjOut}/${name}`, zip);
+const sha = data => createHash('sha256').update(data).digest('hex');
+await writeFile(`${bjOut}/package.json`, JSON.stringify({ gameId: 'blackjack', version: '2.0.0', name, bytes: zip.length, sha256: sha(zip), onlineConfigured: Boolean(endpoint), published: false, files: [{ path: 'index.html', bytes: Buffer.byteLength(html), sha256: sha(html) }, { path: 'OKU.txt', bytes: Buffer.byteLength(help), sha256: sha(help) }] }, null, 2));
+// Dağıtım konteksinde çekirdek aynı dosyadan kopyalanır; çalışan eski servisler değişmez.
+await mkdir(`${bjOut}/server`, { recursive: true });
+for (const file of ['gateway.mjs', 'server.mjs', 'package.json', 'package-lock.json', 'Dockerfile']) await cp(`blackjack-server/${file}`, `${bjOut}/server/${file}`);
+await cp(`${source}/core.mjs`, `${bjOut}/server/core.mjs`); await writeFile(`${bjOut}/server/rules.mjs`, "export * from './core.mjs';\n");
+console.log(JSON.stringify({ name, bytes: zip.length, htmlBytes: Buffer.byteLength(html), onlineConfigured: Boolean(endpoint), published: false }));

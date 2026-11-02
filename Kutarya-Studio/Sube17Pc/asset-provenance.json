@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-12",
+  "policy": {
+    "unknownOriginIsBlocked": true,
+    "commercialUseMustBeDocumented": true,
+    "localAssetPreferenceRequiresClearRights": true,
+    "finalReleaseNeedsHumanSimilarityAndTrademarkReview": true,
+    "animationReady": "New visuals are kept as replaceable scene, atmosphere, light, mist and UI layers."
+  },
+  "assets": [
+    {
+      "path": "public/assets/street-main.png",
+      "type": "image",
+      "origin": "Generated specifically for this project with OpenAI image generation from the user's art direction.",
+      "rightsBasis": "OpenAI output; project input did not request a living artist, franchise, brand or third-party character.",
+      "publishable": true,
+      "sha256": "39AD558DAE8DB7EBE28EAF25C43D60FCBC635F514BCD3C82C21CBAE892066173",
+      "animationPlan": "Used as a replaceable base scene; atmosphere, light and mist animate in separate runtime layers."
+    },
+    {
+      "path": "public/assets/street-hub-v2.png",
+      "type": "image",
+      "origin": "Generated specifically for this project with OpenAI image generation by editing the project's approved street scene from the user's art direction.",
+      "rightsBasis": "OpenAI output derived only from a project-owned generated input; no real-world logo, franchise, living artist or third-party character was requested.",
+      "publishable": true,
+      "sha256": "44B061E935925DABC70BA7C5813E49F109519682978064D794567EEAC4FC5AEE",
+      "animationPlan": "Base hub scene with five closed entrances; door leaves, labels, lighting and atmosphere are independent runtime layers."
+    },
+    {
+      "path": "public/assets/logo-sube17.png",
+      "type": "image",
+      "origin": "Generated specifically for this project with OpenAI image generation from the user's approved concept.",
+      "rightsBasis": "OpenAI output; fictional in-project branding with no copied third-party logo supplied as input.",
+      "publishable": true,
+      "sha256": "48D1EC97EFFDBDF9B64CCE438FF19B90873677AD39966F9F08C134D0CCC6D5ED",
+      "animationPlan": "Logo remains an independent transparent asset and can be animated without altering the scene."
+    },
+    {
+      "path": "public/assets/app-icon.png",
+      "type": "image",
+      "origin": "Derived specifically for this project from the approved Şube 17 visual identity.",
+      "rightsBasis": "Project-created derivative of the project's generated logo concept.",
+      "publishable": true,
+      "sha256": "3E93503B4AD5CDD42758EAB31FD4F993C1C13AA531320B3AC9E6183124C3B85D",
+      "animationPlan": "Static operating-system icon; the source identity remains a separate asset."
+    },
+    {
+      "path": "src/audioEngine.js",
+      "type": "procedural-audio-code",
+      "origin": "Original Web Audio synthesis written for this project; it contains no recording, sample or downloaded music.",
+      "rightsBasis": "Project source code and mathematically generated waveforms/noise.",
+      "publishable": true,
+      "sha256": "FD96136236AA77992ECBDAA8B6340C01F0333084552F85453E26946819C2A485",
+      "animationPlan": "Street ambience is controlled independently from music and UI effects."
+    },
+    {
+      "path": "public/assets/street-illustrated.png",
+      "type": "image",
+      "origin": "Generated for Şube 17 with the built-in OpenAI image generation tool on 2026-09-12. Original fictional scenes and characters; user references informed broad ink/cel art direction only.",
+      "rightsBasis": "OpenAI generated output commissioned within this project. No third-party screenshots are shipped. No existing game logo or character identity requested.",
+      "publishable": true,
+      "sha256": "D6669EDD5443DD09BC6144AFC6E60AC89DAF8D0ADE06F989B8477E925D0CDC9F",
+      "animationPlan": "Empty portals in raster art; separate runtime hinged doors, room light, autumn leaves, signs and focus layers.",
+      "directionFile": "ART-DIRECTION.md"
+    },
+    {
+      "path": "public/assets/bank-illustrated.png",
+      "type": "image",
+      "origin": "Generated for Şube 17 with the built-in OpenAI image generation tool on 2026-09-12. Original fictional scenes and characters; user references informed broad ink/cel art direction only.",
+      "rightsBasis": "OpenAI generated output commissioned within this project. No third-party screenshots are shipped. No existing game logo or character identity requested.",
+      "publishable": true,
+      "sha256": "F4E8C6E6BDF4DE7EC693F855CE0536A6FF21ECFF2B84A639F57F6F8E22D842FB",
+      "animationPlan": "Replaceable illustrated base; independent interface and foreground interactions.",
+      "directionFile": "ART-DIRECTION.md"
+    },
+    {
+      "path": "public/assets/home-illustrated.png",
+      "type": "image",
+      "origin": "Generated for Şube 17 with the built-in OpenAI image generation tool on 2026-09-12. Original fictional scenes and characters; user references informed broad ink/cel art direction only.",
+      "rightsBasis": "OpenAI generated output commissioned within this project. No third-party screenshots are shipped. No existing game logo or character identity requested.",
+      "publishable": true,
+      "sha256": "6FEECC0F27044611E978D47074AAB9CCD3B8752D18C62668E54FEF07CB39288C",
+      "animationPlan": "Replaceable illustrated base; independent interface and foreground interactions.",
+      "directionFile": "ART-DIRECTION.md"
+    },
+    {
+      "path": "public/assets/customer-illustrated.png",
+      "type": "image",
+      "origin": "Generated for Şube 17 with the built-in OpenAI image generation tool on 2026-09-12. Original fictional scenes and characters; user references informed broad ink/cel art direction only.",
+      "rightsBasis": "OpenAI generated output commissioned within this project. No third-party screenshots are shipped. No existing game logo or character identity requested.",
+      "publishable": true,
+      "sha256": "1EFC2FA31916A8A324DEB507E47D9292B3BAFC9FC92D9F389F7CC0E06EAFD342",
+      "animationPlan": "Replaceable illustrated base; independent interface and foreground interactions.",
+      "directionFile": "ART-DIRECTION.md"
+    },
+    {
+      "path": "public/assets/family-illustrated.png",
+      "type": "image",
+      "origin": "Generated for Şube 17 with the built-in OpenAI image generation tool on 2026-09-12. Original fictional scenes and characters; user references informed broad ink/cel art direction only.",
+      "rightsBasis": "OpenAI generated output commissioned within this project. No third-party screenshots are shipped. No existing game logo or character identity requested.",
+      "publishable": true,
+      "sha256": "80500177B5425E82F2AE097E4C2647D924D509F04783543999A7B27A33E0F823",
+      "animationPlan": "Original character atlas; individual portraits selected by CSS clipping, independent from dialogue/cards.",
+      "directionFile": "ART-DIRECTION.md"
+    },
+    {
+      "path": "public/assets/customers-illustrated.png",
+      "type": "image",
+      "origin": "Generated for Şube 17 with the built-in OpenAI image generation tool on 2026-09-12. Original fictional scenes and characters; user references informed broad ink/cel art direction only.",
+      "rightsBasis": "OpenAI generated output commissioned within this project. No third-party screenshots are shipped. No existing game logo or character identity requested.",
+      "publishable": true,
+      "sha256": "48DF5E0091FFBF54D77971914F4EB84E6138491884BF7DFD6AD13D288D4FE220",
+      "animationPlan": "Original character atlas; individual portraits selected by CSS clipping, independent from dialogue/cards.",
+      "directionFile": "ART-DIRECTION.md"
+    }
+  ]
+}

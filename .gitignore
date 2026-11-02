@@ -1,0 +1,47 @@
+# Gizli ve makineye ozel dosyalar
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local
+*.pem
+*.p12
+*.pfx
+*.key
+
+# Bagimliliklar, derleme ve gecici ciktilar
+**/node_modules/
+**/dist/
+**/release/
+**/.firebase/
+**/.cache/
+**/.pytest_cache/
+**/__pycache__/
+**/.venv/
+KutaryaAIMobile/**/build/
+**/secrets/
+**/serviceAccount*.json
+**/firebase-admin.json
+*.log
+*-debug.txt
+
+# Yerel arsivler ve buyuk model/egitim artefaktlari
+Backups/
+Recovery/
+Builds/
+KutaryaModelLab/models/
+KutaryaModelLab/**/artifacts/
+KutaryaModelLab/**/data/raw/
+KutaryaModelLab/**/data/processed/
+KutaryaAIWeb/public/downloads/*.exe
+*.gguf
+*.safetensors
+*.pt
+*.pth
+
+# IDE / isletim sistemi
+.claude/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

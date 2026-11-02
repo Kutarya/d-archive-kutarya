@@ -1,0 +1,668 @@
+{
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "kutarya-games",
+      "runtime": "nodejs22",
+      "ignore": [
+        "node_modules",
+        "test",
+        ".env.local"
+      ]
+    }
+  ],
+  "hosting": {
+    "site": "kutarya-ai-3169",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "tools-preview/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/projeler",
+        "destination": "/projeler.html"
+      },
+      {
+        "source": "/projeler/",
+        "destination": "/projeler.html"
+      },
+      {
+        "source": "/oyun-gecesi",
+        "destination": "/oyun-gecesi.html"
+      },
+      {
+        "source": "/oyun-gecesi/",
+        "destination": "/oyun-gecesi.html"
+      },
+      {
+        "source": "/kesif",
+        "destination": "/kesif.html"
+      },
+      {
+        "source": "/kesif/",
+        "destination": "/kesif.html"
+      },
+      {
+        "source": "/duyurular",
+        "destination": "/duyurular.html"
+      },
+      {
+        "source": "/duyurular/",
+        "destination": "/duyurular.html"
+      },
+      {
+        "source": "/destek",
+        "destination": "/destek.html"
+      },
+      {
+        "source": "/destek/",
+        "destination": "/destek.html"
+      },
+      {
+        "source": "/gizlilik",
+        "destination": "/gizlilik.html"
+      },
+      {
+        "source": "/gizlilik/",
+        "destination": "/gizlilik.html"
+      },
+      {
+        "source": "/kullanim-kosullari",
+        "destination": "/kullanim-kosullari.html"
+      },
+      {
+        "source": "/kullanim-kosullari/",
+        "destination": "/kullanim-kosullari.html"
+      },
+      {
+        "source": "/koleksiyon/game",
+        "destination": "/koleksiyon/game.html"
+      },
+      {
+        "source": "/koleksiyon/game/",
+        "destination": "/koleksiyon/game.html"
+      },
+      {
+        "source": "/koleksiyon/desktop",
+        "destination": "/koleksiyon/desktop.html"
+      },
+      {
+        "source": "/koleksiyon/desktop/",
+        "destination": "/koleksiyon/desktop.html"
+      },
+      {
+        "source": "/koleksiyon/mobile",
+        "destination": "/koleksiyon/mobile.html"
+      },
+      {
+        "source": "/koleksiyon/mobile/",
+        "destination": "/koleksiyon/mobile.html"
+      },
+      {
+        "source": "/koleksiyon/source",
+        "destination": "/koleksiyon/source.html"
+      },
+      {
+        "source": "/koleksiyon/source/",
+        "destination": "/koleksiyon/source.html"
+      },
+      {
+        "source": "/koleksiyon/tool",
+        "destination": "/koleksiyon/tool.html"
+      },
+      {
+        "source": "/koleksiyon/tool/",
+        "destination": "/koleksiyon/tool.html"
+      },
+      {
+        "source": "/proje/blackjack",
+        "destination": "/proje/blackjack.html"
+      },
+      {
+        "source": "/proje/blackjack/",
+        "destination": "/proje/blackjack.html"
+      },
+      {
+        "source": "/proje/rulet",
+        "destination": "/proje/rulet.html"
+      },
+      {
+        "source": "/proje/rulet/",
+        "destination": "/proje/rulet.html"
+      },
+      {
+        "source": "/proje/rus-ruleti",
+        "destination": "/proje/rus-ruleti.html"
+      },
+      {
+        "source": "/proje/rus-ruleti/",
+        "destination": "/proje/rus-ruleti.html"
+      },
+      {
+        "source": "/proje/pixelgun",
+        "destination": "/proje/pixelgun.html"
+      },
+      {
+        "source": "/proje/pixelgun/",
+        "destination": "/proje/pixelgun.html"
+      },
+      {
+        "source": "/proje/blok-diyari",
+        "destination": "/proje/blok-diyari.html"
+      },
+      {
+        "source": "/proje/blok-diyari/",
+        "destination": "/proje/blok-diyari.html"
+      },
+      {
+        "source": "/proje/kutarya-os",
+        "destination": "/proje/kutarya-os.html"
+      },
+      {
+        "source": "/proje/kutarya-os/",
+        "destination": "/proje/kutarya-os.html"
+      },
+      {
+        "source": "/proje/kutarya-convert",
+        "destination": "/proje/kutarya-convert.html"
+      },
+      {
+        "source": "/proje/kutarya-convert/",
+        "destination": "/proje/kutarya-convert.html"
+      },
+      {
+        "source": "/proje/kutarya-cep",
+        "destination": "/proje/kutarya-cep.html"
+      },
+      {
+        "source": "/proje/kutarya-cep/",
+        "destination": "/proje/kutarya-cep.html"
+      },
+      {
+        "source": "/proje/kutarya-video",
+        "destination": "/proje/kutarya-video.html"
+      },
+      {
+        "source": "/proje/kutarya-video/",
+        "destination": "/proje/kutarya-video.html"
+      },
+      {
+        "source": "/proje/kutarya-jenerik",
+        "destination": "/proje/kutarya-jenerik.html"
+      },
+      {
+        "source": "/proje/kutarya-jenerik/",
+        "destination": "/proje/kutarya-jenerik.html"
+      },
+      {
+        "source": "/proje/kutarya-us-beyin",
+        "destination": "/proje/kutarya-us-beyin.html"
+      },
+      {
+        "source": "/proje/kutarya-us-beyin/",
+        "destination": "/proje/kutarya-us-beyin.html"
+      },
+      {
+        "source": "/proje/kutarya-us-kty-1-0",
+        "destination": "/proje/kutarya-us-kty-1-0.html"
+      },
+      {
+        "source": "/proje/kutarya-us-kty-1-0/",
+        "destination": "/proje/kutarya-us-kty-1-0.html"
+      },
+      {
+        "source": "/proje/kutarya-mobile",
+        "destination": "/proje/kutarya-mobile.html"
+      },
+      {
+        "source": "/proje/kutarya-mobile/",
+        "destination": "/proje/kutarya-mobile.html"
+      },
+      {
+        "source": "/koleksiyon/web",
+        "destination": "/koleksiyon/web.html"
+      },
+      {
+        "source": "/koleksiyon/web/",
+        "destination": "/koleksiyon/web.html"
+      },
+      {
+        "source": "/ozel",
+        "destination": "/ozel.html"
+      },
+      {
+        "source": "/ozel/",
+        "destination": "/ozel.html"
+      },
+      {
+        "source": "/",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/oyunlar",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/kategori/**",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/oyun/**",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/oyna/**",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/auth/**",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/admin{,/**}",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/hesabim",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/kutuphanem",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/duyurular",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/destek",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/gizlilik",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/kullanim-kosullari",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/projeler",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/oyun-gecesi{,/}",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/kesif{,/}",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/proje/**",
+        "destination": "/app.html"
+      },
+      {
+        "source": "/koleksiyon/**",
+        "destination": "/app.html"
+      }
+    ],
+    "headers": [
+      {
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "SAMEORIGIN"
+          }
+        ],
+        "regex": ".*"
+      },
+      {
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=31536000,immutable"
+          }
+        ],
+        "regex": "^[/\\\\]assets[/\\\\].*"
+      },
+      {
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.wasm$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "gzip"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.wasm\\.gz$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.wasm\\.br$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript; charset=utf-8"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "gzip"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.js\\.gz$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript; charset=utf-8"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.js\\.br$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/octet-stream"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "gzip"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.data\\.gz$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/octet-stream"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.data\\.br$"
+      },
+      {
+        "regex": "^[/\\\\]ozel(?:[/\\\\].*|\\.html)?$",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "no-referrer"
+          }
+        ]
+      },
+      {
+        "source": "/ozel/muvv/0.4.0-20261012/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "/ozel/muvv/0.4.0-20261012/Muvv-0.4.0-Proje-20261012.zip",
+        "headers": [
+          {
+            "key": "Content-Disposition",
+            "value": "attachment; filename=\"Muvv-0.4.0-Proje-20261012.zip\""
+          }
+        ]
+      },
+      {
+        "regex": "^[/\\\\](admin|auth|hesabim|kutuphanem|oyna|games)([/\\\\].*)?$",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, follow"
+          }
+        ]
+      },
+      {
+        "regex": "^[/\\\\]app\\.html$",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, follow"
+          }
+        ]
+      },
+      {
+        "regex": "^[/\\\\](sitemap\\.xml|robots\\.txt)$",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300"
+          }
+        ]
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/ozel.html",
+        "destination": "/ozel",
+        "type": 301
+      },
+      {
+        "source": "/projeler.html",
+        "destination": "/projeler",
+        "type": 301
+      },
+      {
+        "source": "/oyun-gecesi.html",
+        "destination": "/oyun-gecesi",
+        "type": 301
+      },
+      {
+        "source": "/kesif.html",
+        "destination": "/kesif",
+        "type": 301
+      },
+      {
+        "source": "/duyurular.html",
+        "destination": "/duyurular",
+        "type": 301
+      },
+      {
+        "source": "/destek.html",
+        "destination": "/destek",
+        "type": 301
+      },
+      {
+        "source": "/gizlilik.html",
+        "destination": "/gizlilik",
+        "type": 301
+      },
+      {
+        "source": "/kullanim-kosullari.html",
+        "destination": "/kullanim-kosullari",
+        "type": 301
+      },
+      {
+        "source": "/koleksiyon/game.html",
+        "destination": "/koleksiyon/game",
+        "type": 301
+      },
+      {
+        "source": "/koleksiyon/desktop.html",
+        "destination": "/koleksiyon/desktop",
+        "type": 301
+      },
+      {
+        "source": "/koleksiyon/mobile.html",
+        "destination": "/koleksiyon/mobile",
+        "type": 301
+      },
+      {
+        "source": "/koleksiyon/source.html",
+        "destination": "/koleksiyon/source",
+        "type": 301
+      },
+      {
+        "source": "/koleksiyon/tool.html",
+        "destination": "/koleksiyon/tool",
+        "type": 301
+      },
+      {
+        "source": "/proje/blackjack.html",
+        "destination": "/proje/blackjack",
+        "type": 301
+      },
+      {
+        "source": "/proje/rulet.html",
+        "destination": "/proje/rulet",
+        "type": 301
+      },
+      {
+        "source": "/proje/rus-ruleti.html",
+        "destination": "/proje/rus-ruleti",
+        "type": 301
+      },
+      {
+        "source": "/proje/pixelgun.html",
+        "destination": "/proje/pixelgun",
+        "type": 301
+      },
+      {
+        "source": "/proje/blok-diyari.html",
+        "destination": "/proje/blok-diyari",
+        "type": 301
+      },
+      {
+        "source": "/proje/kutarya-os.html",
+        "destination": "/proje/kutarya-os",
+        "type": 301
+      },
+      {
+        "source": "/proje/kutarya-convert.html",
+        "destination": "/proje/kutarya-convert",
+        "type": 301
+      },
+      {
+        "source": "/proje/kutarya-cep.html",
+        "destination": "/proje/kutarya-cep",
+        "type": 301
+      },
+      {
+        "source": "/proje/kutarya-video.html",
+        "destination": "/proje/kutarya-video",
+        "type": 301
+      },
+      {
+        "source": "/proje/kutarya-jenerik.html",
+        "destination": "/proje/kutarya-jenerik",
+        "type": 301
+      },
+      {
+        "source": "/proje/kutarya-us-beyin.html",
+        "destination": "/proje/kutarya-us-beyin",
+        "type": 301
+      },
+      {
+        "source": "/proje/kutarya-us-kty-1-0.html",
+        "destination": "/proje/kutarya-us-kty-1-0",
+        "type": 301
+      },
+      {
+        "source": "/proje/kutarya-mobile.html",
+        "destination": "/proje/kutarya-mobile",
+        "type": 301
+      },
+      {
+        "source": "/koleksiyon/web.html",
+        "destination": "/koleksiyon/web",
+        "type": 301
+      },
+      {
+        "source": "/oyunlar",
+        "destination": "/koleksiyon/game",
+        "type": 301
+      },
+      {
+        "source": "/oyun/:slug",
+        "destination": "/proje/:slug",
+        "type": 301
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firebase/firestore.rules",
+    "indexes": "firebase/firestore.indexes.json"
+  },
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "firestore": {
+      "port": 8085
+    },
+    "functions": {
+      "port": 5005
+    },
+    "ui": {
+      "enabled": false
+    },
+    "singleProjectMode": true,
+    "storage": {
+      "port": 9199
+    }
+  },
+  "storage": {
+    "rules": "firebase/storage.rules"
+  }
+}

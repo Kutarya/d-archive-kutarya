@@ -1,0 +1,27 @@
+{
+  "name": "kutarya-teknik-kaynak",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run validate:content && npm run generate:machine && npm run generate:sitemap && vite build",
+    "preview": "vite preview",
+    "validate:content": "node scripts/validate-content.mjs",
+    "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "generate:machine": "node scripts/generate-machine-content.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "1.47.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-router-dom": "7.18.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "6.1.1",
+    "vite": "8.3.0"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
+}

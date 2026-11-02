@@ -1,0 +1,57 @@
+# Kutarya Teknik Kaynak
+
+> Türkçe yazılım ve bilgisayar bilimi başvuru kaynağı. Teknik makaleler, hata kayıtları, sistem mimarisi rehberleri ve teknoloji katalogları.
+
+Kutarya, Türkçe teknik içerikleri insanlara yönelik web sayfalarıyla birlikte makine-okunabilir Markdown kopyaları halinde yayımlar. Canonical web sayfası ana yayındır; /reference altındaki Markdown dosyaları aynı içeriğin araştırma ve ayrıştırma amaçlı düz metin karşılığıdır.
+
+## Temel giriş noktaları
+
+- [Teknik makaleler](https://kutarya.com/makaleler)
+- [Hata kayıtları](https://kutarya.com/hatalar)
+- [Sistem rehberleri](https://kutarya.com/sistemler)
+- [Teknoloji kataloğu](https://kutarya.com/kesfet)
+- [Kaynaklandırma ve yayın ilkeleri](https://kutarya.com/yayin-ilkeleri)
+- [Makine-okunabilir içerik dizini](https://kutarya.com/content-index.json)
+- [Sitemap](https://kutarya.com/sitemap.xml)
+- [Atom feed](https://kutarya.com/feed.xml)
+
+## Teknik makaleler — Markdown
+
+- [Anlamlı HTML ve Sayfa İskeleti](https://kutarya.com/reference/articles/html/moduller.md) — Semantik HTML belge yapısı, landmark bölgeleri, başlık hiyerarşisi, yerel etkileşim denetimleri ve erişilebilirlik ilişkileri.
+- [C# Abstract Sınıflar](https://kutarya.com/reference/articles/csharp/soyut-siniflar.md) — C# abstract sınıflar, ortak state, template method, protected yüzey ve interface/bileşim karşılaştırması.
+- [C# Bileşim ve Bağımlılık Enjeksiyonu](https://kutarya.com/reference/articles/csharp/bilesim.md) — C# bileşim, constructor injection, bağımlılık görünürlüğü, nesne oluşturma sınırı ve servis yaşam süresi kararları.
+- [C# Generic Tipler ve Kısıtlar](https://kutarya.com/reference/articles/csharp/generic-tipler.md) — C# generic tipler, where kısıtları, variance, tür güvenliği ve aşırı genellemenin API tasarımına etkisi.
+- [C# Interface ve Sözleşme Tasarımı](https://kutarya.com/reference/articles/csharp/arayuzler.md) — C# interface sözleşmeleri, bağımlılık sınırları, küçük arayüz tasarımı, test doubles ve default interface member etkileri.
+- [C# ile Nesne Yönelimli Programlama](https://kutarya.com/reference/articles/csharp/oop.md) — C# nesne yönelimli tasarımda sorumluluk, kapsülleme, kalıtım, interface, bileşim ve değişiklik maliyetinin birlikte değerlendirilmesi.
+- [C# Kalıtım ve is-a İlişkisi](https://kutarya.com/reference/articles/csharp/kalitim.md) — C# kalıtım, alt tür ikamesi, virtual/override davranışı, kırılgan taban sınıf riski ve bileşim alternatifi.
+- [C# Kapsülleme ve Geçerli Durum](https://kutarya.com/reference/articles/csharp/kapsulleme.md) — C# kapsülleme, invariant koruması, state değişim sınırları, property tasarımı ve koleksiyonların güvenli dışa açılması.
+- [C# Polimorfizm ve Dinamik Davranış](https://kutarya.com/reference/articles/csharp/polimorfizm.md) — C# polimorfizm, çalışma zamanı dağıtımı, interface tabanlı sözleşmeler, override ve pattern matching arasındaki tasarım farkları.
+- [C# Record ve Değer Nesneleri](https://kutarya.com/reference/articles/csharp/record-ve-deger-nesnesi.md) — C# record türleri, değer eşitliği, immutability, with kopyalama ve value object tasarımında doğrulama sınırları.
+- [C# Sınıf, Nesne ve Kurucu Metotlar](https://kutarya.com/reference/articles/csharp/sinif-ve-nesne.md) — C# sınıf tanımı, nesne kimliği, referans semantiği, kurucu metotlar ve instance/static üyelerin çalışma zamanı davranışı.
+- [C# SOLID İlkeleri](https://kutarya.com/reference/articles/csharp/solid.md) — SOLID ilkelerinin değişiklik maliyeti, bağımlılık yönü, soyutlama seviyesi ve test edilebilirlik üzerindeki teknik etkileri.
+- [CSS Grid ile Sağlam Sayfa Düzeni](https://kutarya.com/reference/articles/css/grid.md) — CSS Grid track modeli, fr birimi, minmax(), auto-fit/auto-fill ve taşma davranışının sayfa düzenine etkisi.
+- [Fetch API: HTTP, İptal ve Güvenli İstek Akışı](https://kutarya.com/reference/articles/javascript/fetch-api.md) — Fetch API ile HTTP durum kontrolü, JSON ayrıştırma, AbortController, timeout tasarımı ve arayüz yarış koşulları.
+- [HTML Formları: Etiketleme, Doğrulama ve Erişilebilir Hata Mesajları](https://kutarya.com/reference/articles/html/formlar.md) — HTML formlarında label/fieldset semantiği, native validation, autocomplete, erişilebilir hata ilişkileri ve sunucu tarafı doğrulama sınırı.
+- [JavaScript Asenkron Programlama](https://kutarya.com/reference/articles/javascript/async.md) — JavaScript asenkron programlamada Promise, async/await, event loop, paralellik, HTTP hata kanalları ve iptal davranışı.
+- [JavaScript Event Loop ve Görev Kuyrukları](https://kutarya.com/reference/articles/javascript/event-loop.md) — JavaScript event loop, call stack, task/microtask kuyrukları, Promise callback sırası ve uzun senkron işlerin tarayıcı üzerindeki etkisi.
+- [Python Context Manager ve Kaynak Yönetimi](https://kutarya.com/reference/articles/python/context-manager.md) — Python context manager protokolü, with ifadesi, __enter__/__exit__, contextlib ve hata durumunda deterministik kaynak temizliği.
+- [Python Generator ve Iterator Mantığı](https://kutarya.com/reference/articles/python/generatorler.md) — Python generator/iterator protokolü, yield semantiği, tembel değerlendirme, tek kullanımlık iterator davranışı ve bellek etkileri.
+- [Python ile Güvenli Dosya İşlemleri](https://kutarya.com/reference/articles/python/dosya-islemleri.md) — Python dosya işlemlerinde pathlib, encoding, atomik yazma, geçici dosya, yedekleme ve büyük dosyaların bellek davranışı.
+- [Responsive Tasarım: Breakpoint Değil İçerik Odaklı Yaklaşım](https://kutarya.com/reference/articles/css/responsive.md) — Responsive arayüzlerde mobile-first CSS, içerik tabanlı breakpoint, akışkan boyutlandırma ve container query kararları.
+- [SQL ile Tablo İlişkileri ve JOIN](https://kutarya.com/reference/articles/sql/koleksiyonlar.md) — SQL JOIN semantiği, ilişki kardinalitesi, NULL davranışı, toplama öncesi satır çoğalması ve sorgu planına etkiler.
+- [SQL İndeks Tasarımı ve Sorgu Performansı](https://kutarya.com/reference/articles/sql/index.md) — SQL indekslerinin okuma/yazma maliyeti, B-tree erişim modeli, composite index kolon sırası, seçicilik ve sorgu planı analizi.
+- [SQL Transaction ve İzolasyon Seviyeleri](https://kutarya.com/reference/articles/sql/transaction.md) — SQL transaction sınırları, izolasyon seviyeleri, eşzamanlılık anomalileri, deadlock/serialization hataları ve güvenli retry tasarımı.
+- [TypeScript Tür Sistemi, Union ve Narrowing](https://kutarya.com/reference/articles/typescript/veri-tipleri.md) — TypeScript tür sistemi, union, unknown, narrowing, discriminated union ve çalışma zamanı veri doğrulaması arasındaki sınır.
+
+## Diğer makine-okunabilir koleksiyonlar
+
+- Hata kayıtları: https://kutarya.com/reference/errors/
+- Sistem rehberleri: https://kutarya.com/reference/systems/
+
+## Kaynak kullanımı
+
+- Teknik makalelerde birincil kaynak URL’leri “Birincil referanslar” bölümünde açıkça listelenir.
+- Sürüme duyarlı davranışlar için canonical makaledeki son güncelleme tarihi ve bağlı resmî dokümantasyon birlikte değerlendirilmelidir.
+- Katalog içi kısa konu notları ayrıntılı teknik makalelerden ayrı tutulur.
+- content-index.json içindeki citation_ready alanı yalnız birincil referans zinciri bulunan teknik makalelerde true değerindedir.
+- Hata kayıtları teşhis kaydı, sistem rehberleri ise referans uygulama sınıfındadır; bu iki sınıf birincil kaynaklı makalelerle aynı editoryal statüde değildir.

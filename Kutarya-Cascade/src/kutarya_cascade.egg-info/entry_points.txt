@@ -1,0 +1,2 @@
+[console_scripts]
+kutarya-cascade = kutarya_cascade.cli:main

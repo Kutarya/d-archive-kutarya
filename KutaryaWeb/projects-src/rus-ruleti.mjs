@@ -1,0 +1,14 @@
+export const roulette = {
+  id: 'rus-ruleti', slug: 'rus-ruleti', title: 'Rus Ruleti: Son Tur',
+  subtitle: 'Odanı kur, arkadaşlarını çağır. Altı hazne, tek kıvılcım; son kalan kazanır.',
+  description: 'Kutarya’nın animasyonlu şans düellosu Son Tur’da aynı masada 2–6 kişi buluşur. Özel oda kurup altı karakterli kodu veya davet bağlantısını paylaş; açık masalardan birine katıl ya da hızlı eşleşmeyle rakip bul. Hızlı eşleşme ikinci oyuncuyla sekiz saniye sonra başlar. Her elde altı hazne ve tek kıvılcım vardır. Sıranda tetiği çek veya oyun boyunca bir kez kullanabileceğin pasını sakla. Kıvılcımı bulan elenir; son kalan masayı kazanır. Her elemede hazneler yeniden karışır. 25 saniyede karar verilmezse sunucu otomatik çekim yapar. Metal mekanizma animasyonları, canlı oyuncu kartları, dört hazır tepki, isteğe bağlı sesler ve rövanş aynı masada devam eder. Sonuç, sıra ve süre çevrim içi sunucuda belirlenir. Botlarla Dene, üç yapay rakiple internet gerektirmeyen ayrı bir antrenmandır; botlar gerçek oyuncu olarak gösterilmez. Hesap açmak gerekmez. Odalar geçicidir ve 45 dakika sürer; bağlantı kesilince 30 saniye boyunca aynı oyuncuyla dönüş denenir. Sunucu yeniden başlarsa oda kapanabilir. Gerçek para veya bahis sistemi bulunmaz.',
+  category: 'oyun', kind: 'game', engine: 'web', technology: 'HTML · CSS · JavaScript · WebSocket',
+  platforms: ['web', 'windows', 'macos', 'linux', 'android', 'ios'], devices: ['desktop', 'mobile'],
+  tags: ['Online', 'Arkadaşlarla', 'Şans', 'Odalar', 'Botlar'], license: 'Kutarya — Tüm hakları saklıdır', repository: '',
+  requirements: 'Güncel Chrome, Edge, Firefox veya Safari. Online oyun için internet ve WebSocket erişimi gerekir. İlk sürüm sınırlı eşzamanlı oda kapasitesiyle çalışır; yoğunlukta tekrar deneme gerekebilir. Fiziksel telefon ve yoğun eşzamanlı kullanıcı yükü ayrıca ölçülmemiştir.',
+  controls: 'Adını ve rengini seç. Hızlı Eşleş, Oda Kur veya altı karakterli oda kodunu kullan. Özel odada misafirler Hazırım der, oda sahibi başlatır. Sıranda Tetiği Çek veya tek Pas Geç hakkını kullan. Klavye: Space/Enter çek, P pas. Süre 25 saniye; süre dolunca otomatik çekilir. Ses sağ üstten açılır. Oda koduna basmak davet bağlantısını kopyalar; kopyalama desteklenmezse kod gösterilir. Bot antrenmanı üç yapay rakip içerir.',
+  changelog: '1.0.1 · Dar site içi oyun alanında düğme ve yerleşim düzeltildi. İlk sürüm özellikleri: animasyonlu şans mekanizması, 2–6 kişilik özel/açık odalar, kod ve davet bağlantısı, açık masa listesi, hızlı eşleşme, hazır olma, 25 saniyelik sıralar, tek pas hakkı, canlı sonuçlar, rövanş, kısa kopmalarda dönüş, emoji tepkileri, bot antrenmanı, mobil görünüm ve azaltılmış hareket desteği.',
+  version: '1.0.1', runtime: '/games/rus-ruleti/1.0.1/index.html',
+  versions: [], files: [], gallery: [], cover: '', color: '#f27353',
+  status: 'draft', featured: true, order: 1, difficulty: 'Şans ve zamanlama', duration: '2–5 dakika',
+};

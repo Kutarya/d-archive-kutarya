@@ -1,0 +1,23 @@
+{
+  "gameId": "blackjack",
+  "version": "1.0.3",
+  "entry": "/games/blackjack/1.0.3/index.html",
+  "kind": "web",
+  "compression": "none",
+  "totalBytes": 42742,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 42335,
+      "sha256": "45eb8d3242999845a8964ec6b3f161765d1473e4e3500c10cf1b83281647b81a"
+    },
+    {
+      "path": "OKU.txt",
+      "bytes": 407,
+      "sha256": "fa350e82df9b5818120487f6f3e16ce1be895d69c6db1d21ed783e211d91e5b9"
+    }
+  ],
+  "verified": false,
+  "createdAt": "2026-10-05T05:26:26.831Z",
+  "note": "Dosya bütünlüğü kontrol edildi. Gerçek tarayıcı kabulü henüz yapılmadı."
+}

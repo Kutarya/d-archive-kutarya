@@ -1,0 +1,1170 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-20T18:17:34.581Z",
+  "site": {
+    "name": "Kutarya Teknik Kaynak",
+    "url": "https://kutarya.com",
+    "language": "tr-TR",
+    "publisher": "Kutarya"
+  },
+  "policy_url": "https://kutarya.com/yayin-ilkeleri",
+  "entries": [
+    {
+      "id": "error:http-401-403",
+      "type": "error-record",
+      "title": "401 ile 403 farkı",
+      "description": "401 kimlik doğrulamanın eksik veya geçersiz, 403 ise kimlik bilinse de yetkinin yetersiz olduğunu anlatır.",
+      "technology": "Web / HTTP",
+      "canonical_url": "https://kutarya.com/hatalar/http-401-403",
+      "text_url": "https://kutarya.com/reference/errors/http-401-403.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:node-eaddrinuse",
+      "type": "error-record",
+      "title": "Adres kullanımda",
+      "description": "Node sunucusu kullanımda olan IP/port üzerinde dinlemeye çalışır.",
+      "technology": "Node.js",
+      "canonical_url": "https://kutarya.com/hatalar/node-eaddrinuse",
+      "text_url": "https://kutarya.com/reference/errors/node-eaddrinuse.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:npm-eresolve",
+      "type": "error-record",
+      "title": "Bağımlılık ağacı çözülemiyor",
+      "description": "Paketlerin istediği peer dependency sürümleri birbiriyle uyuşmaz.",
+      "technology": "Vite / npm",
+      "canonical_url": "https://kutarya.com/hatalar/npm-eresolve",
+      "text_url": "https://kutarya.com/reference/errors/npm-eresolve.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:cpp-undefined-reference",
+      "type": "error-record",
+      "title": "Bağlayıcı tanımı bulamadı",
+      "description": "Bildirim görülür fakat gerçek fonksiyon veya değişken tanımı bağlama aşamasında bulunmaz.",
+      "technology": "C++",
+      "canonical_url": "https://kutarya.com/hatalar/cpp-undefined-reference",
+      "text_url": "https://kutarya.com/reference/errors/cpp-undefined-reference.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:sql-duplicate-key",
+      "type": "error-record",
+      "title": "Benzersiz anahtar çakışması",
+      "description": "Unique veya primary key kuralını ihlal eden kayıt eklenir.",
+      "technology": "SQL",
+      "canonical_url": "https://kutarya.com/hatalar/sql-duplicate-key",
+      "text_url": "https://kutarya.com/reference/errors/sql-duplicate-key.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:unity-missing-script",
+      "type": "error-record",
+      "title": "Bileşen betiği kayıp",
+      "description": "Sahne veya prefab, artık çözülemeyen bir MonoBehaviour kimliğine başvurur.",
+      "technology": "Unity",
+      "canonical_url": "https://kutarya.com/hatalar/unity-missing-script",
+      "text_url": "https://kutarya.com/reference/errors/unity-missing-script.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:git-merge-conflict",
+      "type": "error-record",
+      "title": "Birleştirme çakışması",
+      "description": "İki geçmiş aynı satır veya dosya üzerinde otomatik birleştirilemeyen değişiklik yapmıştır.",
+      "technology": "Git",
+      "canonical_url": "https://kutarya.com/hatalar/git-merge-conflict",
+      "text_url": "https://kutarya.com/reference/errors/git-merge-conflict.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:js-cannot-read-properties",
+      "type": "error-record",
+      "title": "Cannot read properties of undefined",
+      "description": "Bir değişken beklenen nesne yerine undefined olduğunda üyesine erişilmeye çalışılır.",
+      "technology": "JavaScript",
+      "canonical_url": "https://kutarya.com/hatalar/js-cannot-read-properties",
+      "text_url": "https://kutarya.com/reference/errors/js-cannot-read-properties.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:http-cors",
+      "type": "error-record",
+      "title": "CORS isteği engellendi",
+      "description": "Tarayıcı, farklı kaynağa yapılan isteğin sunucu tarafından açıkça izinli olmadığını görür.",
+      "technology": "Web / HTTP",
+      "canonical_url": "https://kutarya.com/hatalar/http-cors",
+      "text_url": "https://kutarya.com/reference/errors/http-cors.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:rust-borrow-checker",
+      "type": "error-record",
+      "title": "Değer aynı anda uyumsuz biçimde ödünç alınıyor",
+      "description": "Aynı veri üzerinde çakışan değiştirilebilir ve değiştirilemez başvuruların ömrü kesişir.",
+      "technology": "Rust",
+      "canonical_url": "https://kutarya.com/hatalar/rust-borrow-checker",
+      "text_url": "https://kutarya.com/reference/errors/rust-borrow-checker.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:js-is-not-defined",
+      "type": "error-record",
+      "title": "Değişken tanımlı değil",
+      "description": "İsim mevcut kapsamda tanımlanmadan okunur.",
+      "technology": "JavaScript",
+      "canonical_url": "https://kutarya.com/hatalar/js-is-not-defined",
+      "text_url": "https://kutarya.com/reference/errors/js-is-not-defined.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:git-detached-head",
+      "type": "error-record",
+      "title": "Detached HEAD durumundasın",
+      "description": "Çalışma ağacı bir dal yerine doğrudan commit veya tag üzerinde açılmıştır.",
+      "technology": "Git",
+      "canonical_url": "https://kutarya.com/hatalar/git-detached-head",
+      "text_url": "https://kutarya.com/reference/errors/git-detached-head.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:docker-build-context",
+      "type": "error-record",
+      "title": "Dosya build context içinde bulunamadı",
+      "description": "Dockerfile içindeki kaynak yol, seçilen build context veya .dockerignore nedeniyle gönderilmez.",
+      "technology": "Docker",
+      "canonical_url": "https://kutarya.com/hatalar/docker-build-context",
+      "text_url": "https://kutarya.com/reference/errors/docker-build-context.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:ai-embedding-dimension",
+      "type": "error-record",
+      "title": "Embedding boyutu indeksle uyuşmuyor",
+      "description": "Sorgu vektörünün boyutu, koleksiyon oluşturulurken belirlenen embedding boyutundan farklıdır.",
+      "technology": "RAG / Vektör DB",
+      "canonical_url": "https://kutarya.com/hatalar/ai-embedding-dimension",
+      "text_url": "https://kutarya.com/reference/errors/ai-embedding-dimension.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:firebase-permission-denied",
+      "type": "error-record",
+      "title": "Firestore erişimi reddedildi",
+      "description": "İstek, yayımlanmış Firestore güvenlik kurallarındaki kimlik veya veri koşulunu karşılamaz.",
+      "technology": "Firebase",
+      "canonical_url": "https://kutarya.com/hatalar/firebase-permission-denied",
+      "text_url": "https://kutarya.com/reference/errors/firebase-permission-denied.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:react-invalid-hook-call",
+      "type": "error-record",
+      "title": "Geçersiz Hook çağrısı",
+      "description": "Hook, React’in çağrı sırası garantisini sağlayamadığı bir yerde kullanılır.",
+      "technology": "React",
+      "canonical_url": "https://kutarya.com/hatalar/react-invalid-hook-call",
+      "text_url": "https://kutarya.com/reference/errors/react-invalid-hook-call.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:python-indentation",
+      "type": "error-record",
+      "title": "Girinti hatası",
+      "description": "Blok yapısı boşluk ve tab kullanımındaki tutarsızlık nedeniyle çözülemez.",
+      "technology": "Python",
+      "canonical_url": "https://kutarya.com/hatalar/python-indentation",
+      "text_url": "https://kutarya.com/reference/errors/python-indentation.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:go-missing-module",
+      "type": "error-record",
+      "title": "Go modülü veya paket bulunamadı",
+      "description": "Import yolu mevcut go.mod bağımlılık grafiğinde çözülemez.",
+      "technology": "Go",
+      "canonical_url": "https://kutarya.com/hatalar/go-missing-module",
+      "text_url": "https://kutarya.com/reference/errors/go-missing-module.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:ai-cuda-out-of-memory",
+      "type": "error-record",
+      "title": "GPU belleği yetersiz",
+      "description": "Model, aktivasyonlar ve batch verisi GPU üzerinde kullanılabilir bellekten daha fazla alan ister.",
+      "technology": "PyTorch / CUDA",
+      "canonical_url": "https://kutarya.com/hatalar/ai-cuda-out-of-memory",
+      "text_url": "https://kutarya.com/reference/errors/ai-cuda-out-of-memory.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:android-cleartext",
+      "type": "error-record",
+      "title": "HTTP trafiği engellendi",
+      "description": "Android ağ güvenliği politikası şifrelenmemiş HTTP bağlantısını reddeder.",
+      "technology": "Android",
+      "canonical_url": "https://kutarya.com/hatalar/android-cleartext",
+      "text_url": "https://kutarya.com/reference/errors/android-cleartext.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:unity-serialized-null",
+      "type": "error-record",
+      "title": "Inspector başvurusu atanmamış",
+      "description": "SerializeField alanı sahne ya da prefab üzerinde gerekli nesneye bağlanmadan kullanılır.",
+      "technology": "Unity",
+      "canonical_url": "https://kutarya.com/hatalar/unity-serialized-null",
+      "text_url": "https://kutarya.com/reference/errors/unity-serialized-null.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:css-overflow",
+      "type": "error-record",
+      "title": "İçerik kapsayıcıdan taşıyor",
+      "description": "Sabit genişlik, minimum içerik boyutu veya uzun kırılmaz metin düzeni aşar.",
+      "technology": "CSS",
+      "canonical_url": "https://kutarya.com/hatalar/css-overflow",
+      "text_url": "https://kutarya.com/reference/errors/css-overflow.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:http-429",
+      "type": "error-record",
+      "title": "İstek sınırı aşıldı",
+      "description": "İstemci tanımlı zaman aralığında izin verilenden fazla istek gönderir.",
+      "technology": "Web / HTTP",
+      "canonical_url": "https://kutarya.com/hatalar/http-429",
+      "text_url": "https://kutarya.com/reference/errors/http-429.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:sql-deadlock",
+      "type": "error-record",
+      "title": "İşlem kilitlenmesi",
+      "description": "İki işlem birbirinin tuttuğu kaynağı ters sırada bekler; veritabanı birini iptal eder.",
+      "technology": "SQL",
+      "canonical_url": "https://kutarya.com/hatalar/sql-deadlock",
+      "text_url": "https://kutarya.com/reference/errors/sql-deadlock.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:js-unhandled-rejection",
+      "type": "error-record",
+      "title": "İşlenmeyen Promise reddi",
+      "description": "Asenkron iş başarısız olur fakat hiçbir await/catch yolu hatayı sahiplenmez.",
+      "technology": "JavaScript",
+      "canonical_url": "https://kutarya.com/hatalar/js-unhandled-rejection",
+      "text_url": "https://kutarya.com/reference/errors/js-unhandled-rejection.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:ios-code-sign",
+      "type": "error-record",
+      "title": "Kod imzalama başarısız",
+      "description": "Uygulama kimliği, sertifika, takım ve provisioning profile eşleşmez.",
+      "technology": "iOS / Swift",
+      "canonical_url": "https://kutarya.com/hatalar/ios-code-sign",
+      "text_url": "https://kutarya.com/reference/errors/ios-code-sign.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:csharp-collection-modified",
+      "type": "error-record",
+      "title": "Koleksiyon değiştirildi",
+      "description": "Bir koleksiyon üzerinde gezinirken aynı koleksiyonun yapısı değiştirilir.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/hatalar/csharp-collection-modified",
+      "text_url": "https://kutarya.com/reference/errors/csharp-collection-modified.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:dart-late-init",
+      "type": "error-record",
+      "title": "late değişken başlatılmadı",
+      "description": "late ile tanımlanan değer, bütün erişim yollarında atanmadan okunur.",
+      "technology": "Flutter / Dart",
+      "canonical_url": "https://kutarya.com/hatalar/dart-late-init",
+      "text_url": "https://kutarya.com/reference/errors/dart-late-init.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:ai-context-length-exceeded",
+      "type": "error-record",
+      "title": "Model bağlam sınırı aşıldı",
+      "description": "Prompt, konuşma geçmişi, araç çıktısı ve istenen cevap için gereken token toplamı model sınırını aşar.",
+      "technology": "LLM",
+      "canonical_url": "https://kutarya.com/hatalar/ai-context-length-exceeded",
+      "text_url": "https://kutarya.com/reference/errors/ai-context-length-exceeded.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:python-module-not-found",
+      "type": "error-record",
+      "title": "Modül bulunamadı",
+      "description": "Etkin Python ortamında istenen paket veya yerel modül bulunmaz.",
+      "technology": "Python",
+      "canonical_url": "https://kutarya.com/hatalar/python-module-not-found",
+      "text_url": "https://kutarya.com/reference/errors/python-module-not-found.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:vite-import-analysis",
+      "type": "error-record",
+      "title": "Modül çözümlenemiyor",
+      "description": "Vite, import edilen dosyayı veya paketi mevcut modül ağacında bulamaz.",
+      "technology": "Vite / npm",
+      "canonical_url": "https://kutarya.com/hatalar/vite-import-analysis",
+      "text_url": "https://kutarya.com/reference/errors/vite-import-analysis.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:ts-object-possibly-undefined",
+      "type": "error-record",
+      "title": "Nesne undefined olabilir",
+      "description": "Derleyici, erişilen değerin her akışta var olduğunu kanıtlayamaz.",
+      "technology": "TypeScript",
+      "canonical_url": "https://kutarya.com/hatalar/ts-object-possibly-undefined",
+      "text_url": "https://kutarya.com/reference/errors/ts-object-possibly-undefined.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:java-null-pointer",
+      "type": "error-record",
+      "title": "NullPointerException",
+      "description": "null olan bir başvurunun alanı veya metodu kullanılır.",
+      "technology": "Java",
+      "canonical_url": "https://kutarya.com/hatalar/java-null-pointer",
+      "text_url": "https://kutarya.com/reference/errors/java-null-pointer.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:csharp-null-reference",
+      "type": "error-record",
+      "title": "NullReferenceException",
+      "description": "null olan bir başvurunun üyesi okunur veya çağrılır.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/hatalar/csharp-null-reference",
+      "text_url": "https://kutarya.com/reference/errors/csharp-null-reference.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:docker-port-allocated",
+      "type": "error-record",
+      "title": "Port ayrılmış durumda",
+      "description": "Host üzerindeki port başka süreç veya konteyner tarafından kullanılmaktadır.",
+      "technology": "Docker",
+      "canonical_url": "https://kutarya.com/hatalar/docker-port-allocated",
+      "text_url": "https://kutarya.com/reference/errors/docker-port-allocated.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:dotnet-port-in-use",
+      "type": "error-record",
+      "title": "Port zaten kullanımda",
+      "description": "Uygulamanın dinlemek istediği portu başka bir süreç tutar.",
+      "technology": ".NET",
+      "canonical_url": "https://kutarya.com/hatalar/dotnet-port-in-use",
+      "text_url": "https://kutarya.com/reference/errors/dotnet-port-in-use.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:git-non-fast-forward",
+      "type": "error-record",
+      "title": "Push reddedildi",
+      "description": "Uzak dalda yerel dalda olmayan commitler bulunduğu için Git geçmişi ezmeyi reddeder.",
+      "technology": "Git",
+      "canonical_url": "https://kutarya.com/hatalar/git-non-fast-forward",
+      "text_url": "https://kutarya.com/reference/errors/git-non-fast-forward.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:supabase-rls",
+      "type": "error-record",
+      "title": "RLS kaydı görünmez veya yazmayı reddeder",
+      "description": "Etkin RLS politikası kullanıcının rolü, UID’si veya satır koşuluyla uyuşmaz.",
+      "technology": "Supabase / PostgreSQL",
+      "canonical_url": "https://kutarya.com/hatalar/supabase-rls",
+      "text_url": "https://kutarya.com/reference/errors/supabase-rls.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:cpp-segmentation-fault",
+      "type": "error-record",
+      "title": "Segmentation fault",
+      "description": "Süreç sahip olmadığı veya geçerli olmayan bellek alanına erişir.",
+      "technology": "C++",
+      "canonical_url": "https://kutarya.com/hatalar/cpp-segmentation-fault",
+      "text_url": "https://kutarya.com/reference/errors/cpp-segmentation-fault.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:java-class-not-found",
+      "type": "error-record",
+      "title": "Sınıf çalışma zamanında bulunamadı",
+      "description": "Derleme geçmiş olsa da gerekli sınıf çalışma zamanı classpath içinde yoktur.",
+      "technology": "Java",
+      "canonical_url": "https://kutarya.com/hatalar/java-class-not-found",
+      "text_url": "https://kutarya.com/reference/errors/java-class-not-found.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:react-too-many-renders",
+      "type": "error-record",
+      "title": "Sonsuz render döngüsü",
+      "description": "Render sırasında tekrar state güncellendiği için bileşen kendini durmadan yeniden çizer.",
+      "technology": "React",
+      "canonical_url": "https://kutarya.com/hatalar/react-too-many-renders",
+      "text_url": "https://kutarya.com/reference/errors/react-too-many-renders.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:python-key-error",
+      "type": "error-record",
+      "title": "Sözlük anahtarı yok",
+      "description": "Sözlükte bulunmayan anahtara köşeli parantezle erişilir.",
+      "technology": "Python",
+      "canonical_url": "https://kutarya.com/hatalar/python-key-error",
+      "text_url": "https://kutarya.com/reference/errors/python-key-error.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:http-500",
+      "type": "error-record",
+      "title": "Sunucu iç hatası",
+      "description": "Sunucu isteği aldı fakat beklenmeyen hata nedeniyle geçerli yanıt üretemedi.",
+      "technology": "Web / HTTP",
+      "canonical_url": "https://kutarya.com/hatalar/http-500",
+      "text_url": "https://kutarya.com/reference/errors/http-500.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:react-hydration-mismatch",
+      "type": "error-record",
+      "title": "Sunucu ve istemci HTML’i uyuşmuyor",
+      "description": "İlk istemci renderı sunucunun ürettiği HTML’den farklıdır.",
+      "technology": "React",
+      "canonical_url": "https://kutarya.com/hatalar/react-hydration-mismatch",
+      "text_url": "https://kutarya.com/reference/errors/react-hydration-mismatch.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:sql-column-ambiguous",
+      "type": "error-record",
+      "title": "Sütun adı belirsiz",
+      "description": "Sorgudaki sütun adı birden fazla tablodan gelebilir.",
+      "technology": "SQL",
+      "canonical_url": "https://kutarya.com/hatalar/sql-column-ambiguous",
+      "text_url": "https://kutarya.com/reference/errors/sql-column-ambiguous.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:ai-tensor-shape-mismatch",
+      "type": "error-record",
+      "title": "Tensor boyutları uyuşmuyor",
+      "description": "Katmanların beklediği eksen ve boyutlar, üretilen tensor şekliyle uyuşmaz.",
+      "technology": "PyTorch / TensorFlow",
+      "canonical_url": "https://kutarya.com/hatalar/ai-tensor-shape-mismatch",
+      "text_url": "https://kutarya.com/reference/errors/ai-tensor-shape-mismatch.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:ts-not-assignable",
+      "type": "error-record",
+      "title": "Tür atanamıyor",
+      "description": "Üretilen değer ile hedef değişkenin sözleşmesi uyuşmaz.",
+      "technology": "TypeScript",
+      "canonical_url": "https://kutarya.com/hatalar/ts-not-assignable",
+      "text_url": "https://kutarya.com/reference/errors/ts-not-assignable.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:csharp-cs0246",
+      "type": "error-record",
+      "title": "Tür veya namespace bulunamadı",
+      "description": "Derleyici kullanılan türün tanımına ulaşamaz.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/hatalar/csharp-cs0246",
+      "text_url": "https://kutarya.com/reference/errors/csharp-cs0246.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:ai-data-leakage",
+      "type": "error-record",
+      "title": "Veri sızıntısı ölçümü yanıltıyor",
+      "description": "Model eğitim sırasında hedefe veya geleceğe ait bilgiyi dolaylı olarak görür ve gerçek kullanımda tekrarlanamayacak sonuç üretir.",
+      "technology": "Makine Öğrenmesi",
+      "canonical_url": "https://kutarya.com/hatalar/ai-data-leakage",
+      "text_url": "https://kutarya.com/reference/errors/ai-data-leakage.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:database-connection-timeout",
+      "type": "error-record",
+      "title": "Veritabanı bağlantısı zaman aşımına uğradı",
+      "description": "Uygulama zamanında yeni bağlantı kuramaz veya havuzdan bağlantı alamaz.",
+      "technology": "Veritabanı",
+      "canonical_url": "https://kutarya.com/hatalar/database-connection-timeout",
+      "text_url": "https://kutarya.com/reference/errors/database-connection-timeout.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "error:flutter-missing-plugin",
+      "type": "error-record",
+      "title": "Yerel eklenti bulunamadı",
+      "description": "Dart tarafı eklentiyi çağırır fakat çalışan platform derlemesinde yerel uygulama kayıtlı değildir.",
+      "technology": "Flutter / Dart",
+      "canonical_url": "https://kutarya.com/hatalar/flutter-missing-plugin",
+      "text_url": "https://kutarya.com/reference/errors/flutter-missing-plugin.md",
+      "editorial_class": "diagnostic-record",
+      "citation_ready": false,
+      "evidence_model": "reproducible symptom, diagnosis and remediation record"
+    },
+    {
+      "id": "system:mobil-aliskanlik",
+      "type": "system-guide",
+      "title": "Çevrimdışı çalışan alışkanlık takip uygulaması",
+      "description": "Flutter ile alışkanlık ekleme, günlük tamamlama, yerel kayıt ve test içeren çalışır bir mobil uygulama.",
+      "category": "Mobil",
+      "stack": [
+        "Dart",
+        "Flutter",
+        "SharedPreferences"
+      ],
+      "canonical_url": "https://kutarya.com/sistemler/mobil-aliskanlik",
+      "text_url": "https://kutarya.com/reference/systems/mobil-aliskanlik.md",
+      "editorial_class": "implementation-guide",
+      "citation_ready": false,
+      "evidence_model": "reference implementation and runtime verification checklist"
+    },
+    {
+      "id": "system:gorev-takip-api",
+      "type": "system-guide",
+      "title": "Doğrulamalı görev takip REST API",
+      "description": "ASP.NET Core ile veri modeli, doğrulama, HTTP sonuçları ve bütünleşme testi olan küçük ama üretim mantığı taşıyan API.",
+      "category": "Backend",
+      "stack": [
+        "C#",
+        "ASP.NET Core",
+        "xUnit"
+      ],
+      "canonical_url": "https://kutarya.com/sistemler/gorev-takip-api",
+      "text_url": "https://kutarya.com/reference/systems/gorev-takip-api.md",
+      "editorial_class": "implementation-guide",
+      "citation_ready": false,
+      "evidence_model": "reference implementation and runtime verification checklist"
+    },
+    {
+      "id": "system:goruntu-siniflandirma",
+      "type": "system-guide",
+      "title": "Hazır modelle görüntü sınıflandırma servisi",
+      "description": "Model eğitmeden hazır ağırlığı yükleyen, girdiyi doğrulayan ve tahmin sonucunu HTTP üzerinden döndüren Python servisi.",
+      "category": "Yapay zeka",
+      "stack": [
+        "Python",
+        "PyTorch",
+        "FastAPI"
+      ],
+      "canonical_url": "https://kutarya.com/sistemler/goruntu-siniflandirma",
+      "text_url": "https://kutarya.com/reference/systems/goruntu-siniflandirma.md",
+      "editorial_class": "implementation-guide",
+      "citation_ready": false,
+      "evidence_model": "reference implementation and runtime verification checklist"
+    },
+    {
+      "id": "system:unity-envanter",
+      "type": "system-guide",
+      "title": "Kararlı kimlikli Unity envanter sistemi",
+      "description": "ScriptableObject tanımı, çalışma zamanı yığını ve kayıt verisini birbirine karıştırmayan envanter çekirdeği.",
+      "category": "Oyun",
+      "stack": [
+        "C#",
+        "Unity"
+      ],
+      "canonical_url": "https://kutarya.com/sistemler/unity-envanter",
+      "text_url": "https://kutarya.com/reference/systems/unity-envanter.md",
+      "editorial_class": "implementation-guide",
+      "citation_ready": false,
+      "evidence_model": "reference implementation and runtime verification checklist"
+    },
+    {
+      "id": "system:dosya-duzenleyici",
+      "type": "system-guide",
+      "title": "Önizlemeli ve geri alınabilir dosya düzenleyici",
+      "description": "Python ile dosyaları önce planlayan, çakışmaları gösteren ve yalnız onaydan sonra taşıyan güvenli otomasyon.",
+      "category": "Otomasyon",
+      "stack": [
+        "Python",
+        "Pathlib",
+        "JSON"
+      ],
+      "canonical_url": "https://kutarya.com/sistemler/dosya-duzenleyici",
+      "text_url": "https://kutarya.com/reference/systems/dosya-duzenleyici.md",
+      "editorial_class": "implementation-guide",
+      "citation_ready": false,
+      "evidence_model": "reference implementation and runtime verification checklist"
+    },
+    {
+      "id": "system:gercek-zamanli-sohbet",
+      "type": "system-guide",
+      "title": "Yeniden bağlanabilen gerçek zamanlı sohbet",
+      "description": "WebSocket mesaj sözleşmesi, sunucu doğrulaması, istemci bağlantı durumu ve tekrar mesaj koruması.",
+      "category": "Web",
+      "stack": [
+        "TypeScript",
+        "Node.js",
+        "WebSocket"
+      ],
+      "canonical_url": "https://kutarya.com/sistemler/gercek-zamanli-sohbet",
+      "text_url": "https://kutarya.com/reference/systems/gercek-zamanli-sohbet.md",
+      "editorial_class": "implementation-guide",
+      "citation_ready": false,
+      "evidence_model": "reference implementation and runtime verification checklist"
+    },
+    {
+      "id": "article:html:moduller",
+      "type": "technical-article",
+      "title": "Anlamlı HTML ve Sayfa İskeleti",
+      "description": "Semantik HTML belge yapısı, landmark bölgeleri, başlık hiyerarşisi, yerel etkileşim denetimleri ve erişilebilirlik ilişkileri.",
+      "technology": "HTML",
+      "canonical_url": "https://kutarya.com/konu/html/moduller",
+      "text_url": "https://kutarya.com/reference/articles/html/moduller.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility/HTML",
+        "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1037
+    },
+    {
+      "id": "article:csharp:soyut-siniflar",
+      "type": "technical-article",
+      "title": "C# Abstract Sınıflar",
+      "description": "C# abstract sınıflar, ortak state, template method, protected yüzey ve interface/bileşim karşılaştırması.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/soyut-siniflar",
+      "text_url": "https://kutarya.com/reference/articles/csharp/soyut-siniflar.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/abstract-and-sealed-classes-and-class-members"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1178
+    },
+    {
+      "id": "article:csharp:bilesim",
+      "type": "technical-article",
+      "title": "C# Bileşim ve Bağımlılık Enjeksiyonu",
+      "description": "C# bileşim, constructor injection, bağımlılık görünürlüğü, nesne oluşturma sınırı ve servis yaşam süresi kararları.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/bilesim",
+      "text_url": "https://kutarya.com/reference/articles/csharp/bilesim.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1212
+    },
+    {
+      "id": "article:csharp:generic-tipler",
+      "type": "technical-article",
+      "title": "C# Generic Tipler ve Kısıtlar",
+      "description": "C# generic tipler, where kısıtları, variance, tür güvenliği ve aşırı genellemenin API tasarımına etkisi.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/generic-tipler",
+      "text_url": "https://kutarya.com/reference/articles/csharp/generic-tipler.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/generics"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1161
+    },
+    {
+      "id": "article:csharp:arayuzler",
+      "type": "technical-article",
+      "title": "C# Interface ve Sözleşme Tasarımı",
+      "description": "C# interface sözleşmeleri, bağımlılık sınırları, küçük arayüz tasarımı, test doubles ve default interface member etkileri.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/arayuzler",
+      "text_url": "https://kutarya.com/reference/articles/csharp/arayuzler.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1270
+    },
+    {
+      "id": "article:csharp:oop",
+      "type": "technical-article",
+      "title": "C# ile Nesne Yönelimli Programlama",
+      "description": "C# nesne yönelimli tasarımda sorumluluk, kapsülleme, kalıtım, interface, bileşim ve değişiklik maliyetinin birlikte değerlendirilmesi.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/oop",
+      "text_url": "https://kutarya.com/reference/articles/csharp/oop.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/",
+        "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/inheritance",
+        "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1518
+    },
+    {
+      "id": "article:csharp:kalitim",
+      "type": "technical-article",
+      "title": "C# Kalıtım ve is-a İlişkisi",
+      "description": "C# kalıtım, alt tür ikamesi, virtual/override davranışı, kırılgan taban sınıf riski ve bileşim alternatifi.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/kalitim",
+      "text_url": "https://kutarya.com/reference/articles/csharp/kalitim.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/inheritance"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1369
+    },
+    {
+      "id": "article:csharp:kapsulleme",
+      "type": "technical-article",
+      "title": "C# Kapsülleme ve Geçerli Durum",
+      "description": "C# kapsülleme, invariant koruması, state değişim sınırları, property tasarımı ve koleksiyonların güvenli dışa açılması.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/kapsulleme",
+      "text_url": "https://kutarya.com/reference/articles/csharp/kapsulleme.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/tutorials/oop"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1327
+    },
+    {
+      "id": "article:csharp:polimorfizm",
+      "type": "technical-article",
+      "title": "C# Polimorfizm ve Dinamik Davranış",
+      "description": "C# polimorfizm, çalışma zamanı dağıtımı, interface tabanlı sözleşmeler, override ve pattern matching arasındaki tasarım farkları.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/polimorfizm",
+      "text_url": "https://kutarya.com/reference/articles/csharp/polimorfizm.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/polymorphism"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1231
+    },
+    {
+      "id": "article:csharp:record-ve-deger-nesnesi",
+      "type": "technical-article",
+      "title": "C# Record ve Değer Nesneleri",
+      "description": "C# record türleri, değer eşitliği, immutability, with kopyalama ve value object tasarımında doğrulama sınırları.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/record-ve-deger-nesnesi",
+      "text_url": "https://kutarya.com/reference/articles/csharp/record-ve-deger-nesnesi.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/records"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1186
+    },
+    {
+      "id": "article:csharp:sinif-ve-nesne",
+      "type": "technical-article",
+      "title": "C# Sınıf, Nesne ve Kurucu Metotlar",
+      "description": "C# sınıf tanımı, nesne kimliği, referans semantiği, kurucu metotlar ve instance/static üyelerin çalışma zamanı davranışı.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/sinif-ve-nesne",
+      "text_url": "https://kutarya.com/reference/articles/csharp/sinif-ve-nesne.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/object-oriented/",
+        "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/constructors"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1436
+    },
+    {
+      "id": "article:csharp:solid",
+      "type": "technical-article",
+      "title": "C# SOLID İlkeleri",
+      "description": "SOLID ilkelerinin değişiklik maliyeti, bağımlılık yönü, soyutlama seviyesi ve test edilebilirlik üzerindeki teknik etkileri.",
+      "technology": "C#",
+      "canonical_url": "https://kutarya.com/konu/csharp/solid",
+      "text_url": "https://kutarya.com/reference/articles/csharp/solid.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/architectural-principles"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1298
+    },
+    {
+      "id": "article:css:grid",
+      "type": "technical-article",
+      "title": "CSS Grid ile Sağlam Sayfa Düzeni",
+      "description": "CSS Grid track modeli, fr birimi, minmax(), auto-fit/auto-fill ve taşma davranışının sayfa düzenine etkisi.",
+      "technology": "CSS",
+      "canonical_url": "https://kutarya.com/konu/css/grid",
+      "text_url": "https://kutarya.com/reference/articles/css/grid.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout",
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/minmax"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 949
+    },
+    {
+      "id": "article:javascript:fetch-api",
+      "type": "technical-article",
+      "title": "Fetch API: HTTP, İptal ve Güvenli İstek Akışı",
+      "description": "Fetch API ile HTTP durum kontrolü, JSON ayrıştırma, AbortController, timeout tasarımı ve arayüz yarış koşulları.",
+      "technology": "JavaScript",
+      "canonical_url": "https://kutarya.com/konu/javascript/fetch-api",
+      "text_url": "https://kutarya.com/reference/articles/javascript/fetch-api.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch",
+        "https://developer.mozilla.org/en-US/docs/Web/API/AbortController"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1100
+    },
+    {
+      "id": "article:html:formlar",
+      "type": "technical-article",
+      "title": "HTML Formları: Etiketleme, Doğrulama ve Erişilebilir Hata Mesajları",
+      "description": "HTML formlarında label/fieldset semantiği, native validation, autocomplete, erişilebilir hata ilişkileri ve sunucu tarafı doğrulama sınırı.",
+      "technology": "HTML",
+      "canonical_url": "https://kutarya.com/konu/html/formlar",
+      "text_url": "https://kutarya.com/reference/articles/html/formlar.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms",
+        "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 949
+    },
+    {
+      "id": "article:javascript:async",
+      "type": "technical-article",
+      "title": "JavaScript Asenkron Programlama",
+      "description": "JavaScript asenkron programlamada Promise, async/await, event loop, paralellik, HTTP hata kanalları ve iptal davranışı.",
+      "technology": "JavaScript",
+      "canonical_url": "https://kutarya.com/konu/javascript/async",
+      "text_url": "https://kutarya.com/reference/articles/javascript/async.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Async_JS/Promises",
+        "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch",
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1123
+    },
+    {
+      "id": "article:javascript:event-loop",
+      "type": "technical-article",
+      "title": "JavaScript Event Loop ve Görev Kuyrukları",
+      "description": "JavaScript event loop, call stack, task/microtask kuyrukları, Promise callback sırası ve uzun senkron işlerin tarayıcı üzerindeki etkisi.",
+      "technology": "JavaScript",
+      "canonical_url": "https://kutarya.com/konu/javascript/event-loop",
+      "text_url": "https://kutarya.com/reference/articles/javascript/event-loop.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model",
+        "https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1103
+    },
+    {
+      "id": "article:python:context-manager",
+      "type": "technical-article",
+      "title": "Python Context Manager ve Kaynak Yönetimi",
+      "description": "Python context manager protokolü, with ifadesi, __enter__/__exit__, contextlib ve hata durumunda deterministik kaynak temizliği.",
+      "technology": "Python",
+      "canonical_url": "https://kutarya.com/konu/python/context-manager",
+      "text_url": "https://kutarya.com/reference/articles/python/context-manager.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://docs.python.org/3/library/contextlib.html",
+        "https://docs.python.org/3/reference/compound_stmts.html#the-with-statement"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 933
+    },
+    {
+      "id": "article:python:generatorler",
+      "type": "technical-article",
+      "title": "Python Generator ve Iterator Mantığı",
+      "description": "Python generator/iterator protokolü, yield semantiği, tembel değerlendirme, tek kullanımlık iterator davranışı ve bellek etkileri.",
+      "technology": "Python",
+      "canonical_url": "https://kutarya.com/konu/python/generatorler",
+      "text_url": "https://kutarya.com/reference/articles/python/generatorler.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://docs.python.org/3/tutorial/classes.html#generators",
+        "https://docs.python.org/3/library/itertools.html"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 967
+    },
+    {
+      "id": "article:python:dosya-islemleri",
+      "type": "technical-article",
+      "title": "Python ile Güvenli Dosya İşlemleri",
+      "description": "Python dosya işlemlerinde pathlib, encoding, atomik yazma, geçici dosya, yedekleme ve büyük dosyaların bellek davranışı.",
+      "technology": "Python",
+      "canonical_url": "https://kutarya.com/konu/python/dosya-islemleri",
+      "text_url": "https://kutarya.com/reference/articles/python/dosya-islemleri.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://docs.python.org/3/library/pathlib.html",
+        "https://docs.python.org/3/library/tempfile.html",
+        "https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1074
+    },
+    {
+      "id": "article:css:responsive",
+      "type": "technical-article",
+      "title": "Responsive Tasarım: Breakpoint Değil İçerik Odaklı Yaklaşım",
+      "description": "Responsive arayüzlerde mobile-first CSS, içerik tabanlı breakpoint, akışkan boyutlandırma ve container query kararları.",
+      "technology": "CSS",
+      "canonical_url": "https://kutarya.com/konu/css/responsive",
+      "text_url": "https://kutarya.com/reference/articles/css/responsive.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design",
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 962
+    },
+    {
+      "id": "article:sql:koleksiyonlar",
+      "type": "technical-article",
+      "title": "SQL ile Tablo İlişkileri ve JOIN",
+      "description": "SQL JOIN semantiği, ilişki kardinalitesi, NULL davranışı, toplama öncesi satır çoğalması ve sorgu planına etkiler.",
+      "technology": "SQL",
+      "canonical_url": "https://kutarya.com/konu/sql/koleksiyonlar",
+      "text_url": "https://kutarya.com/reference/articles/sql/koleksiyonlar.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://www.postgresql.org/docs/current/tutorial-join.html",
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1118
+    },
+    {
+      "id": "article:sql:index",
+      "type": "technical-article",
+      "title": "SQL İndeks Tasarımı ve Sorgu Performansı",
+      "description": "SQL indekslerinin okuma/yazma maliyeti, B-tree erişim modeli, composite index kolon sırası, seçicilik ve sorgu planı analizi.",
+      "technology": "SQL",
+      "canonical_url": "https://kutarya.com/konu/sql/index",
+      "text_url": "https://kutarya.com/reference/articles/sql/index.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://www.postgresql.org/docs/current/indexes.html",
+        "https://www.postgresql.org/docs/current/using-explain.html"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 996
+    },
+    {
+      "id": "article:sql:transaction",
+      "type": "technical-article",
+      "title": "SQL Transaction ve İzolasyon Seviyeleri",
+      "description": "SQL transaction sınırları, izolasyon seviyeleri, eşzamanlılık anomalileri, deadlock/serialization hataları ve güvenli retry tasarımı.",
+      "technology": "SQL",
+      "canonical_url": "https://kutarya.com/konu/sql/transaction",
+      "text_url": "https://kutarya.com/reference/articles/sql/transaction.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://www.postgresql.org/docs/current/tutorial-transactions.html"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 981
+    },
+    {
+      "id": "article:typescript:veri-tipleri",
+      "type": "technical-article",
+      "title": "TypeScript Tür Sistemi, Union ve Narrowing",
+      "description": "TypeScript tür sistemi, union, unknown, narrowing, discriminated union ve çalışma zamanı veri doğrulaması arasındaki sınır.",
+      "technology": "TypeScript",
+      "canonical_url": "https://kutarya.com/konu/typescript/veri-tipleri",
+      "text_url": "https://kutarya.com/reference/articles/typescript/veri-tipleri.md",
+      "date_published": "2026-09-20",
+      "date_modified": "2026-09-20",
+      "source_urls": [
+        "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html",
+        "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+      ],
+      "editorial_class": "reference-article",
+      "citation_ready": true,
+      "word_count": 1013
+    }
+  ]
+}

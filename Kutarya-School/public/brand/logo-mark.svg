@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-3.48 0 24 32" width="24" height="32">
+  <style>
+    .structure { fill: #1a1d23; }
+    .spark { fill: #12946a; }
+    @media (prefers-color-scheme: dark) {
+      .structure { fill: #e8eaed; }
+      .spark { fill: #35c08a; }
+    }
+  </style>
+  <path class="structure" fill-rule="evenodd" d="M8.52 5.96L17.04 13.75L13.38 13.77L9.71 10.46L9.71 18.14L16.02 24.54L8.52 32L1.02 24.54L7.33 18.14L7.33 10.46L3.66 13.77L0 13.75ZM8.52 20.44L4.46 24.48L8.52 28.56L12.58 24.48Z"/>
+  <path class="spark" d="M8.52 0.79L10.38 3.09L8.52 5.34L6.66 3.09ZM1.85 0L5.47 3.62L4.63 3.71L3.84 3.66L1.02 0.93ZM15.19 0L11.57 3.62L12.41 3.71L13.2 3.66L16.02 0.93Z"/>
+</svg>

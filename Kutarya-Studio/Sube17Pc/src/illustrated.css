@@ -1,0 +1,56 @@
+/* Mürekkep, mat kâğıt ve kontrollü hareket: bütün kabuk için ortak görsel dil. */
+:root { --ink:#283126; --paper:#e7d8b2; --rust:#9c4636; --olive:#57654b; }
+button, input { -webkit-tap-highlight-color:transparent; }
+button { transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease; }
+button:not(:disabled):active { transform:translateY(1px); }
+button:focus-visible, input:focus-visible { outline:2px solid #d99b62; outline-offset:4px; }
+.paper-noise { opacity:.035; }
+.street-background { animation:none; }
+.scene-shade { background:linear-gradient(90deg,#1b251af5 0%,#202b20ef 29%,#26302790 47%,#25312908 68%),linear-gradient(0deg,#20251dd4,transparent 45%); }
+.illustrated-brand { top:15%; left:6.2%; width:50%; transform:none; filter:none; animation:none; }
+.illustrated-brand>span { font-size:11px; color:#b7bf9c; letter-spacing:.28em; }
+.illustrated-brand h1 { font-family:Georgia,'Times New Roman',serif; font-size:clamp(66px,7.7vw,148px); line-height:1; letter-spacing:-.055em; font-weight:normal; margin:30px 0 24px; color:#ede1ba; text-shadow:3px 4px 0 #0d1b1299; }
+.illustrated-brand h1 b { color:#be684a; font-weight:normal; }
+.brand-rule { width:75px; height:3px; background:#bc674b; transform:rotate(-1deg); }
+.illustrated-brand p { font:italic clamp(16px,1.45vw,26px) Georgia,serif; color:#e0d6b8; margin:20px 0 10px; }
+.illustrated-brand>small { font-size:clamp(10px,.7vw,13px); color:#aab29b; letter-spacing:.02em; }
+.main-menu:after { border-color:#a5a4863d; }
+.menu-actions { left:6.2%; bottom:12%; gap:9px; width:clamp(290px,24vw,420px); }
+.menu-actions button { min-height:52px; border:1px solid #b8aa7873; border-left:3px solid #a98b57; border-radius:2px 3px 1px 4px; color:#e8ddbc; background:#39412ae0; box-shadow:3px 3px 0 #1421196b; }
+.menu-actions button:hover { color:#fff0c8; background:#77623ce8; border-color:#b8a168; transform:translateX(5px) rotate(-.4deg); box-shadow:4px 4px 0 #111c1699; }
+.menu-actions button:first-child { background:#c2ad79; color:#263022; border-color:#d2bd85; box-shadow:3px 4px 0 #1421199c; }
+.menu-actions .button-number { color:#b58357; }.menu-actions button:first-child .button-number { color:#7c5337; }
+.menu-actions button small { color:#bcb397; }.menu-actions button:first-child small { color:#5e6349; }
+.menu-footer { color:#b1b69d; font-size:10px; letter-spacing:.16em; }
+.menu-notice { z-index:40; }
+.new-game-screen { overflow:auto; max-height:100dvh; }
+.new-game-shade { background:#233025bf; backdrop-filter:none; }
+.new-game-dossier { color:#293125; background:#e5d7b0; border:2px solid #313b2c; border-left:5px solid #7f4935; box-shadow:7px 9px 0 #13201973, 0 16px 50px #17261e66; border-radius:2px 5px 2px 3px; }
+.new-game-dossier:before { border-color:#8f92723d; }
+.dossier-header { border-bottom:1px solid #81806066; }
+.dossier-header span,.name-field>span,.difficulty-field legend { color:#8f4233; font-size:10px; }
+.dossier-header h1 { font-family:Georgia,serif; letter-spacing:-.015em; font-weight:normal; }
+.dossier-seal { border-radius:50%; border:3px double #984b3d; color:#984b3d; transform:rotate(8deg); }
+.name-field input { color:#283323; border-bottom-color:#7f8166; font-family:Georgia,serif; }
+.name-field input::placeholder { color:#8b8c70; }.name-field small { color:#747258; font-size:11px; line-height:1.5; }
+.difficulty-options { grid-template-columns:repeat(4,1fr); }
+.difficulty-card { border:1px solid #8b8b6b; background:#dbcca6; color:#323b2b; border-radius:2px 3px 2px 1px; }
+.difficulty-card:hover,.difficulty-card.is-selected { background:#c6c29a; border-color:#68744f; box-shadow:2px 3px 0 #93916a66; }
+.difficulty-card strong { letter-spacing:.06em; font-size:15px; }
+.difficulty-card small { font-size:10px; color:#606546; }.difficulty-card__money { color:#36412c; }.difficulty-card__number { color:#9a5238; }.difficulty-card.is-selected:after { color:#596944; }
+.dossier-footer { border-top-color:#8b89616b; }.dossier-footer button { font-size:11px; }
+.secondary-action { color:#535c3f; background:#d1c49e; border-color:#929171; }.primary-action { background:#566647; color:#f0e6c9; border-color:#384831; box-shadow:2px 3px 0 #85876880; }.primary-action:hover { background:#6a7952; color:#fff4d9; border-color:#344730; }.secondary-action:hover { color:#273920; background:#c1bd92; border-color:#586948; }
+.setup-error { font-size:11px; }.setup-error.is-visible { color:#9b392c; }
+.settings-layer,.exit-layer { position:fixed; }.settings-backdrop,.exit-backdrop { backdrop-filter:none; background:#17261fd9; }
+.settings-panel,.exit-panel { background:#293428; color:#e7ddbe; border:2px solid #b7a7799e; border-radius:3px 1px 4px 2px; box-shadow:6px 7px 0 #121d16aa; }
+.settings-panel { max-height:90dvh; overflow:auto; }.settings-content { scrollbar-width:thin; scrollbar-color:#92855e #283426; }
+.settings-header h2,.exit-panel h2 { font-family:Georgia,serif; font-weight:normal; letter-spacing:.035em; }.settings-header>div>span,.exit-panel__index { color:#c89762; }
+.settings-footer button,.exit-actions button { color:#e8dfbe; background:#46513a; border-color:#8b8c60; border-radius:2px; }.settings-footer button:hover,.exit-actions button:hover { background:#677251; border-color:#b0ae7c; }
+.settings-footer { background:#263021; }.setting-toggle small,.settings-footer>span { color:#b1b29a; }
+.setting-toggle strong,.volume-control>span { font-size:11px; }.setting-toggle small { font-size:11px; line-height:1.45; }
+.settings-content .music-source button { background:#35402c; }
+.save-warning,.recovery-notice { position:fixed; z-index:70; bottom:16px; left:50%; transform:translateX(-50%); max-width:80vw; padding:12px 20px; color:#f5e7c2; background:#763d30; border:1px solid #d18c64; font-size:13px; text-align:center; box-shadow:3px 4px 0 #12221d; }
+.recovery-notice { background:#3f5337; border-color:#a7b080; }
+.screen-transition { z-index:90; }.screen-transition span { background:#16221b; }
+@media (max-height:720px) and (min-width:800px) { .illustrated-brand { top:11%; }.illustrated-brand h1 { font-size:78px; margin:22px 0 18px; }.menu-actions { bottom:11%; gap:7px; }.menu-actions button { min-height:44px; }.new-game-dossier { min-height:0; }.name-field,.difficulty-field { margin-top:18px; }.difficulty-card { min-height:124px; } }
+@media (max-width:700px) { .illustrated-brand { top:9%; left:7%; width:87%; }.illustrated-brand h1 { font-size:74px; }.illustrated-brand>small { display:none; }.menu-actions { left:7%; right:7%; width:auto; bottom:13%; }.difficulty-options { grid-template-columns:repeat(2,1fr); }.difficulty-card { display:flex; flex-direction:column; align-items:flex-start; gap:7px; }.new-game-dossier { margin:14px auto; }.illustrated-brand p { font-size:17px; } }

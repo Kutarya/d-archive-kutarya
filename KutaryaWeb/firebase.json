@@ -1,0 +1,293 @@
+{
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "kutarya-games",
+      "runtime": "nodejs22",
+      "ignore": [
+        "node_modules",
+        "test",
+        ".env.local"
+      ]
+    }
+  ],
+  "hosting": {
+    "site": "kutarya-ai-3169",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "tools-preview/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/ozel",
+        "destination": "/ozel.html"
+      },
+      {
+        "source": "/ozel/",
+        "destination": "/ozel.html"
+      },
+      {
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/oyunlar",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/kategori/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/oyun/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/oyna/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/auth/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/admin{,/**}",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/hesabim",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/kutuphanem",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/duyurular",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/destek",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/gizlilik",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/kullanim-kosullari",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/projeler",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/oyun-gecesi{,/}",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/kesif{,/}",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/proje/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/koleksiyon/**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "SAMEORIGIN"
+          }
+        ],
+        "regex": ".*"
+      },
+      {
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=31536000,immutable"
+          }
+        ],
+        "regex": "^[/\\\\]assets[/\\\\].*"
+      },
+      {
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.wasm$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "gzip"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.wasm\\.gz$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.wasm\\.br$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript; charset=utf-8"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "gzip"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.js\\.gz$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript; charset=utf-8"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.js\\.br$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/octet-stream"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "gzip"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.data\\.gz$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/octet-stream"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.data\\.br$"
+      },
+      {
+        "regex": "^[/\\\\]ozel(?:[/\\\\].*|\\.html)?$",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "no-referrer"
+          }
+        ]
+      },
+      {
+        "source": "/ozel/muvv/0.4.0-20261012/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "/ozel/muvv/0.4.0-20261012/Muvv-0.4.0-Proje-20261012.zip",
+        "headers": [
+          {
+            "key": "Content-Disposition",
+            "value": "attachment; filename=\"Muvv-0.4.0-Proje-20261012.zip\""
+          }
+        ]
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/ozel.html",
+        "destination": "/ozel",
+        "type": 301
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firebase/firestore.rules",
+    "indexes": "firebase/firestore.indexes.json"
+  },
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "firestore": {
+      "port": 8085
+    },
+    "functions": {
+      "port": 5005
+    },
+    "ui": {
+      "enabled": false
+    },
+    "singleProjectMode": true,
+    "storage": {
+      "port": 9199
+    }
+  },
+  "storage": {
+    "rules": "firebase/storage.rules"
+  }
+}

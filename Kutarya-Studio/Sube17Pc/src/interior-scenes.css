@@ -1,0 +1,8 @@
+.bank-scene-sprite{position:absolute;inset:0;overflow:hidden;display:block}
+.bank-scene-sprite img{position:absolute;top:0;left:calc(var(--customer-column) * -100%);width:600%;height:112%;max-width:none;pointer-events:none}
+.bank-scene-customer{animation:customer-takes-seat 550ms ease-out}
+.bank-scene-customer .world-hotspot__tip{bottom:93%}
+.scene-quiet-note{font-size:23px;line-height:1.6;padding:20px;margin:0}
+.scene-dialog .shop-product{flex-wrap:wrap;gap:15px}.scene-dialog .shop-product>.paper-button{margin-left:auto}.scene-dialog .shop-sign{padding:0 0 22px}.scene-dialog .shop-sign h1{font-size:35px}.scene-dialog .shop-bottomline{margin-top:20px}.scene-dialog .shop-inventory{gap:20px}.scene-dialog .shop-empty{padding:20px}.scene-dialog .shop-empty h3{font-size:24px}.scene-dialog .shop-counter{padding:0;border:0;background:none;box-shadow:none}.scene-dialog .shop-product{padding:18px 0;background:none;border-top:1px solid #87765760;box-shadow:none}.scene-dialog .shop-product h3{font-size:25px}
+@keyframes customer-takes-seat{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.bank-scene-customer{animation:none}}

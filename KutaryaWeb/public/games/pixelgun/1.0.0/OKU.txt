@@ -1,0 +1,8 @@
+Kutarya — pixelgun 1.0.0
+
+ZIP dosyasını bir klasöre çıkar. index.html dosyasını güncel tarayıcıda aç.
+İnternet veya kurulum gerekmez. Kaynak HTML/CSS/JavaScript bu dosyadadır.
+Block Arena için WebGL ve donanım hızlandırması gerekir.
+Masa oyunlarının puanları sanaldır; gerçek para veya ödül içermez.
+Kutarya — Tüm hakları saklıdır.
+İletişim: kutaryaai@gmail.com

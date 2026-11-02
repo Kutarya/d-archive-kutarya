@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Kutarya Blok Diyarı</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #172b2b;
+        color: #f5f4e6;
+        font:
+          14px system-ui,
+          sans-serif;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 3px solid #d8de8c;
+        outline-offset: 3px;
+      }
+      #view {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        touch-action: none;
+      }
+      button {
+        color: inherit;
+        background: #314b43;
+        border: 1px solid #688576;
+        border-radius: 8px;
+        padding: 11px 16px;
+        transition: background 0.15s;
+      }
+      button:hover {
+        background: #486754;
+      }
+      .primary {
+        background: #c6d59a;
+        color: #172b23;
+        border-color: #e1e7bb;
+        font-weight: 750;
+      }
+      .primary:hover {
+        background: #e1e9b8;
+      }
+      .ghost {
+        background: #203d36;
+      }
+      .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(90deg, #102d30eb, #17383094);
+        padding: 24px;
+        overflow: auto;
+        z-index: 10;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .card {
+        background: #1a302ff2;
+        border: 1px solid #73877866;
+        border-radius: 18px;
+        padding: 25px;
+        box-shadow: 0 25px 90px #07191766;
+        width: min(580px, 100%);
+        max-height: 100%;
+        overflow: auto;
+      }
+      .eyebrow {
+        letter-spacing: 0.23em;
+        color: #c2d68c;
+        font-size: 11px;
+        font-weight: 700;
+        margin: 0 0 12px;
+      }
+      .brand {
+        font:
+          750 clamp(30px, 6vw, 68px)/0.95 Georgia,
+          serif;
+        letter-spacing: -0.03em;
+        margin: 0 0 20px;
+      }
+      .brand span {
+        color: #cfdf9f;
+      }
+      p {
+        line-height: 1.65;
+        color: #c3d4cb;
+      }
+      h2 {
+        font:
+          700 28px Georgia,
+          serif;
+        margin: 6px 0 18px;
+      }
+      h3 {
+        font-size: 15px;
+      }
+      .menu-layout {
+        width: min(1000px, 100%);
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 45px;
+        align-items: center;
+      }
+      .menu-copy {
+        max-width: 530px;
+      }
+      .menu-copy p {
+        max-width: 430px;
+      }
+      .menu-actions {
+        display: grid;
+        gap: 10px;
+      }
+      .menu-actions button {
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .menu-actions small {
+        opacity: 0.65;
+      }
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        font-size: 11px;
+        padding: 7px 10px;
+        border: 1px solid #bed09a55;
+        border-radius: 999px;
+        color: #dbe7c8;
+      }
+      .footer-note {
+        font-size: 11px;
+        opacity: 0.7;
+        margin-top: 20px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .row.spread {
+        justify-content: space-between;
+      }
+      .fields {
+        display: grid;
+        gap: 14px;
+        margin: 18px 0;
+      }
+      label {
+        display: grid;
+        gap: 7px;
+        color: #d6dfc9;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 11px;
+        border: 1px solid #57786a;
+        background: #142b29;
+        color: #eef1d9;
+        border-radius: 7px;
+      }
+      input[type="checkbox"] {
+        width: auto;
+      }
+      .help-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .help-grid div {
+        padding: 10px;
+        background: #293f35;
+        border-radius: 7px;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      kbd {
+        background: #536955;
+        color: white;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-size: 11px;
+      }
+      #hud {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 3;
+      }
+      #topline {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 14px;
+        gap: 8px;
+      }
+      .hud-panel {
+        background: #122723bc;
+        backdrop-filter: blur(5px);
+        border: 1px solid #acc69b3b;
+        border-radius: 9px;
+        padding: 10px 13px;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      #world-label {
+        font-weight: 750;
+        color: #d5e7b9;
+      }
+      #vitals {
+        display: flex;
+        gap: 15px;
+        font-weight: 600;
+      }
+      #vitals span {
+        white-space: nowrap;
+      }
+      #map {
+        width: 104px;
+        height: 104px;
+        background: #192e28;
+        border-radius: 8px;
+        border: 1px solid #d0dabb55;
+      }
+      #hud-buttons {
+        display: flex;
+        gap: 6px;
+        pointer-events: auto;
+        margin-top: 6px;
+      }
+      #hud-buttons button {
+        font-size: 11px;
+        padding: 7px;
+      }
+      #crosshair {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        font: 25px/1 monospace;
+        text-shadow: 0 2px 3px #142b29;
+        transform: translate(-50%, -50%);
+      }
+      #target-label {
+        position: absolute;
+        top: calc(50% + 28px);
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 11px;
+        background: #152b27b3;
+        padding: 4px 8px;
+        border-radius: 6px;
+        text-align: center;
+        white-space: nowrap;
+      }
+      #mine-progress {
+        position: absolute;
+        top: calc(50% + 17px);
+        left: calc(50% - 25px);
+        width: 50px;
+        height: 3px;
+        appearance: none;
+      }
+      #mine-progress::-webkit-progress-value {
+        background: #d6e6a5;
+      }
+      #mine-progress::-webkit-progress-bar {
+        background: #203d32;
+      }
+      #bottom {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(96%, 590px);
+        text-align: center;
+      }
+      #selected-label {
+        font-size: 12px;
+        text-shadow: 0 1px 4px black;
+        margin-bottom: 8px;
+      }
+      #hotbar {
+        display: flex;
+        gap: 4px;
+        justify-content: center;
+        pointer-events: auto;
+      }
+      .slot {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #152c28ce;
+        border: 1px solid #91a88a78;
+        width: 54px;
+        height: 55px;
+        padding: 4px;
+        border-radius: 7px;
+      }
+      .slot.selected {
+        border: 2px solid #e4e9b3;
+        background: #577653ce;
+      }
+      .slot .tile {
+        width: 25px;
+        height: 25px;
+        background: var(--c);
+        border: 2px solid #ffffff28;
+        box-shadow: inset -5px -5px #12281a25;
+        transform: rotate(-5deg);
+      }
+      .slot .tool {
+        border-radius: 40% 0 40% 0;
+        transform: rotate(-35deg);
+        width: 9px;
+        height: 30px;
+      }
+      .slot b {
+        position: absolute;
+        right: 4px;
+        bottom: 3px;
+        font-size: 10px;
+        color: #f5f7e1;
+      }
+      .slot small {
+        position: absolute;
+        left: 4px;
+        top: 2px;
+        font-size: 9px;
+        opacity: 0.65;
+      }
+      .slot em {
+        position: absolute;
+        left: 5px;
+        bottom: 3px;
+        font-size: 8px;
+        font-style: normal;
+      }
+      #hint {
+        font-size: 10px;
+        color: #e1e5ca;
+        margin-top: 7px;
+        text-shadow: 0 1px 3px black;
+      }
+      #toast {
+        position: absolute;
+        left: 50%;
+        top: 23%;
+        transform: translateX(-50%);
+        padding: 12px 18px;
+        border-radius: 9px;
+        background: #1b3d2ceb;
+        border: 1px solid #c0d59c;
+        color: #e9f4ce;
+        max-width: 88%;
+        text-align: center;
+        z-index: 20;
+        pointer-events: none;
+        font-size: 12px;
+      }
+      .inventory-card {
+        width: min(900px, 100%);
+      }
+      .inventory-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+      .inventory-grid {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        gap: 4px;
+      }
+      .inventory-grid .slot {
+        width: 100%;
+        height: 48px;
+      }
+      .recipe-list {
+        display: grid;
+        gap: 7px;
+        max-height: 300px;
+        overflow: auto;
+        padding: 3px;
+      }
+      .recipe {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+      }
+      .recipe span {
+        display: grid;
+        gap: 3px;
+      }
+      .recipe small {
+        font-size: 10px;
+        color: #b7cab7;
+      }
+      .recipe button {
+        font-size: 11px;
+        padding: 8px;
+      }
+      .item-info {
+        min-height: 45px;
+        background: #29473b;
+        padding: 10px;
+        margin: 12px 0;
+        border-radius: 6px;
+        font-size: 12px;
+      }
+      .quest {
+        border-left: 2px solid #839c72;
+        padding: 10px 14px;
+        margin: 10px 0;
+        background: #2a423633;
+        font-size: 12px;
+      }
+      .quest.done {
+        border-color: #c7df97;
+      }
+      .quest strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+      #touch-controls {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .touch-group {
+        position: absolute;
+        bottom: 105px;
+        display: grid;
+        grid-template-columns: repeat(3, 42px);
+        gap: 4px;
+        pointer-events: auto;
+      }
+      .touch-group.move {
+        left: 14px;
+      }
+      .touch-group.act {
+        right: 14px;
+      }
+      .touch-group button {
+        padding: 9px 0;
+        touch-action: none;
+        background: #14332ab5;
+        font-size: 12px;
+      }
+      .touch-group .wide {
+        grid-column: span 2;
+      }
+      #damage {
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 80px #c9493677;
+        opacity: 0;
+        pointer-events: none;
+      }
+      #loadingbar {
+        height: 5px;
+        background: #35513f;
+        margin: 20px 0;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      #loadingbar div {
+        height: 100%;
+        background: #d1de9d;
+        width: 0;
+      }
+      #status-note {
+        font-size: 11px;
+        line-height: 1.6;
+        color: #d5c696;
+      }
+      #confirm {
+        font-size: 12px;
+      }
+      #death .card {
+        text-align: center;
+      }
+      @media (max-width: 760px) {
+        .menu-layout {
+          grid-template-columns: 1fr;
+          gap: 18px;
+          max-width: 520px;
+        }
+        .menu-copy p {
+          margin: 10px 0;
+        }
+        .brand {
+          font-size: 44px;
+          margin-bottom: 10px;
+        }
+        .overlay {
+          padding: 14px;
+        }
+        .card {
+          padding: 18px;
+        }
+        .menu-actions {
+          grid-template-columns: 1fr 1fr;
+        }
+        .menu-actions .primary {
+          grid-column: span 2;
+        }
+        .menu-actions button {
+          font-size: 12px;
+          padding: 11px;
+        }
+        .menu-actions small {
+          display: none;
+        }
+        .inventory-layout {
+          grid-template-columns: 1fr;
+        }
+        .recipe-list {
+          max-height: 180px;
+        }
+        .help-grid {
+          gap: 5px;
+        }
+        #topline {
+          padding: 8px;
+        }
+        .hud-panel {
+          padding: 7px;
+          font-size: 10px;
+        }
+        #map {
+          width: 75px;
+          height: 75px;
+        }
+        .slot {
+          height: 45px;
+          width: 45px;
+        }
+        .slot .tile {
+          width: 21px;
+          height: 21px;
+        }
+        #hint {
+          display: none;
+        }
+        #vitals {
+          gap: 8px;
+        }
+        .chips {
+          gap: 5px;
+        }
+        .chip {
+          font-size: 10px;
+        }
+        #hud-buttons button {
+          padding: 5px;
+          font-size: 10px;
+        }
+      }
+      @media (max-height: 520px) {
+        .brand {
+          font-size: 36px;
+        }
+        .menu-copy p {
+          font-size: 12px;
+        }
+        .chips {
+          display: none;
+        }
+        .menu-layout {
+          gap: 12px;
+        }
+        .menu-actions {
+          gap: 6px;
+        }
+        .menu-actions button {
+          padding: 8px;
+        }
+        .footer-note {
+          margin-top: 10px;
+        }
+        .card {
+          padding: 16px;
+        }
+        .help-grid {
+          font-size: 11px;
+        }
+        .overlay {
+          align-items: flex-start;
+        }
+        #map {
+          height: 65px;
+          width: 65px;
+        }
+        #bottom {
+          bottom: 7px;
+        }
+        .slot {
+          height: 42px;
+        }
+        .touch-group {
+          bottom: 78px;
+        }
+        .inventory-layout {
+          gap: 10px;
+        }
+        .recipe-list {
+          max-height: 140px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas
+      id="view"
+      aria-label="Blok Diyarı üç boyutlu oyun dünyası"
+      tabindex="0"
+    ></canvas>
+    <div id="hud" class="hidden">
+      <div id="topline">
+        <div class="hud-panel">
+          <div id="world-label"></div>
+          <div id="location"></div>
+          <div id="vitals"></div>
+          <div id="clock"></div>
+        </div>
+        <div>
+          <canvas
+            id="map"
+            width="104"
+            height="104"
+            aria-label="Dünya haritası"
+          ></canvas>
+          <div id="hud-buttons">
+            <button id="bag-btn">Çanta</button
+            ><button id="quest-btn">Hedefler</button
+            ><button id="pause-btn">Menü</button>
+          </div>
+        </div>
+      </div>
+      <div id="crosshair">+</div>
+      <div id="target-label"></div>
+      <progress id="mine-progress" max="1" value="0"></progress>
+      <div id="bottom">
+        <div id="selected-label"></div>
+        <div id="hotbar"></div>
+        <div id="hint">
+          WASD hareket · Sol tık kaz · Sağ tık yerleştir · E çanta · F etkileşim
+          · Esc menü
+        </div>
+      </div>
+      <div id="touch-controls" class="hidden">
+        <div class="touch-group move">
+          <span></span><button data-key="KeyW" aria-label="İleri">↑</button
+          ><span></span><button data-key="KeyA" aria-label="Sola">←</button
+          ><button data-key="KeyS" aria-label="Geri">↓</button
+          ><button data-key="KeyD" aria-label="Sağa">→</button
+          ><button data-key="ShiftLeft" class="wide">Koş</button
+          ><button data-key="Space">Zıpla</button>
+        </div>
+        <div class="touch-group act">
+          <button id="touch-mine">Kaz</button
+          ><button id="touch-place" class="wide">Yerleştir</button
+          ><button id="touch-use" class="wide">Kullan / F</button
+          ><button data-key="KeyQ">Uç ↓</button>
+        </div>
+      </div>
+      <div id="damage"></div>
+    </div>
+    <div id="menu" class="overlay">
+      <div class="menu-layout">
+        <div class="menu-copy">
+          <p class="eyebrow">KUTARYA · ÖZGÜR BİR DÜNYA</p>
+          <h1 class="brand">Blok<br /><span>Diyarı.</span></h1>
+          <p>
+            Bir kıyıya uyan. İlk barınağını kur, derinlere in ve unutulmuş
+            kulenin ışığını yeniden yak.
+          </p>
+          <div class="chips">
+            <span class="chip">Tohumlu dünya</span
+            ><span class="chip">Üretim & keşif</span
+            ><span class="chip">Çevrimdışı</span>
+          </div>
+          <p class="footer-note">
+            Özgün voxel macerası · 0.1.0<br />Minecraft’tan ilham alan bağımsız
+            bir Kutarya oyunu.
+          </p>
+        </div>
+        <div class="card">
+          <div class="menu-actions">
+            <button id="continue-btn" class="primary">
+              Dünyama devam et <small>→</small></button
+            ><button id="new-btn" class="primary">
+              Yeni dünya oluştur <small>+</small></button
+            ><button id="import-menu">
+              Kaydı içe aktar <small>JSON</small></button
+            ><button id="settings-menu">
+              Ayarlar <small>Görüntü & ses</small></button
+            ><button id="help-menu">
+              Nasıl oynanır? <small>Kontroller</small>
+            </button>
+          </div>
+          <p id="status-note"></p>
+        </div>
+      </div>
+    </div>
+    <div id="new-world" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">YENİ BİR BAŞLANGIÇ</p>
+        <h2>Dünyanı seç.</h2>
+        <div class="fields">
+          <label
+            >Dünya adı<input
+              id="world-name"
+              maxlength="40"
+              value="Benim Blok Diyarı’m" /></label
+          ><label
+            >Dünya tohumu<input
+              id="world-seed"
+              maxlength="40"
+              value="kutarya-vadi"
+              placeholder="Aynı tohum, aynı dünya" /></label
+          ><label
+            >Oyun modu<select id="world-mode">
+              <option value="survival">
+                Hayatta kalma — topla, üret, keşfet
+              </option>
+              <option value="creative">Yaratıcı — sınırsız blok, uçuş</option>
+            </select></label
+          >
+        </div>
+        <p id="confirm">
+          160 × 160 blok, 64 katman. Başlangıç kampında tezgâh, yatak ve sandık
+          var. Yeni dünya mevcut kaydın yerine geçer; önce eski kaydı dışa
+          aktarabilirsin.
+        </p>
+        <div class="row">
+          <button id="create-btn" class="primary">Dünyayı oluştur</button
+          ><button data-back>Geri</button>
+        </div>
+      </div>
+    </div>
+    <div id="loading" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">ARAZİ HAZIRLANIYOR</p>
+        <h2>Bir dünya şekilleniyor.</h2>
+        <div id="loadingbar"><div></div></div>
+        <p id="loading-text">Vadiler, mağaralar ve ormanlar…</p>
+      </div>
+    </div>
+    <div id="pause" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">KISA BİR MOLA</p>
+        <h2 id="pause-title">Dünya bekleyebilir.</h2>
+        <div class="menu-actions">
+          <button id="resume-btn" class="primary">Oyuna dön</button
+          ><button id="save-btn">Kaydet</button
+          ><button id="export-btn">Kaydı indir</button
+          ><button id="settings-pause">Ayarlar</button
+          ><button id="help-pause">Nasıl oynanır?</button
+          ><button id="return-menu">Ana menü</button>
+        </div>
+        <p id="save-note"></p>
+      </div>
+    </div>
+    <div id="settings" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">OYUNU KENDİNE UYARLA</p>
+        <h2>Ayarlar</h2>
+        <div class="fields">
+          <label
+            >Görüş uzaklığı<select id="distance">
+              <option value="2">Yakın · düşük yük</option>
+              <option value="3" selected>Dengeli</option>
+              <option value="4">Uzak · daha fazla yük</option>
+            </select></label
+          ><label
+            >Çizim çözünürlüğü<select id="quality">
+              <option value="0">Tasarruf</option>
+              <option value="1" selected>Dengeli</option>
+              <option value="2">Yüksek</option>
+            </select></label
+          ><label
+            >Fare hassasiyeti<input
+              id="sensitivity"
+              type="range"
+              min="1"
+              max="10"
+              value="4" /></label
+          ><label class="row"
+            ><input type="checkbox" id="touch-toggle" /> Dokunmatik hareket
+            düğmeleri</label
+          ><label class="row"
+            ><input type="checkbox" id="sound-toggle" /> Oyun sesleri</label
+          >
+        </div>
+        <p>
+          Fare kilidi desteklenmiyorsa dünyada basılı tutup sürükleyerek bak.
+          Dokunmatik ekranda sağdaki boş alanda sürükle.
+        </p>
+        <button data-back class="primary">Tamam</button>
+      </div>
+    </div>
+    <div id="help" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">KÜÇÜK BİR REHBER</p>
+        <h2>İlk geceden önce.</h2>
+        <div class="help-grid">
+          <div>
+            <kbd>W A S D</kbd> hareket<br /><kbd>Space</kbd> zıpla / yüz / uç<br /><kbd
+              >Shift</kbd
+            >
+            koş · <kbd>Q</kbd> uçuşta alçal
+          </div>
+          <div>
+            Sol tık: kaz / saldır<br />Sağ tık: blok yerleştir<br /><kbd
+              >1–9</kbd
+            >
+            / tekerlek: hızlı yuva
+          </div>
+          <div>
+            <kbd>E</kbd> çanta / üretim<br /><kbd>F</kbd> sandık, tezgâh, fırın,
+            yatak, kule<br /><kbd>R</kbd> seçili yiyeceği ye
+          </div>
+          <div>
+            <kbd>Esc</kbd> duraklat<br /><kbd>M</kbd> hedefler<br /><kbd>V</kbd>
+            yaratıcıda uçuş
+          </div>
+        </div>
+        <p>
+          Kütükten tahta ve çubuk üret. Tezgâhın yakınına gelerek tahta kazma
+          yap; taş kazmayla demiri, demir kazmayla kristali çıkar. Fırında
+          kömürle demiri erit. Tohumu çimen/toprak üstüne yerleştir; buğday
+          büyüyünce hasat et.
+        </p>
+        <p>
+          Haritadaki altın kareler sandıkları, mint renkli yıldız kuleyi
+          gösterir. Kuleyi 5 demir külçesi ve 3 kristalle etkinleştir. Gece
+          gölgelerden korun; yatağı kullanarak sabaha geç. Ölürsen envanterin
+          korunarak kampta doğarsın.
+        </p>
+        <p>
+          Tek oyunculu ve sonlu dünya. Kalıcı kayıt için ayrı sekmede aç veya
+          JSON kaydını indir. Tam bir Minecraft sürümü değildir.
+        </p>
+        <button data-back class="primary">Anladım</button>
+      </div>
+    </div>
+    <div id="inventory" class="overlay hidden">
+      <div class="card inventory-card">
+        <div class="row spread">
+          <div>
+            <p class="eyebrow">TOPLA · ÜRET · İNŞA ET</p>
+            <h2>Çantan</h2>
+          </div>
+          <button id="close-bag">Oyuna dön · E</button>
+        </div>
+        <div class="inventory-layout">
+          <div>
+            <div id="inventory-grid" class="inventory-grid"></div>
+            <div id="item-info" class="item-info">
+              İki yuvaya sırayla tıklayarak yerlerini değiştir.
+            </div>
+            <div class="row">
+              <button id="eat-btn">Seçili yiyeceği ye</button
+              ><button id="creative-next" class="hidden">
+                Blok kataloğu →
+              </button>
+            </div>
+            <p id="inventory-note"></p>
+          </div>
+          <div>
+            <h3 id="station-label">El üretimi</h3>
+            <div id="recipes" class="recipe-list"></div>
+            <p id="smelting"></p>
+            <p>
+              Tezgâh ve fırın tarifleri ilgili bloğa 4 blok yakınken açılır. Bir
+              işlemi üretmek malzemeyi tüketir.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="quests" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">KEŞFE BİR YÖN VER</p>
+        <h2>Kayıp kulenin ışığı</h2>
+        <div id="quest-list"></div>
+        <p id="stats"></p>
+        <button id="close-quests" class="primary">Keşfe dön</button>
+      </div>
+    </div>
+    <div id="death" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">YENİDEN DENE</p>
+        <h2>Kampa geri dön.</h2>
+        <p>
+          Envanterin korunur. Yeni bir barınak, biraz yemek ve daha iyi bir
+          kazma fark yaratabilir.
+        </p>
+        <button id="respawn-btn" class="primary">Kampta doğ</button>
+      </div>
+    </div>
+    <div id="toast" class="hidden" role="status"></div>
+    <input
+      id="import-file"
+      type="file"
+      accept=".json,application/json"
+      class="hidden"
+    />
+    <script>
+      /* CORE */
+    </script>
+    <script>
+      /* RENDERER */
+    </script>
+    <script>
+      /* GAME */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+Kutarya Rus Ruleti: Son Tur 1.0.1
+
+index.html dosyasını güncel tarayıcıda aç.
+Botlarla dene: çevrimdışı, üç yapay rakip.
+Online: internet gerekir. Oda kur, altı karakterli kodu paylaş veya hızlı eşleş.
+2–6 kişi. Özel masada herkes hazır olur, oda sahibi başlatır. Hızlı eşleşme ikinci kişiyle 8 saniye sonra başlar.
+Sıranda tetiği çek veya tek pas hakkını kullan. Süre 25 saniye; süre dolunca otomatik çekilir. Son kalan kazanır.
+Space / Enter: çek. P: pas. Ses sağ üst düğmeden açılır.
+Odalar geçicidir, 45 dakikayla sınırlıdır. Kopmada 30 saniye geri dönüş denenir. Servis yeniden başlayınca oda kapanabilir.
+https://kutarya.com/proje/rus-ruleti

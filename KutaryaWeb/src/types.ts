@@ -1,0 +1,81 @@
+export type Game = {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  category: string;
+  tags: string[];
+  kind: "game" | "desktop" | "web" | "mobile" | "source" | "tool";
+  engine: "download" | "source" | "unity" | "web";
+  technology: string;
+  platforms: string[];
+  license: string;
+  repository: string;
+  requirements: string;
+  changelog: string;
+  gallery: string[];
+  files: ProjectFile[];
+  runtime: string;
+  cover: string;
+  color: string;
+  devices: string[];
+  controls: string;
+  status: "draft" | "published" | "archived";
+  version: string;
+  versions: { id: string; runtime: string; verified: boolean; note: string }[];
+  featured: boolean;
+  difficulty: string;
+  duration: string;
+  order: number;
+  updatedAt?: number;
+};
+export type Project = Game;
+export type ProjectFile = {
+  id: string;
+  name: string;
+  size: number;
+  version: string;
+  role: "installer" | "source" | "portable" | "document";
+  platform: string;
+  createdAt: number;
+};
+export type Profile = {
+  uid: string;
+  displayName: string;
+  bio: string;
+  avatar: string;
+  favorites: string[];
+  recent: { id: string; at: number }[];
+  suspended?: boolean;
+  createdAt: number;
+};
+export type Announcement = {
+  id: string;
+  title: string;
+  body: string;
+  status: string;
+  createdAt: number;
+};
+export type Settings = {
+  title: string;
+  tagline: string;
+  notice: string;
+  maintenance: boolean;
+  contact: string;
+};
+export type Report = {
+  id: string;
+  gameId: string;
+  message: string;
+  email: string;
+  status: string;
+  createdAt: number;
+  note?: string;
+};
+export type Catalog = {
+  games: Game[];
+  categories: { id: string; name: string; order: number }[];
+  announcements: Announcement[];
+  settings: Settings;
+};

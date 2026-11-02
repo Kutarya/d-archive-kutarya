@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Kutarya Teknik Kaynak — Teknik Makaleler</title>
+  <id>https://kutarya.com/</id>
+  <link href="https://kutarya.com/feed.xml" rel="self" />
+  <link href="https://kutarya.com/makaleler" />
+  <updated>2026-09-20T12:00:00Z</updated>
+  <author><name>Kutarya</name></author>
+  <entry>
+    <title>C# Sınıf, Nesne ve Kurucu Metotlar</title>
+    <id>https://kutarya.com/konu/csharp/sinif-ve-nesne</id>
+    <link href="https://kutarya.com/konu/csharp/sinif-ve-nesne" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>C# sınıf tanımı, nesne kimliği, referans semantiği, kurucu metotlar ve instance/static üyelerin çalışma zamanı davranışı.</summary>
+  </entry>
+  <entry>
+    <title>C# Kapsülleme ve Geçerli Durum</title>
+    <id>https://kutarya.com/konu/csharp/kapsulleme</id>
+    <link href="https://kutarya.com/konu/csharp/kapsulleme" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>C# kapsülleme, invariant koruması, state değişim sınırları, property tasarımı ve koleksiyonların güvenli dışa açılması.</summary>
+  </entry>
+  <entry>
+    <title>C# Kalıtım ve is-a İlişkisi</title>
+    <id>https://kutarya.com/konu/csharp/kalitim</id>
+    <link href="https://kutarya.com/konu/csharp/kalitim" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>C# kalıtım, alt tür ikamesi, virtual/override davranışı, kırılgan taban sınıf riski ve bileşim alternatifi.</summary>
+  </entry>
+  <entry>
+    <title>C# Polimorfizm ve Dinamik Davranış</title>
+    <id>https://kutarya.com/konu/csharp/polimorfizm</id>
+    <link href="https://kutarya.com/konu/csharp/polimorfizm" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>C# polimorfizm, çalışma zamanı dağıtımı, interface tabanlı sözleşmeler, override ve pattern matching arasındaki tasarım farkları.</summary>
+  </entry>
+  <entry>
+    <title>C# Interface ve Sözleşme Tasarımı</title>
+    <id>https://kutarya.com/konu/csharp/arayuzler</id>
+    <link href="https://kutarya.com/konu/csharp/arayuzler" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>C# interface sözleşmeleri, bağımlılık sınırları, küçük arayüz tasarımı, test doubles ve default interface member etkileri.</summary>
+  </entry>
+  <entry>
+    <title>C# Abstract Sınıflar</title>
+    <id>https://kutarya.com/konu/csharp/soyut-siniflar</id>
+    <link href="https://kutarya.com/konu/csharp/soyut-siniflar" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>C# abstract sınıflar, ortak state, template method, protected yüzey ve interface/bileşim karşılaştırması.</summary>
+  </entry>
+  <entry>
+    <title>C# Bileşim ve Bağımlılık Enjeksiyonu</title>
+    <id>https://kutarya.com/konu/csharp/bilesim</id>
+    <link href="https://kutarya.com/konu/csharp/bilesim" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>C# bileşim, constructor injection, bağımlılık görünürlüğü, nesne oluşturma sınırı ve servis yaşam süresi kararları.</summary>
+  </entry>
+  <entry>
+    <title>C# SOLID İlkeleri</title>
+    <id>https://kutarya.com/konu/csharp/solid</id>
+    <link href="https://kutarya.com/konu/csharp/solid" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>SOLID ilkelerinin değişiklik maliyeti, bağımlılık yönü, soyutlama seviyesi ve test edilebilirlik üzerindeki teknik etkileri.</summary>
+  </entry>
+  <entry>
+    <title>C# Record ve Değer Nesneleri</title>
+    <id>https://kutarya.com/konu/csharp/record-ve-deger-nesnesi</id>
+    <link href="https://kutarya.com/konu/csharp/record-ve-deger-nesnesi" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>C# record türleri, değer eşitliği, immutability, with kopyalama ve value object tasarımında doğrulama sınırları.</summary>
+  </entry>
+  <entry>
+    <title>C# Generic Tipler ve Kısıtlar</title>
+    <id>https://kutarya.com/konu/csharp/generic-tipler</id>
+    <link href="https://kutarya.com/konu/csharp/generic-tipler" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>C# generic tipler, where kısıtları, variance, tür güvenliği ve aşırı genellemenin API tasarımına etkisi.</summary>
+  </entry>
+  <entry>
+    <title>JavaScript Event Loop ve Görev Kuyrukları</title>
+    <id>https://kutarya.com/konu/javascript/event-loop</id>
+    <link href="https://kutarya.com/konu/javascript/event-loop" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>JavaScript event loop, call stack, task/microtask kuyrukları, Promise callback sırası ve uzun senkron işlerin tarayıcı üzerindeki etkisi.</summary>
+  </entry>
+  <entry>
+    <title>Fetch API: HTTP, İptal ve Güvenli İstek Akışı</title>
+    <id>https://kutarya.com/konu/javascript/fetch-api</id>
+    <link href="https://kutarya.com/konu/javascript/fetch-api" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>Fetch API ile HTTP durum kontrolü, JSON ayrıştırma, AbortController, timeout tasarımı ve arayüz yarış koşulları.</summary>
+  </entry>
+  <entry>
+    <title>Python Generator ve Iterator Mantığı</title>
+    <id>https://kutarya.com/konu/python/generatorler</id>
+    <link href="https://kutarya.com/konu/python/generatorler" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>Python generator/iterator protokolü, yield semantiği, tembel değerlendirme, tek kullanımlık iterator davranışı ve bellek etkileri.</summary>
+  </entry>
+  <entry>
+    <title>Python Context Manager ve Kaynak Yönetimi</title>
+    <id>https://kutarya.com/konu/python/context-manager</id>
+    <link href="https://kutarya.com/konu/python/context-manager" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>Python context manager protokolü, with ifadesi, __enter__/__exit__, contextlib ve hata durumunda deterministik kaynak temizliği.</summary>
+  </entry>
+  <entry>
+    <title>TypeScript Tür Sistemi, Union ve Narrowing</title>
+    <id>https://kutarya.com/konu/typescript/veri-tipleri</id>
+    <link href="https://kutarya.com/konu/typescript/veri-tipleri" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>TypeScript tür sistemi, union, unknown, narrowing, discriminated union ve çalışma zamanı veri doğrulaması arasındaki sınır.</summary>
+  </entry>
+  <entry>
+    <title>CSS Grid ile Sağlam Sayfa Düzeni</title>
+    <id>https://kutarya.com/konu/css/grid</id>
+    <link href="https://kutarya.com/konu/css/grid" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>CSS Grid track modeli, fr birimi, minmax(), auto-fit/auto-fill ve taşma davranışının sayfa düzenine etkisi.</summary>
+  </entry>
+  <entry>
+    <title>Responsive Tasarım: Breakpoint Değil İçerik Odaklı Yaklaşım</title>
+    <id>https://kutarya.com/konu/css/responsive</id>
+    <link href="https://kutarya.com/konu/css/responsive" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>Responsive arayüzlerde mobile-first CSS, içerik tabanlı breakpoint, akışkan boyutlandırma ve container query kararları.</summary>
+  </entry>
+  <entry>
+    <title>SQL İndeks Tasarımı ve Sorgu Performansı</title>
+    <id>https://kutarya.com/konu/sql/index</id>
+    <link href="https://kutarya.com/konu/sql/index" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>SQL indekslerinin okuma/yazma maliyeti, B-tree erişim modeli, composite index kolon sırası, seçicilik ve sorgu planı analizi.</summary>
+  </entry>
+  <entry>
+    <title>SQL Transaction ve İzolasyon Seviyeleri</title>
+    <id>https://kutarya.com/konu/sql/transaction</id>
+    <link href="https://kutarya.com/konu/sql/transaction" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>SQL transaction sınırları, izolasyon seviyeleri, eşzamanlılık anomalileri, deadlock/serialization hataları ve güvenli retry tasarımı.</summary>
+  </entry>
+  <entry>
+    <title>HTML Formları: Etiketleme, Doğrulama ve Erişilebilir Hata Mesajları</title>
+    <id>https://kutarya.com/konu/html/formlar</id>
+    <link href="https://kutarya.com/konu/html/formlar" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>HTML formlarında label/fieldset semantiği, native validation, autocomplete, erişilebilir hata ilişkileri ve sunucu tarafı doğrulama sınırı.</summary>
+  </entry>
+  <entry>
+    <title>C# ile Nesne Yönelimli Programlama</title>
+    <id>https://kutarya.com/konu/csharp/oop</id>
+    <link href="https://kutarya.com/konu/csharp/oop" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>C# nesne yönelimli tasarımda sorumluluk, kapsülleme, kalıtım, interface, bileşim ve değişiklik maliyetinin birlikte değerlendirilmesi.</summary>
+  </entry>
+  <entry>
+    <title>JavaScript Asenkron Programlama</title>
+    <id>https://kutarya.com/konu/javascript/async</id>
+    <link href="https://kutarya.com/konu/javascript/async" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>JavaScript asenkron programlamada Promise, async/await, event loop, paralellik, HTTP hata kanalları ve iptal davranışı.</summary>
+  </entry>
+  <entry>
+    <title>Python ile Güvenli Dosya İşlemleri</title>
+    <id>https://kutarya.com/konu/python/dosya-islemleri</id>
+    <link href="https://kutarya.com/konu/python/dosya-islemleri" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>Python dosya işlemlerinde pathlib, encoding, atomik yazma, geçici dosya, yedekleme ve büyük dosyaların bellek davranışı.</summary>
+  </entry>
+  <entry>
+    <title>SQL ile Tablo İlişkileri ve JOIN</title>
+    <id>https://kutarya.com/konu/sql/koleksiyonlar</id>
+    <link href="https://kutarya.com/konu/sql/koleksiyonlar" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>SQL JOIN semantiği, ilişki kardinalitesi, NULL davranışı, toplama öncesi satır çoğalması ve sorgu planına etkiler.</summary>
+  </entry>
+  <entry>
+    <title>Anlamlı HTML ve Sayfa İskeleti</title>
+    <id>https://kutarya.com/konu/html/moduller</id>
+    <link href="https://kutarya.com/konu/html/moduller" />
+    <updated>2026-09-20T12:00:00Z</updated>
+    <summary>Semantik HTML belge yapısı, landmark bölgeleri, başlık hiyerarşisi, yerel etkileşim denetimleri ve erişilebilirlik ilişkileri.</summary>
+  </entry>
+</feed>

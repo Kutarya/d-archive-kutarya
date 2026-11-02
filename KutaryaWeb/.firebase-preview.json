@@ -1,0 +1,211 @@
+{
+  "hosting": {
+    "site": "kutarya-ai-3169",
+    "public": "artifacts/hosting-preview",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "tools-preview/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/oyunlar",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/kategori/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/oyun/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/oyna/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/auth/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/admin{,/**}",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/hesabim",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/kutuphanem",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/duyurular",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/destek",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/gizlilik",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/kullanim-kosullari",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/projeler",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/proje/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/koleksiyon/**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "headers": [
+          {
+            "key": "X-Content-Type-Options",
+            "value": "nosniff"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "strict-origin-when-cross-origin"
+          },
+          {
+            "key": "X-Frame-Options",
+            "value": "SAMEORIGIN"
+          }
+        ],
+        "regex": ".*"
+      },
+      {
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=31536000,immutable"
+          }
+        ],
+        "regex": "^[/\\\\]assets[/\\\\].*"
+      },
+      {
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.wasm$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "gzip"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.wasm\\.gz$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/wasm"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.wasm\\.br$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript; charset=utf-8"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "gzip"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.js\\.gz$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript; charset=utf-8"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.js\\.br$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/octet-stream"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "gzip"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.data\\.gz$"
+      },
+      {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/octet-stream"
+          },
+          {
+            "key": "Content-Encoding",
+            "value": "br"
+          }
+        ],
+        "regex": "^[/\\\\]games[/\\\\].*\\.data\\.br$"
+      }
+    ]
+  },
+  "emulators": {
+    "hosting": {
+      "host": "127.0.0.1",
+      "port": 5182
+    },
+    "ui": {
+      "enabled": false
+    }
+  }
+}

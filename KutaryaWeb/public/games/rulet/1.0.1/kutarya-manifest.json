@@ -1,0 +1,23 @@
+{
+  "gameId": "rulet",
+  "version": "1.0.1",
+  "entry": "/games/rulet/1.0.1/index.html",
+  "kind": "web",
+  "compression": "none",
+  "totalBytes": 49001,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 48598,
+      "sha256": "d357ec483a33ccb7377b8dc50c60b14e3b331f6d9896210ce6fa4b312ea86d06"
+    },
+    {
+      "path": "OKU.txt",
+      "bytes": 403,
+      "sha256": "523df0dd2a79f07761be57f71df09e7f4a4d2fd85831d6a2751c71d647635a7f"
+    }
+  ],
+  "verified": false,
+  "createdAt": "2026-10-05T05:26:27.224Z",
+  "note": "Dosya bütünlüğü kontrol edildi. Gerçek tarayıcı kabulü henüz yapılmadı."
+}

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /__/
+Disallow: /tools-preview/
+
+Sitemap: https://kutarya.com/sitemap.xml

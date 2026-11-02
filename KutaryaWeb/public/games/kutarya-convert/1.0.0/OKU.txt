@@ -1,0 +1,3 @@
+Kutarya Convert 1.0.0
+index.html dosyasını güncel bir tarayıcıda aç. Dosyalar bu sekmede işlenir. Worker ve PDF bileşenleri HTML içindedir; CDN veya dosya yükleme sunucusu gerekmez. Kaynak dosyalar korunur. GIF ilk kare; Word/PDF metin dönüşümünde sayfa düzeni birebir korunmaz; OCR, video, HEIC, eski DOC/XLS ve şifreli belgeler yoktur. Girdi ses/AVIF desteği tarayıcıya bağlıdır.
+Kutarya — Tüm hakları saklıdır. Üçüncü taraf bileşenler: LISANSLAR.txt.

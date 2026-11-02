@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,follow" />
+    <title>Sayfa bulunamadı — Kutarya</title>
+    <style>
+      :root {
+        --bg: #f6f7f9;
+        --text: #292b30;
+        --muted: #6d727c;
+        --accent: #a74d29;
+      }
+      :root[data-theme="warm"] {
+        --bg: #f5f1ea;
+      }
+      :root[data-theme="dark"] {
+        --bg: #202329;
+        --text: #edeef1;
+        --muted: #b0b6c0;
+        --accent: #f2b38d;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          Segoe UI,
+          sans-serif;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 0 24px;
+      }
+      h1 {
+        font-size: 30px;
+        font-weight: 600;
+      }
+      b {
+        font:
+          400 100px Georgia,
+          serif;
+        color: var(--accent);
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+    </style>
+    <script>
+      try {
+        var t = localStorage.getItem("kutarya-theme") || "light";
+        if (t === "system")
+          t = matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        if (["light", "warm", "dark"].includes(t))
+          document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <main>
+      <b>404</b>
+      <h1>Bu sayfa bulunamadı.</h1>
+      <p>Aradığın sayfa taşınmış veya kaldırılmış olabilir.</p>
+      <a href="/">Kutarya’ya dön →</a>
+    </main>
+  </body>
+</html>

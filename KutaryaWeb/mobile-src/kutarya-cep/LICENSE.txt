@@ -1,0 +1,5 @@
+Copyright (c) 2026 Kutarya. Tüm hakları saklıdır.
+
+Bu kaynak kod okul projesini incelemek, yerelde derlemek ve eğitim amacıyla değiştirmek için paylaşılmıştır. Kutarya adı, logosu ve üçüncü taraf markaları üzerinde bir hak devri yapılmaz. Ticari dağıtım, yeniden yayın ve diğer kullanım hakları için kutaryaai@gmail.com ile iletişim kurulmalıdır. Bu metin bir açık kaynak lisansı değildir.
+
+Üçüncü taraf bileşenler kendi lisanslarına tabidir; THIRD-PARTY.md dosyasına bakın.

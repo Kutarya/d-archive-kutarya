@@ -1,0 +1,23 @@
+{
+  "gameId": "pixelgun",
+  "version": "2.1.0",
+  "entry": "/games/pixelgun/2.1.0/index.html",
+  "kind": "web",
+  "compression": "none",
+  "totalBytes": 185586,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 184710,
+      "sha256": "f4fb989480cb5a5463cfd245d099593d367dcfaca6002ea0f7aede717bf0c76e"
+    },
+    {
+      "path": "OKU.txt",
+      "bytes": 876,
+      "sha256": "897cbc58d92a976c842df4ca0e82a4c4735e5368fca24d807fecf7bed8e30d6e"
+    }
+  ],
+  "verified": false,
+  "createdAt": "2026-10-11T05:53:46.147Z",
+  "note": "Dosya bütünlüğü kontrol edildi. Gerçek tarayıcı kabulü henüz yapılmadı."
+}

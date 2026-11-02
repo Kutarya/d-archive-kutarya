@@ -1,0 +1,6 @@
+
+[metrics]
+psutil>=5.9
+
+[test]
+pytest>=8

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#141615"><meta name="description" content="Kutarya Rus Ruleti: Son Tur. Odanı kur, arkadaşlarını çağır veya gerçek oyuncularla hızlı eşleş. Altı hazne, tek kıvılcım.">
+  <title>Rus Ruleti · Son Tur — Kutarya</title>
+  <style>/* @roulette-style */</style>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"></div>
+<header class="masthead">
+  <a class="brand" href="https://kutarya.com/proje/rus-ruleti" target="_blank" rel="noopener" aria-label="Kutarya Rus Ruleti proje sayfası"><span class="brand-symbol" aria-hidden="true">✳</span><span>KUTARYA<span class="brand-sub">OYUN KULÜBÜ</span></span></a>
+  <div class="top-links"><button class="text-button" id="help">Nasıl oynanır <span aria-hidden="true">↗</span></button><button class="sound-button" id="sound" aria-pressed="false" aria-label="Oyun seslerini aç"><span id="sound-icon" aria-hidden="true">♫</span><span id="sound-label">Ses kapalı</span></button></div>
+</header>
+<main>
+  <section id="home" class="home-view">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="mini-line"></span> RUS RULETİ <span class="edition">VOL. 01</span></div>
+        <h1>SON<br><em>TUR.</em></h1>
+        <p class="hero-lead">Bir masa. Altı hazne.<br>Son sözü şans söyler.</p>
+        <p class="hero-description">Arkadaşlarını masaya çağır.<br>Ya da şansını yeni rakiplerle paylaş.</p>
+        <div class="hero-facts"><span><b>02—06</b> OYUNCU</span><span><b>01</b> PAS HAKKI</span><span><b>25</b> SANİYE</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><span class="art-cross cross-one">+</span><span class="art-cross cross-two">+</span>
+        <div class="art-index">ŞANS MEKANİZMASI<br><b>NO. 006 / KTY</b></div>
+        <div class="hero-cylinder cylinder"><div class="cylinder-face"><span class="slot slot-0"><i></i></span><span class="slot slot-1"><i></i></span><span class="slot slot-2"><i></i></span><span class="slot slot-3"><i></i></span><span class="slot slot-4"><i></i></span><span class="slot slot-5"><i></i></span><div class="axle"><span>✳</span></div></div></div>
+        <span class="floating-tag"><span class="spark-dot"></span> TEK KIVILCIM.</span>
+        <div class="art-bottom"><span>HER TUR BİR İHTİMAL.</span><span>↗</span></div>
+      </div>
+      <aside class="join-panel">
+        <div class="panel-heading"><span class="small-label">MASADA YERİN HAZIR</span><span class="live-badge"><i id="connection-dot"></i><span id="connection-label">Bağlanıyor</span></span></div>
+        <h2>Oyuna katıl.</h2>
+        <label class="field-label" for="player-name">MASADAKİ ADIN</label>
+        <div class="name-field"><span id="name-avatar" class="small-avatar">Y</span><input id="player-name" maxlength="18" autocomplete="nickname" spellcheck="false" placeholder="Adını yaz" value=""></div>
+        <fieldset class="colors"><legend>RENGİNİ SEÇ</legend><div id="color-options"></div></fieldset>
+        <button id="quick" class="button primary wide"><span>Hızlı eşleş</span><span aria-hidden="true">↗</span></button>
+        <p class="button-hint">Açık masaya otur. İkinci oyuncuyla geri sayım başlar.</p>
+        <div class="duo-buttons"><button id="create" class="button secondary">+ Oda kur</button><button id="practice" class="button secondary">Botlarla dene</button></div>
+        <div class="code-divider"><span>ODA KODUN VAR MI?</span></div>
+        <form id="join-form" class="code-form"><label class="sr-only" for="room-code">Altı karakterli oda kodu</label><input id="room-code" placeholder="ABC234" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" title="Altı harf veya rakam"><button type="button" id="join-code" aria-label="Oda koduyla katıl">→</button></form>
+        <div class="online-footer"><span class="status-light"></span><span id="population">Oyuncular kontrol ediliyor…</span></div>
+      </aside>
+    </div>
+    <div class="lower-grid">
+      <section class="public-section" aria-labelledby="tables-title"><div class="section-heading"><h2 id="tables-title"><span class="live-dot"></span> Açık masalar</h2><button id="refresh" class="text-button small">Yenile ↻</button></div><div id="room-list" class="room-list"><p class="empty-message">Açık masalar yükleniyor…</p></div></section>
+      <aside class="rule-note"><span class="note-number">01 / KURAL BASİT</span><p>Kıvılcımı bulan elenir.<br><strong>Son kalan, masayı alır.</strong></p><span class="note-foot">Şiddet içermeyen, çizgi tarzı şans düellosu.</span></aside>
+    </div>
+  </section>
+
+  <section id="table-view" class="table-view" hidden>
+    <div class="table-heading"><div><span class="eyebrow" id="mode-label">ÖZEL MASA</span><h1>Şans masası<span class="small-spark">✳</span></h1></div><div class="table-heading-actions"><button class="code-chip" id="copy-code" title="Davet bağlantısını kopyala"><small>ODA KODU</small><b id="table-code">------</b><span aria-hidden="true">⧉</span></button><button class="button secondary compact" id="leave">Ayrıl ↗</button></div></div>
+    <div id="offline-banner" class="info-banner" hidden>BOT ANTRENMANI · Rakipler yapay oyuncudur. Bu mod çevrimdışı çalışır.</div>
+    <div id="reconnect-banner" class="info-banner reconnect-banner" hidden>Bağlantı kesildi. 30 saniyelik dönüş süresi içinde yeniden bağlanılıyor…</div>
+    <div class="game-grid">
+      <aside class="players-panel"><div class="section-heading"><h2>Masadakiler</h2><span id="player-count" class="small-label">0 / 6</span></div><div id="players"></div><p class="players-foot">Bir oyun. Bir pas hakkı.<br>Her boş haznede ihtimal büyür.</p></aside>
+      <div class="play-field" id="play-field">
+        <div class="field-top"><span id="round-label">MASA HAZIRLANIYOR</span><span class="risk-chip" id="risk">6 HAZNE</span></div>
+        <div class="table-orbit" aria-hidden="true"></div>
+        <div class="game-cylinder cylinder" id="game-cylinder" aria-label="Altı hazneli şans mekanizması"><div class="cylinder-face"><span class="slot slot-0"><i></i></span><span class="slot slot-1"><i></i></span><span class="slot slot-2"><i></i></span><span class="slot slot-3"><i></i></span><span class="slot slot-4"><i></i></span><span class="slot slot-5"><i></i></span><div class="axle"><span>✳</span></div></div></div>
+        <div id="effect" class="burst" aria-hidden="true"></div>
+        <div class="turn-info"><div class="turn-kicker" id="turn-kicker">DAVETİNİ GÖNDER</div><h2 id="turn-title">Arkadaşlarını bekliyoruz.</h2><p id="turn-description">En az iki kişi olduğunuzda oyun başlayabilir.</p></div>
+        <div class="timer" id="timer" hidden><div id="timer-bar"></div></div>
+        <div class="play-actions" id="lobby-actions"><button class="button primary" id="start">Oyunu başlat ↗</button><button class="button primary" id="ready" hidden>Hazırım ✓</button></div>
+        <div class="play-actions" id="match-actions" hidden><button class="button primary pull-button" id="pull" disabled><span class="trigger-icon" aria-hidden="true">✳</span> Tetiği çek <span class="key-hint">SPACE</span></button><button class="button secondary" id="pass" disabled>Pas geç <span id="passes">1</span></button></div>
+        <p class="field-note" id="field-note">Oda kodunu paylaş. Herkes hazır olduğunda başlat.</p>
+        <div class="result-card" id="result" hidden><span class="result-crown" aria-hidden="true">♛</span><span class="small-label">MASANIN KAZANANI</span><h2 id="winner-name"></h2><p id="winner-description"></p><button class="button primary" id="rematch">Yeni lobi aç ↻</button><p id="rematch-wait" hidden>Oda sahibinin yeni lobiyi açması bekleniyor.</p></div>
+      </div>
+      <aside class="activity-panel"><div class="section-heading"><h2>Masada neler oluyor?</h2><span class="small-label">CANLI</span></div><ol id="activity" aria-live="polite" aria-relevant="additions"></ol><div class="reactions"><span class="small-label">BİR İŞARET BIRAK</span><div><button data-reaction="wave" aria-label="El salla">👋</button><button data-reaction="fire" aria-label="Ateş emojisi">🔥</button><button data-reaction="luck" aria-label="Şans dile">🍀</button><button data-reaction="wow" aria-label="Şaşır">😮</button></div></div></aside>
+    </div>
+    <div class="table-foot"><span id="latency">Bulut bağlantısı</span><span>Odalar geçicidir · En fazla 45 dakika · Kopmada 30 saniye dönüş</span></div>
+  </section>
+</main>
+<footer class="site-footer"><span>ŞANS CESURLARI SEVER. <span class="footer-spark">✳</span></span><span>KUTARYA / SON TUR <span class="footer-version">1.0</span></span></footer>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="create-dialog"><form id="create-form"><div class="dialog-heading"><span class="eyebrow">KENDİ MASAN</span><button type="button" class="close-button" data-close aria-label="Kapat">×</button></div><h2>Odanı kur.</h2><p>Kodu paylaş, arkadaşlarını aynı masaya çağır.</p><label class="field-label" for="room-capacity">MASADA KAÇ KİŞİ OLSUN?</label><select id="room-capacity"><option value="2">2 kişi · Düello</option><option value="4">4 kişi · Küçük masa</option><option value="6" selected>6 kişi · Kalabalık masa</option></select><label class="checkbox-row"><input type="checkbox" id="public-room"><span>Açık masalarda görünsün<small>Diğer oyuncular listeden katılabilir.</small></span></label><button type="button" id="create-room-submit" class="button primary wide">Masayı kur ↗</button></form></dialog>
+<dialog id="help-dialog"><div class="dialog-heading"><span class="eyebrow">SON TUR / OYUN REHBERİ</span><button class="close-button" data-close aria-label="Kapat">×</button></div><h2>Şansını yönet.</h2><ol class="help-list"><li><b>Masaya otur.</b> Oda kur, kodla katıl ya da hızlı eşleş. Özel masada herkes hazır olunca oda sahibi başlatır. Hızlı eşleşme iki kişiyle 8 saniye sonra başlar.</li><li><b>Sıranı oyna.</b> Altı haznede bir kıvılcım var. Tetiği çek: boşsa sıra geçer, kıvılcımsa elenirsin. Her boş çekimde kalan hazne sayısı azalır.</li><li><b>Pasını sakla.</b> Oyun boyunca tek pasın var. Pas hazne tüketmez. Sıran 25 saniyedir; süren dolarsa otomatik çekilir.</li><li><b>Son kalan kazanır.</b> Her elemede hazneler yeniden karışır. Kazanan aynı masada rövanş oynayabilir.</li></ol><p class="help-foot">Klavye: Space / Enter tetiği çeker, P pas geçer. Bot antrenmanı gerçek insan içermez. Çevrim içi odalar geçicidir; servis yeniden başlarsa kapanabilir. Bağlantı kopunca 30 saniye içinde aynı oyuncuyla dönmeyi deneriz.</p><button class="button primary wide" data-close>Tamam, hazırım ↗</button></dialog>
+<script>// @roulette-rules
+// @roulette-client</script>
+</body></html>

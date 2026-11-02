@@ -1,0 +1,1790 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLACK JACK — Royal Night</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --gold: #ffce54;
+        --gold2: #ff9f1c;
+        --dark: #030305;
+        --red: #e01e37;
+        --green: #009c68;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        font-family: "Montserrat", sans-serif;
+        color: white;
+        background:
+          radial-gradient(
+            circle at 50% 30%,
+            rgba(0, 160, 100, 0.14),
+            transparent 35%
+          ),
+          radial-gradient(
+            circle at 10% 10%,
+            rgba(255, 185, 50, 0.09),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 90% 90%,
+            rgba(255, 0, 50, 0.07),
+            transparent 25%
+          ),
+          #020203;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.2;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 45px 45px;
+        mask-image: radial-gradient(circle, black, transparent 85%);
+      }
+
+      .topbar {
+        height: 95px;
+        padding: 0 38px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(0, 0, 0, 0.48);
+        backdrop-filter: blur(20px);
+        position: relative;
+        z-index: 10;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .logo-icon {
+        width: 55px;
+        height: 55px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        font-size: 28px;
+        color: #111;
+        background: linear-gradient(135deg, #fff0a7, var(--gold2));
+        box-shadow:
+          0 0 30px rgba(255, 185, 30, 0.28),
+          inset 0 1px 1px white;
+        transform: rotate(-6deg);
+      }
+
+      .logo-title {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: 27px;
+        letter-spacing: 3px;
+        background: linear-gradient(90deg, #fff, #ffd86b, #ff9f1c);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .logo-sub {
+        font-size: 9px;
+        letter-spacing: 5px;
+        color: #777;
+        margin-top: 3px;
+      }
+
+      .balance {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 12px 18px;
+        border: 1px solid rgba(255, 205, 80, 0.28);
+        border-radius: 16px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 205, 80, 0.08),
+          rgba(255, 255, 255, 0.025)
+        );
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .balance-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #111;
+        background: linear-gradient(135deg, #ffe98b, #ff9f1c);
+        font-weight: 900;
+        box-shadow: 0 0 20px rgba(255, 180, 0, 0.25);
+      }
+
+      .balance small {
+        display: block;
+        font-size: 9px;
+        letter-spacing: 2px;
+        color: #888;
+        margin-bottom: 3px;
+      }
+
+      .balance strong {
+        font-size: 20px;
+        color: #ffe083;
+      }
+
+      .game {
+        width: min(1380px, 96%);
+        margin: 20px auto 40px;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 20px;
+      }
+
+      .table-shell {
+        position: relative;
+        min-height: 760px;
+        border-radius: 42px;
+        padding: 12px;
+        background: linear-gradient(
+          145deg,
+          #392510,
+          #8c5c19 20%,
+          #211307 50%,
+          #8c5c19 80%,
+          #241508
+        );
+        box-shadow:
+          0 35px 100px #000,
+          inset 0 2px 2px rgba(255, 255, 255, 0.3),
+          0 0 70px rgba(0, 0, 0, 0.8);
+      }
+
+      .table {
+        height: 100%;
+        min-height: 736px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 34px;
+        border: 2px solid rgba(255, 214, 111, 0.35);
+        background: radial-gradient(
+          circle at center,
+          #075f43 0%,
+          #044430 50%,
+          #02281d 100%
+        );
+        box-shadow:
+          inset 0 0 100px rgba(0, 0, 0, 0.9),
+          inset 0 0 0 7px rgba(255, 255, 255, 0.025);
+      }
+
+      .table::before {
+        content: "";
+        position: absolute;
+        width: 720px;
+        height: 460px;
+        border: 2px solid rgba(255, 220, 150, 0.07);
+        border-radius: 50%;
+        left: 50%;
+        top: 48%;
+        transform: translate(-50%, -50%);
+      }
+
+      .table::after {
+        content: "BLACK JACK";
+        position: absolute;
+        left: 50%;
+        top: 47%;
+        transform: translate(-50%, -50%);
+        font-family: "Playfair Display", serif;
+        font-size: 70px;
+        font-weight: 900;
+        letter-spacing: 10px;
+        color: rgba(255, 255, 255, 0.025);
+        white-space: nowrap;
+      }
+
+      .rules {
+        position: absolute;
+        left: 50%;
+        top: 53%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        letter-spacing: 4px;
+        color: rgba(255, 220, 150, 0.17);
+        text-align: center;
+      }
+
+      .hand-area {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .dealer-area {
+        top: 50px;
+      }
+
+      .player-area {
+        bottom: 145px;
+      }
+
+      .area-title {
+        font-size: 10px;
+        letter-spacing: 5px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .score {
+        min-width: 43px;
+        height: 28px;
+        padding: 0 10px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 800;
+        color: #1a1203;
+        background: linear-gradient(135deg, #fff4b0, #d99821);
+        box-shadow: 0 0 20px rgba(255, 190, 50, 0.15);
+        margin-bottom: 10px;
+      }
+
+      .cards {
+        min-height: 165px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 35px;
+      }
+
+      .card {
+        width: 105px;
+        height: 150px;
+        margin-left: -35px;
+        border-radius: 11px;
+        position: relative;
+        background: linear-gradient(145deg, #fff, #e7e7e7);
+        color: #151515;
+        box-shadow:
+          0 18px 35px rgba(0, 0, 0, 0.45),
+          inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+        transform-origin: center bottom;
+        animation: cardIn 0.42s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        overflow: hidden;
+      }
+
+      .card:nth-child(1) {
+        transform: rotate(-5deg);
+      }
+
+      .card:nth-child(2) {
+        transform: rotate(-1deg);
+      }
+
+      .card:nth-child(3) {
+        transform: rotate(3deg);
+      }
+
+      .card:nth-child(4) {
+        transform: rotate(6deg);
+      }
+
+      .card:nth-child(5) {
+        transform: rotate(9deg);
+      }
+
+      .card.red {
+        color: #d31637;
+      }
+
+      .card.hidden {
+        background:
+          linear-gradient(
+            45deg,
+            transparent 45%,
+            rgba(255, 255, 255, 0.08) 45% 55%,
+            transparent 55%
+          ),
+          linear-gradient(
+            -45deg,
+            transparent 45%,
+            rgba(255, 255, 255, 0.08) 45% 55%,
+            transparent 55%
+          ),
+          linear-gradient(135deg, #17030a, #630b27);
+        background-size:
+          13px 13px,
+          13px 13px,
+          auto;
+        border: 5px solid white;
+        box-shadow:
+          inset 0 0 0 2px #7c1734,
+          0 18px 35px rgba(0, 0, 0, 0.45);
+      }
+
+      .card.hidden::after {
+        content: "♠";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 54px;
+        height: 70px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .rank {
+        position: absolute;
+        top: 7px;
+        left: 9px;
+        font-size: 21px;
+        font-family: Georgia, serif;
+        font-weight: bold;
+        line-height: 20px;
+      }
+
+      .suit-small {
+        font-size: 16px;
+        display: block;
+        text-align: center;
+      }
+
+      .suit-center {
+        position: absolute;
+        left: 50%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+        font-size: 53px;
+      }
+
+      .rank-bottom {
+        position: absolute;
+        bottom: 7px;
+        right: 9px;
+        font-size: 21px;
+        font-family: Georgia, serif;
+        font-weight: bold;
+        transform: rotate(180deg);
+        line-height: 20px;
+      }
+
+      .controls {
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 20px;
+        z-index: 5;
+      }
+
+      button {
+        border: none;
+        font-family: "Montserrat", sans-serif;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .action {
+        height: 52px;
+        min-width: 115px;
+        border-radius: 15px;
+        padding: 0 18px;
+        color: white;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(145deg, #17181b, #090a0c);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      }
+
+      .action:hover:not(:disabled) {
+        transform: translateY(-4px);
+        border-color: rgba(255, 205, 80, 0.5);
+        box-shadow:
+          0 12px 30px rgba(0, 0, 0, 0.5),
+          0 0 18px rgba(255, 190, 60, 0.08);
+      }
+
+      .action.primary {
+        background: linear-gradient(135deg, #ffe37d, #ff9b13);
+        color: #151005;
+        box-shadow: 0 10px 25px rgba(255, 157, 20, 0.18);
+      }
+
+      .action.red {
+        background: linear-gradient(135deg, #8e0b24, #df183d);
+      }
+
+      .action:disabled {
+        cursor: not-allowed;
+        opacity: 0.28;
+        transform: none;
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .panel {
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.045),
+          rgba(255, 255, 255, 0.015)
+        );
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(16px);
+        padding: 20px;
+      }
+
+      .panel-title {
+        font-size: 10px;
+        font-weight: 800;
+        color: #696969;
+        letter-spacing: 3px;
+        margin-bottom: 17px;
+      }
+
+      .bet-value {
+        padding: 15px;
+        text-align: center;
+        font-size: 31px;
+        font-weight: 900;
+        color: #ffe078;
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 210, 90, 0.12);
+        margin-bottom: 14px;
+      }
+
+      .bet-value span {
+        font-size: 12px;
+        color: #786e55;
+        margin-left: 4px;
+      }
+
+      .chips {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .chip {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        color: white;
+        font-size: 11px;
+        font-weight: 900;
+        border: 4px dashed rgba(255, 255, 255, 0.5);
+        outline: 2px solid rgba(255, 255, 255, 0.1);
+        outline-offset: -7px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+      }
+
+      .chip:hover {
+        transform: translateY(-5px) rotate(4deg);
+      }
+
+      .chip.c10 {
+        background: radial-gradient(circle, #30343b, #0b0d10);
+      }
+
+      .chip.c25 {
+        background: radial-gradient(circle, #1976d2, #082e66);
+      }
+
+      .chip.c50 {
+        background: radial-gradient(circle, #df253f, #6e0718);
+      }
+
+      .chip.c100 {
+        background: radial-gradient(circle, #04a46b, #03482f);
+      }
+
+      .chip.c250 {
+        background: radial-gradient(circle, #8e44d6, #35115d);
+      }
+
+      .chip.c500 {
+        background: radial-gradient(circle, #dca51a, #744c00);
+      }
+
+      .bet-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .mini {
+        padding: 11px 8px;
+        border-radius: 12px;
+        background: #111317;
+        color: #aaa;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .mini:hover {
+        color: white;
+        border-color: rgba(255, 205, 80, 0.28);
+      }
+
+      .stats {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+      }
+
+      .stat {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .stat:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .stat-name {
+        font-size: 11px;
+        color: #737373;
+      }
+
+      .stat-value {
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .history {
+        min-height: 105px;
+      }
+
+      .history-item {
+        display: grid;
+        grid-template-columns: 8px 1fr auto;
+        gap: 9px;
+        align-items: center;
+        font-size: 10px;
+        color: #aaa;
+        margin-bottom: 10px;
+      }
+
+      .history-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+      }
+
+      .history-dot.win {
+        background: #21d07a;
+        box-shadow: 0 0 12px #21d07a;
+      }
+
+      .history-dot.loss {
+        background: #fa3452;
+        box-shadow: 0 0 12px #fa3452;
+      }
+
+      .history-dot.push {
+        background: #f7c54e;
+        box-shadow: 0 0 12px #f7c54e;
+      }
+
+      .history-money {
+        font-weight: 800;
+      }
+
+      .game-message {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 20;
+        transform: translate(-50%, -50%) scale(0.7);
+        pointer-events: none;
+        opacity: 0;
+        text-align: center;
+        min-width: 330px;
+        padding: 24px 32px;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 220, 100, 0.25);
+        background: rgba(3, 5, 5, 0.88);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65);
+        transition: 0.35s;
+      }
+
+      .game-message.show {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .message-title {
+        font-family: "Playfair Display", serif;
+        font-size: 36px;
+        background: linear-gradient(90deg, #fff3ad, #ffac27);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .message-sub {
+        margin-top: 7px;
+        font-size: 11px;
+        color: #868686;
+        letter-spacing: 2px;
+      }
+
+      .deck {
+        position: absolute;
+        right: 42px;
+        top: 135px;
+        width: 76px;
+        height: 110px;
+        border-radius: 9px;
+        transform: rotate(8deg);
+        background:
+          linear-gradient(
+            45deg,
+            transparent 45%,
+            rgba(255, 255, 255, 0.08) 45% 55%,
+            transparent 55%
+          ),
+          linear-gradient(
+            -45deg,
+            transparent 45%,
+            rgba(255, 255, 255, 0.08) 45% 55%,
+            transparent 55%
+          ),
+          linear-gradient(135deg, #19050c, #650d2a);
+        background-size:
+          11px 11px,
+          11px 11px,
+          auto;
+        border: 4px solid #ddd;
+        box-shadow:
+          3px 3px 0 #888,
+          6px 6px 0 #444,
+          10px 16px 30px rgba(0, 0, 0, 0.4);
+        z-index: 4;
+      }
+
+      .deck::after {
+        content: "♠";
+        position: absolute;
+        inset: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+        color: white;
+      }
+
+      .reset-bank {
+        width: 100%;
+        padding: 12px;
+        border-radius: 13px;
+        margin-top: 12px;
+        background: rgba(255, 40, 75, 0.07);
+        color: #bf5969;
+        border: 1px solid rgba(255, 40, 75, 0.12);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+
+      .reset-bank:hover {
+        background: rgba(255, 40, 75, 0.15);
+        color: #ff7990;
+      }
+
+      @keyframes cardIn {
+        0% {
+          opacity: 0;
+          transform: translate(240px, -150px) rotate(35deg) scale(0.5);
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes moneyPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.12);
+        }
+      }
+
+      .balance.pulse {
+        animation: moneyPulse 0.45s ease;
+      }
+
+      @media (max-width: 1050px) {
+        .game {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 750px) {
+        .topbar {
+          padding: 0 15px;
+          height: 80px;
+        }
+
+        .logo-title {
+          font-size: 19px;
+        }
+
+        .logo-sub {
+          display: none;
+        }
+
+        .logo-icon {
+          width: 45px;
+          height: 45px;
+        }
+
+        .balance {
+          padding: 8px 12px;
+        }
+
+        .balance-icon {
+          display: none;
+        }
+
+        .balance strong {
+          font-size: 16px;
+        }
+
+        .game {
+          width: 100%;
+          margin-top: 0;
+        }
+
+        .table-shell {
+          border-radius: 0;
+          padding: 5px;
+          min-height: 710px;
+        }
+
+        .table {
+          border-radius: 0;
+          min-height: 700px;
+        }
+
+        .table::after {
+          font-size: 38px;
+        }
+
+        .card {
+          width: 85px;
+          height: 125px;
+          margin-left: -28px;
+        }
+
+        .suit-center {
+          font-size: 40px;
+        }
+
+        .controls {
+          gap: 6px;
+          bottom: 20px;
+        }
+
+        .action {
+          min-width: auto;
+          flex: 1;
+          padding: 0 7px;
+          font-size: 9px;
+        }
+
+        .sidebar {
+          padding: 12px;
+          display: flex;
+        }
+
+        .deck {
+          right: 20px;
+          width: 55px;
+          height: 80px;
+        }
+      }
+
+      /* Kutarya: paket çevrimdışı da açılır; font için ağ isteği gerekmez. */
+      html {
+        color-scheme: dark;
+      }
+      body,
+      button {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      button:focus-visible {
+        outline: 3px solid #ffe083;
+        outline-offset: 3px;
+      }
+      .topbar {
+        height: auto;
+        min-height: 64px;
+        padding: 10px 18px;
+        gap: 12px;
+      }
+      .topbar > * {
+        min-width: 0;
+      }
+      .logo-title,
+      .brand-title {
+        font-size: clamp(16px, 2.4vw, 25px);
+      }
+      .practice-note {
+        font:
+          12px/1.5 Arial,
+          sans-serif;
+        color: #c9c0ae;
+        text-align: center;
+        padding: 8px 12px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      .game {
+        width: min(1240px, calc(100% - 24px));
+        margin: 10px auto 24px;
+        grid-template-columns: minmax(0, 1fr) 260px;
+        gap: 14px;
+      }
+      .table-shell {
+        min-height: 0;
+        border-radius: 24px;
+        padding: 7px;
+      }
+      .table {
+        min-height: 0;
+        height: auto;
+        border-radius: 18px;
+        padding: 18px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .hand-area {
+        position: relative;
+        inset: auto;
+        flex: 1;
+        min-width: 0;
+      }
+      .dealer-area,
+      .player-area {
+        top: auto;
+        bottom: auto;
+      }
+      .cards {
+        width: 100%;
+        min-height: 126px;
+        max-width: 100%;
+        padding: 5px 15px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        justify-content: safe center;
+      }
+      .card {
+        flex-shrink: 0;
+        width: 78px;
+        height: 112px;
+        margin-left: -20px;
+      }
+      .card:first-child {
+        margin-left: 0;
+      }
+      .suit-center {
+        font-size: 37px;
+      }
+      .rules {
+        position: relative;
+        inset: auto;
+        transform: none;
+        letter-spacing: 1px;
+        color: #b5c2ad;
+        font-size: 10px;
+        padding: 6px 0;
+      }
+      .table::after {
+        font-size: clamp(24px, 5vw, 48px);
+        opacity: 0.25;
+      }
+      .table::before {
+        width: 90%;
+        height: 65%;
+      }
+      .deck {
+        right: 15px;
+        top: 15px;
+        width: 44px;
+        height: 64px;
+        opacity: 0.6;
+      }
+      .controls {
+        position: relative;
+        bottom: auto;
+        padding: 4px 0;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+      }
+      .action {
+        min-width: 0;
+        width: 100%;
+        padding: 0 5px;
+        height: 44px;
+        font-size: 11px;
+        letter-spacing: 0;
+      }
+      .sidebar {
+        padding: 0;
+        gap: 12px;
+      }
+      .panel {
+        padding: 16px;
+        border-radius: 18px;
+      }
+      .panel-title {
+        color: #b1a68e;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+      }
+      .chip {
+        min-height: 42px;
+        max-height: 60px;
+        aspect-ratio: auto;
+        border-radius: 14px;
+      }
+      .game-message {
+        pointer-events: none;
+        max-width: calc(100% - 20px);
+      }
+      .message-title {
+        font-size: clamp(18px, 3vw, 30px);
+      }
+      @media (max-width: 850px) {
+        .game {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .sidebar {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .sidebar .panel:first-child {
+          grid-column: 1/-1;
+        }
+        .chips {
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+        .logo-icon {
+          width: 38px;
+          height: 38px;
+          font-size: 22px;
+        }
+        .logo {
+          gap: 10px;
+        }
+        .balance {
+          padding: 8px 10px;
+        }
+        .logo-sub {
+          display: none;
+        }
+      }
+      @media (max-width: 430px) {
+        .game {
+          width: calc(100% - 16px);
+        }
+        .topbar {
+          padding: 8px;
+        }
+        .sidebar {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .balance-icon {
+          display: none;
+        }
+        .balance strong {
+          font-size: 16px;
+        }
+        .table {
+          padding: 12px 6px;
+          gap: 8px;
+        }
+        .card {
+          width: 67px;
+          height: 96px;
+        }
+        .cards {
+          min-height: 100px;
+        }
+        .area-title {
+          margin-bottom: 6px;
+        }
+        .score {
+          margin-bottom: 6px;
+        }
+      }
+      /* Kısa iframe'de dağıtıcı, oyuncu eli ve hamleler birlikte görünür. */
+      @media (max-height: 580px) {
+        .topbar {
+          min-height: 48px;
+          padding: 6px 10px;
+        }
+        .logo-icon {
+          width: 30px;
+          height: 30px;
+          font-size: 18px;
+        }
+        .logo-sub,
+        .balance-icon {
+          display: none;
+        }
+        .balance {
+          padding: 6px 10px;
+        }
+        .practice-note {
+          font-size: 10px;
+          padding: 4px 8px;
+        }
+        .game {
+          margin-top: 6px;
+        }
+        .table {
+          padding: 10px 6px;
+          gap: 6px;
+        }
+        .hand-area {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          width: auto;
+          align-self: stretch;
+          min-width: 0;
+          column-gap: 10px;
+          row-gap: 4px;
+        }
+        .area-title {
+          margin: 0;
+        }
+        .score {
+          height: 24px;
+          margin: 0;
+        }
+        .cards {
+          flex-basis: 100%;
+          min-width: 0;
+          min-height: 92px;
+          height: 92px;
+          padding: 4px 15px;
+        }
+        .cards .card {
+          transform: none;
+          animation: none;
+        }
+        .card {
+          width: 58px;
+          height: 80px;
+        }
+        .rank,
+        .rank-bottom {
+          font-size: 15px;
+          line-height: 14px;
+        }
+        .suit-small {
+          font-size: 12px;
+        }
+        .suit-center {
+          font-size: 28px;
+        }
+        .rules {
+          padding: 4px 0;
+        }
+        .deck {
+          width: 30px;
+          height: 44px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="logo">
+        <div class="logo-icon">♠</div>
+        <div>
+          <div class="logo-title">BLACK JACK</div>
+          <div class="logo-sub">ROYAL NIGHT CASINO</div>
+        </div>
+      </div>
+
+      <div class="balance" id="balanceBox">
+        <div class="balance-icon">₭</div>
+        <div>
+          <small>OYUN BAKİYESİ</small>
+          <strong><span id="balance">1000</span> ₭</strong>
+        </div>
+      </div>
+    </header>
+
+    <p class="practice-note">
+      1000 oyun puanı ile pratik · Gerçek para kullanılmaz.
+    </p>
+    <main class="game">
+      <section class="table-shell">
+        <div class="table">
+          <div class="deck"></div>
+
+          <div class="hand-area dealer-area">
+            <div class="area-title">DEALER</div>
+            <div class="score" id="dealerScore">0</div>
+            <div class="cards" id="dealerCards"></div>
+          </div>
+
+          <div class="rules">DEALER 17'DE DURUR · BLACKJACK 3:2 ÖDER</div>
+
+          <div class="hand-area player-area">
+            <div class="area-title">SENİN ELİN</div>
+            <div class="score" id="playerScore">0</div>
+            <div class="cards" id="playerCards"></div>
+          </div>
+
+          <div class="controls">
+            <button class="action primary" id="dealButton" onclick="deal()">
+              DAĞIT
+            </button>
+            <button class="action" id="hitButton" onclick="hit()" disabled>
+              KART ÇEK
+            </button>
+            <button
+              class="action red"
+              id="standButton"
+              onclick="stand()"
+              disabled
+            >
+              DUR
+            </button>
+            <button
+              class="action"
+              id="doubleButton"
+              onclick="doubleDown()"
+              disabled
+            >
+              2X
+            </button>
+          </div>
+
+          <div class="game-message" id="message">
+            <div class="message-title" id="messageTitle"></div>
+            <div class="message-sub" id="messageSub"></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <div class="panel">
+          <div class="panel-title">BAHİS MASASI</div>
+
+          <div class="bet-value"><span id="bet">50</span><span>₭</span></div>
+
+          <div class="chips">
+            <button class="chip c10" onclick="addBet(10)">10</button>
+            <button class="chip c25" onclick="addBet(25)">25</button>
+            <button class="chip c50" onclick="addBet(50)">50</button>
+            <button class="chip c100" onclick="addBet(100)">100</button>
+            <button class="chip c250" onclick="addBet(250)">250</button>
+            <button class="chip c500" onclick="addBet(500)">500</button>
+          </div>
+
+          <div class="bet-actions">
+            <button class="mini" onclick="clearBet()">TEMİZLE</button>
+            <button class="mini" onclick="maxBet()">MAX</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">OYUNCU İSTATİSTİKLERİ</div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-name">Oyun</div>
+              <div class="stat-value" id="gamesStat">0</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-name">Galibiyet</div>
+              <div class="stat-value" id="winsStat">0</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-name">Mağlubiyet</div>
+              <div class="stat-value" id="lossesStat">0</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-name">Blackjack</div>
+              <div class="stat-value" id="blackjacksStat">0</div>
+            </div>
+          </div>
+
+          <button class="reset-bank" onclick="resetGame()">
+            BAKİYEYİ 1000 ₭ YAP
+          </button>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">SON OYUNLAR</div>
+          <div class="history" id="history">
+            <div
+              style="
+                font-size: 10px;
+                color: #525252;
+                text-align: center;
+                padding-top: 25px;
+              "
+            >
+              Henüz oyun oynanmadı.
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script>
+      const suits = ["♠", "♥", "♦", "♣"];
+      const ranks = [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "J",
+        "Q",
+        "K",
+        "A",
+      ];
+
+      let deck = [];
+      let playerHand = [];
+      let dealerHand = [];
+      let balance = 1000;
+      let bet = 50;
+      let currentBet = 0;
+      let playing = false;
+      let resolving = false;
+      let roundEpoch = 0;
+      let dealerHidden = true;
+      let games = 0;
+      let wins = 0;
+      let losses = 0;
+      let blackjacks = 0;
+      let history = [];
+
+      function createDeck() {
+        deck = [];
+
+        for (const suit of suits) {
+          for (const rank of ranks) {
+            deck.push({ suit, rank });
+          }
+        }
+
+        for (let i = deck.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [deck[i], deck[j]] = [deck[j], deck[i]];
+        }
+      }
+
+      function drawCard() {
+        if (deck.length < 15) createDeck();
+        return deck.pop();
+      }
+
+      function getCardValue(card) {
+        if (["J", "Q", "K"].includes(card.rank)) return 10;
+        if (card.rank === "A") return 11;
+        return Number(card.rank);
+      }
+
+      function handValue(hand) {
+        let total = 0;
+        let aces = 0;
+
+        for (const card of hand) {
+          total += getCardValue(card);
+          if (card.rank === "A") aces++;
+        }
+
+        while (total > 21 && aces > 0) {
+          total -= 10;
+          aces--;
+        }
+
+        return total;
+      }
+
+      function isBlackjack(hand) {
+        return hand.length === 2 && handValue(hand) === 21;
+      }
+
+      function cardHTML(card, hidden = false) {
+        if (hidden) {
+          return `<div class="card hidden"></div>`;
+        }
+
+        const red = card.suit === "♥" || card.suit === "♦";
+
+        return `
+        <div class="card ${red ? "red" : ""}">
+            <div class="rank">
+                ${card.rank}
+                <span class="suit-small">${card.suit}</span>
+            </div>
+            <div class="suit-center">${card.suit}</div>
+            <div class="rank-bottom">
+                ${card.rank}
+                <span class="suit-small">${card.suit}</span>
+            </div>
+        </div>
+    `;
+      }
+
+      function render() {
+        document.getElementById("playerCards").innerHTML = playerHand
+          .map((card) => cardHTML(card))
+          .join("");
+
+        document.getElementById("dealerCards").innerHTML = dealerHand
+          .map((card, index) => cardHTML(card, dealerHidden && index === 1))
+          .join("");
+
+        document.getElementById("playerScore").textContent = playerHand.length
+          ? handValue(playerHand)
+          : 0;
+
+        if (!dealerHand.length) {
+          document.getElementById("dealerScore").textContent = 0;
+        } else if (dealerHidden) {
+          document.getElementById("dealerScore").textContent = getCardValue(
+            dealerHand[0],
+          );
+        } else {
+          document.getElementById("dealerScore").textContent =
+            handValue(dealerHand);
+        }
+
+        document.getElementById("balance").textContent = formatMoney(balance);
+        document.getElementById("bet").textContent = formatMoney(bet);
+
+        document.getElementById("gamesStat").textContent = games;
+        document.getElementById("winsStat").textContent = wins;
+        document.getElementById("lossesStat").textContent = losses;
+        document.getElementById("blackjacksStat").textContent = blackjacks;
+
+        renderHistory();
+      }
+
+      function formatMoney(number) {
+        return Number(number.toFixed(2)).toLocaleString("tr-TR");
+      }
+
+      function setControls(active) {
+        document.getElementById("dealButton").disabled = active;
+        document.getElementById("hitButton").disabled = !active;
+        document.getElementById("standButton").disabled = !active;
+        document.getElementById("doubleButton").disabled =
+          !active || playerHand.length !== 2 || balance < currentBet;
+      }
+
+      function addBet(amount) {
+        if (playing) return;
+
+        if (bet + amount <= balance) {
+          bet += amount;
+        }
+
+        render();
+      }
+
+      function clearBet() {
+        if (playing) return;
+        bet = Math.min(10, balance);
+        render();
+      }
+
+      function maxBet() {
+        if (playing) return;
+        bet = Math.floor(balance);
+        render();
+      }
+
+      function deal() {
+        hideMessage();
+
+        if (playing) return;
+
+        if (balance <= 0) {
+          showMessage(
+            "BAKİYE BİTTİ",
+            "Yeni oyun parası için bakiyeyi sıfırla.",
+          );
+          return;
+        }
+
+        if (bet <= 0) {
+          showMessage("BAHİS YOK", "Önce masaya oyun parası koy.");
+          return;
+        }
+
+        if (bet > balance) {
+          bet = balance;
+        }
+
+        if (!deck.length) createDeck();
+
+        currentBet = bet;
+        balance -= currentBet;
+
+        playerHand = [];
+        dealerHand = [];
+        dealerHidden = true;
+        playing = true;
+
+        playerHand.push(drawCard());
+        dealerHand.push(drawCard());
+        playerHand.push(drawCard());
+        dealerHand.push(drawCard());
+
+        setControls(true);
+        render();
+        pulseBalance();
+
+        const playerBJ = isBlackjack(playerHand);
+        const dealerBJ = isBlackjack(dealerHand);
+
+        if (playerBJ || dealerBJ) {
+          dealerHidden = false;
+          render();
+
+          if (playerBJ && dealerBJ) {
+            finishPush("İKİ TARAF DA BLACKJACK");
+          } else if (playerBJ) {
+            blackjacks++;
+            finishBlackjack();
+          } else {
+            finishLoss("DEALER BLACKJACK");
+          }
+        }
+      }
+
+      function hit() {
+        if (!playing || resolving) return;
+
+        playerHand.push(drawCard());
+        render();
+
+        const value = handValue(playerHand);
+
+        if (value > 21) {
+          dealerHidden = false;
+          render();
+          finishLoss("21'İ GEÇTİN");
+          return;
+        }
+
+        if (value === 21) {
+          stand();
+          return;
+        }
+
+        document.getElementById("doubleButton").disabled = true;
+      }
+
+      async function stand() {
+        if (!playing || resolving) return;
+        resolving = true;
+        const epoch = roundEpoch;
+
+        dealerHidden = false;
+        document.getElementById("hitButton").disabled = true;
+        document.getElementById("standButton").disabled = true;
+        document.getElementById("doubleButton").disabled = true;
+
+        render();
+
+        while (handValue(dealerHand) < 17) {
+          await sleep(480);
+          if (epoch !== roundEpoch) return;
+          dealerHand.push(drawCard());
+          render();
+        }
+
+        evaluateRound();
+      }
+
+      async function doubleDown() {
+        if (!playing || resolving) return;
+        if (playerHand.length !== 2) return;
+        if (balance < currentBet) return;
+
+        resolving = true;
+        const epoch = roundEpoch;
+        setControls(false);
+        document.getElementById("dealButton").disabled = true;
+        balance -= currentBet;
+        currentBet *= 2;
+        pulseBalance();
+
+        playerHand.push(drawCard());
+        render();
+
+        if (handValue(playerHand) > 21) {
+          dealerHidden = false;
+          render();
+          finishLoss("DOUBLE SONRASI PATLADIN");
+          return;
+        }
+
+        await sleep(450);
+        if (epoch !== roundEpoch) return;
+        resolving = false;
+        stand();
+      }
+
+      function evaluateRound() {
+        const player = handValue(playerHand);
+        const dealer = handValue(dealerHand);
+
+        if (dealer > 21) {
+          finishWin("DEALER 21'İ GEÇTİ");
+          return;
+        }
+
+        if (player > dealer) {
+          finishWin("KAZANDIN");
+          return;
+        }
+
+        if (dealer > player) {
+          finishLoss("DEALER KAZANDI");
+          return;
+        }
+
+        finishPush("BERABERE");
+      }
+
+      function finishWin(title) {
+        if (!playing) return;
+
+        const profit = currentBet;
+        balance += currentBet * 2;
+        wins++;
+        games++;
+
+        addHistory("win", `+${formatMoney(profit)} ₭`, title);
+        endRound();
+        showMessage(title, `+${formatMoney(profit)} ₭ kazanç`);
+        pulseBalance();
+      }
+
+      function finishLoss(title) {
+        if (!playing) return;
+
+        losses++;
+        games++;
+
+        addHistory("loss", `-${formatMoney(currentBet)} ₭`, title);
+        endRound();
+        showMessage(title, `-${formatMoney(currentBet)} ₭`);
+      }
+
+      function finishPush(title) {
+        if (!playing) return;
+
+        balance += currentBet;
+        games++;
+
+        addHistory("push", `0 ₭`, title);
+        endRound();
+        showMessage(title, "Bahsin geri verildi.");
+        pulseBalance();
+      }
+
+      function finishBlackjack() {
+        if (!playing) return;
+
+        const profit = currentBet * 1.5;
+        balance += currentBet + profit;
+        wins++;
+        games++;
+
+        addHistory("win", `+${formatMoney(profit)} ₭`, "BLACKJACK");
+        endRound();
+        showMessage("BLACKJACK!", `3:2 ödeme · +${formatMoney(profit)} ₭`);
+        pulseBalance();
+      }
+
+      function endRound() {
+        resolving = false;
+        playing = false;
+        setControls(false);
+
+        document.getElementById("dealButton").disabled = false;
+
+        if (balance <= 0) {
+          bet = 0;
+        } else if (bet > balance) {
+          bet = balance;
+        }
+
+        render();
+      }
+
+      function addHistory(type, money, text) {
+        history.unshift({
+          type,
+          money,
+          text,
+        });
+
+        history = history.slice(0, 5);
+      }
+
+      function renderHistory() {
+        const container = document.getElementById("history");
+
+        if (!history.length) {
+          container.innerHTML = `
+            <div style="font-size:10px;color:#525252;text-align:center;padding-top:25px">
+                Henüz oyun oynanmadı.
+            </div>
+        `;
+          return;
+        }
+
+        container.innerHTML = history
+          .map(
+            (item) => `
+        <div class="history-item">
+            <div class="history-dot ${item.type}"></div>
+            <div>${item.text}</div>
+            <div class="history-money">${item.money}</div>
+        </div>
+    `,
+          )
+          .join("");
+      }
+
+      function showMessage(title, subtitle) {
+        document.getElementById("messageTitle").textContent = title;
+        document.getElementById("messageSub").textContent = subtitle;
+        document.getElementById("message").classList.add("show");
+
+        setTimeout(() => {
+          hideMessage();
+        }, 2200);
+      }
+
+      function hideMessage() {
+        document.getElementById("message").classList.remove("show");
+      }
+
+      function pulseBalance() {
+        const box = document.getElementById("balanceBox");
+        box.classList.remove("pulse");
+        void box.offsetWidth;
+        box.classList.add("pulse");
+      }
+
+      function resetGame() {
+        roundEpoch++;
+        resolving = false;
+        balance = 1000;
+        bet = 50;
+        currentBet = 0;
+        playing = false;
+        playerHand = [];
+        dealerHand = [];
+        dealerHidden = true;
+        games = 0;
+        wins = 0;
+        losses = 0;
+        blackjacks = 0;
+        history = [];
+
+        createDeck();
+        hideMessage();
+        setControls(false);
+        document.getElementById("dealButton").disabled = false;
+        render();
+        showMessage("MASA YENİLENDİ", "1000 ₭ oyun parası yüklendi.");
+      }
+
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      createDeck();
+      render();
+    </script>
+  </body>
+</html>

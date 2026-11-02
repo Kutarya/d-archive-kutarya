@@ -1,0 +1,7 @@
+﻿[workspace]
+members = [
+    "motor",
+    "cli"
+]
+
+resolver = "3"

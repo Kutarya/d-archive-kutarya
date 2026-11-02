@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102e29"><title>Blackjack · Royal Night — Kutarya</title>
+  <style>/* @blackjack-style */</style>
+</head>
+<body>
+<div class="app">
+  <header class="masthead">
+    <a class="wordmark" href="https://kutarya.com/oyun-gecesi" target="_blank" rel="noopener"><span class="brand-symbol">k.</span> KUTARYA <small>OYUN GECESİ</small></a>
+    <div class="header-tools"><span class="edition">ROYAL NIGHT / 02</span><button id="sound" class="icon" aria-label="Sesi aç" aria-pressed="false">♪</button><button id="help" class="icon" aria-label="Nasıl oynanır?">?</button></div>
+  </header>
+  <main>
+    <section id="home">
+      <div class="welcome-grid">
+        <div class="welcome-copy"><span class="eyebrow"><i></i> BİR MASA. BİRKAÇ ARKADAŞ. BİR İYİ AKŞAM.</span><h1>Royal<br><em>Night.</em><sup>21</sup></h1><p>Bir kart daha mı, burada durmak mı?<br>Masada yerin hazır. Karar senin.</p><div class="home-actions"><button id="practice" class="button gold">Tek başına oyna <span>↗</span></button><button id="daily" class="button glass">Günün 5 turu <span>☀</span></button></div><p id="daily-best" class="micro">Günlük meydan okuma · Aynı deste, beş yeni karar.</p></div>
+        <div class="table-art" aria-hidden="true"><div class="felt-orbit"></div><div class="art-card art-back"><b>K<span>♠</span></b><strong>♠</strong></div><div class="art-card art-front"><b>A<span>♥</span></b><strong>♥</strong><b class="reverse">A<span>♥</span></b></div><div class="art-chip chip-one">k.</div><div class="art-chip chip-two">21</div><span class="art-note">BLACKJACK PAYS 3:2</span></div>
+      </div>
+      <section class="online-panel" aria-labelledby="online-title">
+        <div class="online-heading"><div><span class="eyebrow">ARKADAŞLARLA AYNI MASADA</span><h2 id="online-title">Akşamın planını yap.</h2></div><span id="connection" class="connection">Online için bir masa seç</span></div>
+        <div class="join-grid"><label class="field">Masadaki adın<input id="player-name" maxlength="20" autocomplete="nickname" placeholder="Bir isim seç" value="Misafir"></label><button id="create" class="button ivory">Masa kur <span>＋</span></button><button id="quick" class="button glass">Açık masa bul <span>↗</span></button><div class="code-join"><label class="field">Davet kodun var mı?<input id="room-code" maxlength="6" autocomplete="off" spellcheck="false" placeholder="ABC234" aria-label="Masa kodu"></label><button id="join" class="icon join-arrow" aria-label="Kodla masaya katıl">↗</button></div></div>
+        <div class="rooms-heading"><span>Açık masalar</span><button id="refresh" class="text-button">Yenile ↻</button></div><div id="rooms" class="room-list"><p>Masaları görmek için “Yenile”ye dokun. İlk masayı sen de açabilirsin.</p></div>
+      </section>
+      <footer class="home-footer"><span>01 / KARTINI SEÇ</span><span>02 / 21’E YAKLAŞ</span><span>03 / AKŞAMI PAYLAŞ</span></footer>
+    </section>
+    <section id="table" hidden>
+      <div class="table-top"><div><span id="mode-label" class="eyebrow">TEK KİŞİLİK MASA</span><h1>Royal Night <small id="round-label">Tur 1</small></h1></div><div class="table-tools"><button id="invite" class="button glass small" hidden>Davet et ↗</button><button id="leave" class="text-button">Masadan ayrıl ↗</button></div></div>
+      <div class="play-layout">
+        <div class="table-shell">
+          <div class="table-rim"><div class="dealer-heading"><span>DAĞITICI</span><b id="dealer-total">—</b></div><div id="dealer" class="cards dealer-cards"></div><div class="table-brand" aria-hidden="true"><span>ROYAL NIGHT</span><strong>BLACKJACK</strong><small>3:2 ÖDER · DAĞITICI 17’DE DURUR</small></div><div class="turn-message"><span id="turn-dot"></span><p id="status" role="status" aria-live="polite">Puanını seç, masaya otur.</p><b id="clock"></b></div><div id="players" class="seats"></div></div>
+          <div class="action-dock"><div id="betting" class="betting"><label class="field">Tur puanın<select id="stake"><option value="10">10</option><option value="20">20</option><option value="50" selected>50</option><option value="100">100</option><option value="200">200</option><option value="500">500</option></select></label><button id="ready" class="button glass">Hazırım</button><button id="deal" class="button gold">Kartları dağıt ↗</button></div><div id="actions" class="actions" hidden><button class="button gold" id="hit">Kart çek <kbd>H</kbd></button><button class="button ivory" id="stand">Dur <kbd>S</kbd></button><button class="button glass" id="double">İkiye katla <kbd>D</kbd></button><button class="button glass" id="split">Eli böl <kbd>P</kbd></button><button class="text-button" id="surrender">Teslim ol</button></div><div id="after-round" class="after-round" hidden><p id="result-copy"></p><button id="next" class="button gold">Yeni tur ↗</button></div><button id="topup" class="text-button" hidden>1000 sanal puanla yeniden başla</button></div>
+        </div>
+        <aside class="session-panel"><div class="session-title"><span>BU AKŞAM</span><span>♠</span></div><div class="bank"><span>Oyun puanın</span><strong id="bank">1.000<small>puan</small></strong><p id="session-score">Masaya hoş geldin.</p></div><div class="session-rule"></div><div class="session-metric"><span>Tamamlanan tur</span><strong id="rounds">0</strong></div><div class="session-metric"><span>Kazandığın tur</span><strong id="wins">0</strong></div><details id="coach" class="coach"><summary>Bir ipucu al <span>↗</span></summary><p id="hint">Önce kartlar dağıtılsın.</p><small>İpuçları öğreticidir; sonucu garanti etmez.</small></details><div id="reactions" class="reactions" hidden><button data-reaction="wave" aria-label="Selam ver">👋</button><button data-reaction="clap" aria-label="Alkışla">👏</button><button data-reaction="luck" aria-label="Şans dile">🍀</button><button data-reaction="wow" aria-label="Şaşır">😮</button></div><p class="micro session-note">Yalnız sanal puan.<br>Gerçek para veya ödül içermez.</p><span id="room-label" class="room-label"></span></aside>
+      </div>
+      <section class="history-section"><div class="rooms-heading"><h2>Gecenin notları</h2><span>Son 8 tur</span></div><ol id="history" class="history"><li>İlk tur tamamlandığında burada göreceksin.</li></ol></section>
+    </section>
+  </main>
+  <footer class="fine-print">KUTARYA / ROYAL NIGHT 2.0 <span>Online masalar geçicidir · 45 dakika · Kopmada 30 saniye dönüş</span></footer>
+</div>
+<dialog id="help-dialog"><button class="dialog-close icon" data-close aria-label="Kapat">×</button><span class="eyebrow">MASA REHBERİ</span><h2>21’e yaklaş.</h2><p>21’i geçmeden dağıtıcıdan yüksek el yap. As 1 veya 11, resimli kartlar 10 sayılır. Dağıtıcı yumuşak 17 dahil 17’de durur; dört deste kullanılır.</p><dl class="rules"><dt>Kart çek / Dur</dt><dd>Bir kart al veya elini koru. Sıran için 25 saniyen var; süre dolunca otomatik durulur.</dd><dt>Blackjack</dt><dd>İlk iki kartta 21, 3:2 öder. Dağıtıcı da Blackjack ise beraberlik.</dd><dt>İkiye katla</dt><dd>İlk iki kartta aynı puanı ekle, bir kart al ve dur. Bölme sonrası da kullanılabilir.</dd><dt>Eli böl</dt><dd>Eşit değerli iki kartı iki ele ayır. En fazla iki el; bölünmüş aslara birer kart. Bölünmüş 21 normal eldir.</dd><dt>Teslim ol</dt><dd>İlk iki kartta, bölmeden önce vazgeç; tur puanının yarısı döner.</dd><dt>Arkadaşlarla</dt><dd>2–5 kişi aynı dağıtıcıya karşı. Herkes hazır olur, masa sahibi başlatır. Herkesin eli ve puanı ayrıdır; oyuncular birbirine para aktarmaz.</dd><dt>Günün 5 turu</dt><dd>Türkiye tarihine göre aynı karıştırma dizisiyle beş tur. En iyi sonuç yalnız bu tarayıcıda saklanır; herkese açık sıralama yoktur.</dd></dl><p class="micro">H kart çek · S dur · D ikiye katla · P eli böl. Korumalı site alanında kalıcı kayıt/clipboard kısıtlanabilir; oyun sürer. Günlük kayıt için ayrı sekmede açabilirsin.</p><button class="button gold" data-close>Anladım, masaya dön ↗</button></dialog>
+<dialog id="create-dialog"><button class="dialog-close icon" data-close aria-label="Kapat">×</button><span class="eyebrow">BİR SANDALYE DE ARKADAŞINA</span><h2>Senin masan.</h2><p>İsim, kod, birkaç kart. Hesap açmak gerekmez.</p><label class="field">Masa kapasitesi<select id="capacity"><option value="2">2 kişi · Karşılıklı</option><option value="3">3 kişi</option><option value="4">4 kişi</option><option value="5" selected>5 kişi · Kalabalık masa</option></select></label><label class="check-field"><input id="public-room" type="checkbox"> Açık masa listesinde göster</label><button class="button gold" id="create-submit">Masayı kur ↗</button><p class="micro">Kapalı masaya kodu bilen katılabilir. Odalar ve puanlar geçicidir. Servis yenilenince masa kapanabilir.</p></dialog>
+<dialog id="invite-dialog"><button class="dialog-close icon" data-close aria-label="Kapat">×</button><span class="eyebrow">ARKADAŞINI ÇAĞIR</span><h2>Masada yer var.</h2><label class="field">Masa kodu<input id="invite-code" readonly></label><label class="field">Davet bağlantısı<input id="invite-link" readonly></label><button id="copy-invite" class="button gold">Bağlantıyı kopyala ↗</button><p class="micro">Kopyalama kapalıysa bağlantıyı seçip elle kopyalayabilirsin.</p></dialog>
+<dialog id="leave-dialog"><span class="eyebrow">TUR DEVAM EDİYOR</span><h2>Masadan ayrıl?</h2><p>Bu turdaki elin otomatik durur. Çevrimiçi masada puanların oturumla birlikte bırakılır.</p><div class="home-actions"><button class="button glass" data-close>Masada kal</button><button id="leave-confirm" class="button gold">Ayrıl</button></div></dialog>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+// @blackjack-core
+// @blackjack-client
+</script>
+</body></html>

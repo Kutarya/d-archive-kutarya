@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { cloudGet, projectId } from './firebase-cloud.mjs';
+import { out, version } from './roulette-paths.mjs';
+const stage = process.argv[2]; assert(['runtime', 'final'].includes(stage));
+const response = await cloudGet(`https://firebasehosting.googleapis.com/v1beta1/sites/${projectId}/releases?pageSize=2`), release = response.releases.find(r => r.type === 'DEPLOY');
+const frozen = JSON.parse(await readFile(`${out}/frozen.json`, 'utf8')), hash = b => createHash('sha256').update(b).digest('hex');
+for (const [file, sha] of Object.entries(frozen.sourceHashes)) if (file !== 'roulette-server/server.mjs') assert.equal(hash(await readFile(file)), sha, file);
+const receipt = { at: new Date().toISOString(), stage, version, projectId, hostingVersion: release.version.name, package: frozen.package, service: JSON.parse(await readFile(`${out}/service.json`, 'utf8')), originalFrozenSources: frozen.sourceHashes, gatewayFix: { reason: 'Hızlı geri sayımda kopan oda sahibinin yerine bağlı oyuncu atanır; oda kapasitesi tam sayıya sınırlandırılır.', originalServerSha: frozen.sourceHashes['roulette-server/server.mjs'], serverSha: hash(await readFile('roulette-server/server.mjs')), lobbySha: hash(await readFile('roulette-server/lobby.mjs')), rulesTests: JSON.parse(await readFile(`${out}/rules-acceptance.json`, 'utf8')).tests, clientPackageUnchanged: true } };
+await writeFile(`${out}/${stage === 'runtime' ? 'runtime-release' : 'release-receipt'}.json`, JSON.stringify(receipt, null, 2), { flag: 'wx' }); console.log(JSON.stringify({ stage, hostingVersion: receipt.hostingVersion }));

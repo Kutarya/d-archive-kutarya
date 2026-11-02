@@ -1,0 +1,33 @@
+KUTARYA BLOK DİYARI — 0.1.0
+
+ZIP'i çıkar, index.html dosyasını güncel bir tarayıcıda aç.
+Ek kurulum, sunucu, internet veya harici oyun motoru gerekmez.
+WebGL ve tarayıcı donanım hızlandırması gereklidir.
+
+Yeni dünya oluştur: ad, tohum ve Hayatta kalma/Yaratıcı modunu seç.
+160 x 160 blok, 64 katman: sonlu, tek oyunculu dünya.
+WASD hareket, Space zıpla/yüz, Shift koş, sol tık kaz/saldır, sağ tık yerleştir.
+1-9 hızlı yuva, E çanta/üretim, F kullan, R yemek, M hedefler, Esc menü.
+Yaratıcı: V uçuşu aç/kapat, Space yüksel, Q alçal.
+Fare kilidi çalışmazsa basılı tutup sürükleyerek bakabilirsin.
+Dokunmatik düğmeler Ayarlar'da açılır; fiziksel telefon performansı ölçülmedi.
+
+Başlangıç kampında üretim tezgâhı, yatak ve sandık vardır.
+Kütük -> tahta/çubuk -> tahta kazma -> taş kazma -> fırın/demir -> demir kazma.
+Fırın kömür tüketir. Tohum toprak/çimen üstünde 80 oyun saniyesinde büyür.
+Gece yaratıklardan korun; yatakla sabaha geç. Ölünce eşyaların korunur.
+Hedef: harabe işaret kulesini 5 demir külçesi ve 3 kristalle etkinleştir.
+Yaratıcıda sınırsız katalogdan blok/eşya alabilir, uçabilirsin.
+
+Kaydet/otomatik kayıt tarayıcı yerel deposunu kullanır. file:// depolama davranışı
+tarayıcıya göre değişebilir. Menü -> Kaydı indir ile JSON yedeği al.
+Ana menü -> Kaydı içe aktar ile aynı tohum, oyuncu ve değişiklikleri geri yükle.
+Yeni dünya mevcut tarayıcı kaydının yerine geçer; eski kaydı önce indir.
+Site içindeki korumalı iframe otomatik kaydı kısıtlar; JSON yedek kullan.
+
+Başlangıç sürümü: sonsuz dünya, çevrimiçi çok oyunculu, redstone, resmi Minecraft
+blokları/dokuları veya Mojang içeriği bulunmaz. Özgün Kutarya voxel oyunudur.
+Dokular ve sesler kodla üretilir. Tam mod/gece/cihaz performans kabulü ayrıca yapılır.
+
+İletişim: kutaryaai@gmail.com
+Kutarya — Tüm hakları saklıdır.

@@ -1,0 +1,40 @@
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      { "source": "/ara", "destination": "/index.html" },
+      { "source": "/makaleler", "destination": "/index.html" },
+      { "source": "/kesfet", "destination": "/index.html" },
+      { "source": "/yayin-ilkeleri", "destination": "/index.html" },
+      { "source": "/diller", "destination": "/index.html" },
+      { "source": "/alanlar", "destination": "/index.html" },
+      { "source": "/deneme", "destination": "/index.html" },
+      { "source": "/ornekler", "destination": "/index.html" },
+      { "source": "/hatalar", "destination": "/index.html" },
+      { "source": "/sistemler", "destination": "/index.html" },
+      { "source": "/projeler", "destination": "/index.html" },
+      { "source": "/dil/**", "destination": "/index.html" },
+      { "source": "/alan/**", "destination": "/index.html" },
+      { "source": "/konu/**", "destination": "/index.html" },
+      { "source": "/hatalar/**", "destination": "/index.html" },
+      { "source": "/sistemler/**", "destination": "/index.html" },
+      { "source": "/projeler/**", "destination": "/index.html" }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public,max-age=31536000,immutable" }
+        ]
+      },
+      {
+        "source": "**",
+        "headers": [
+          { "key": "X-Content-Type-Options", "value": "nosniff" },
+          { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        ]
+      }
+    ]
+  }
+}

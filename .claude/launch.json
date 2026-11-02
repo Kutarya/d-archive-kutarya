@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "kutarya-client",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "KutaryaAIWeb", "run", "dev:client"],
+      "port": 5173
+    },
+    {
+      "name": "kutarya-chatui",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["KutaryaChatUI/dev-server.py", "8931"],
+      "port": 8931
+    }
+  ]
+}

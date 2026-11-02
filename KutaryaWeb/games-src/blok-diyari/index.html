@@ -1,0 +1,3365 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Kutarya Blok Diyarı</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #172b2b;
+        color: #f5f4e6;
+        font:
+          14px system-ui,
+          sans-serif;
+      }
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 3px solid #d8de8c;
+        outline-offset: 3px;
+      }
+      #view {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        touch-action: none;
+      }
+      button {
+        color: inherit;
+        background: #314b43;
+        border: 1px solid #688576;
+        border-radius: 8px;
+        padding: 11px 16px;
+        transition: background 0.15s;
+      }
+      button:hover {
+        background: #486754;
+      }
+      .primary {
+        background: #c6d59a;
+        color: #172b23;
+        border-color: #e1e7bb;
+        font-weight: 750;
+      }
+      .primary:hover {
+        background: #e1e9b8;
+      }
+      .ghost {
+        background: #203d36;
+      }
+      .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(90deg, #102d30eb, #17383094);
+        padding: 24px;
+        overflow: auto;
+        z-index: 10;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .card {
+        background: #1a302ff2;
+        border: 1px solid #73877866;
+        border-radius: 18px;
+        padding: 25px;
+        box-shadow: 0 25px 90px #07191766;
+        width: min(580px, 100%);
+        max-height: 100%;
+        overflow: auto;
+      }
+      .eyebrow {
+        letter-spacing: 0.23em;
+        color: #c2d68c;
+        font-size: 11px;
+        font-weight: 700;
+        margin: 0 0 12px;
+      }
+      .brand {
+        font:
+          750 clamp(30px, 6vw, 68px)/0.95 Georgia,
+          serif;
+        letter-spacing: -0.03em;
+        margin: 0 0 20px;
+      }
+      .brand span {
+        color: #cfdf9f;
+      }
+      p {
+        line-height: 1.65;
+        color: #c3d4cb;
+      }
+      h2 {
+        font:
+          700 28px Georgia,
+          serif;
+        margin: 6px 0 18px;
+      }
+      h3 {
+        font-size: 15px;
+      }
+      .menu-layout {
+        width: min(1000px, 100%);
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 45px;
+        align-items: center;
+      }
+      .menu-copy {
+        max-width: 530px;
+      }
+      .menu-copy p {
+        max-width: 430px;
+      }
+      .menu-actions {
+        display: grid;
+        gap: 10px;
+      }
+      .menu-actions button {
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .menu-actions small {
+        opacity: 0.65;
+      }
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        font-size: 11px;
+        padding: 7px 10px;
+        border: 1px solid #bed09a55;
+        border-radius: 999px;
+        color: #dbe7c8;
+      }
+      .footer-note {
+        font-size: 11px;
+        opacity: 0.7;
+        margin-top: 20px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .row.spread {
+        justify-content: space-between;
+      }
+      .fields {
+        display: grid;
+        gap: 14px;
+        margin: 18px 0;
+      }
+      label {
+        display: grid;
+        gap: 7px;
+        color: #d6dfc9;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 11px;
+        border: 1px solid #57786a;
+        background: #142b29;
+        color: #eef1d9;
+        border-radius: 7px;
+      }
+      input[type="checkbox"] {
+        width: auto;
+      }
+      .help-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .help-grid div {
+        padding: 10px;
+        background: #293f35;
+        border-radius: 7px;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      kbd {
+        background: #536955;
+        color: white;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-size: 11px;
+      }
+      #hud {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 3;
+      }
+      #topline {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 14px;
+        gap: 8px;
+      }
+      .hud-panel {
+        background: #122723bc;
+        backdrop-filter: blur(5px);
+        border: 1px solid #acc69b3b;
+        border-radius: 9px;
+        padding: 10px 13px;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      #world-label {
+        font-weight: 750;
+        color: #d5e7b9;
+      }
+      #vitals {
+        display: flex;
+        gap: 15px;
+        font-weight: 600;
+      }
+      #vitals span {
+        white-space: nowrap;
+      }
+      #map {
+        width: 104px;
+        height: 104px;
+        background: #192e28;
+        border-radius: 8px;
+        border: 1px solid #d0dabb55;
+      }
+      #hud-buttons {
+        display: flex;
+        gap: 6px;
+        pointer-events: auto;
+        margin-top: 6px;
+      }
+      #hud-buttons button {
+        font-size: 11px;
+        padding: 7px;
+      }
+      #crosshair {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        font: 25px/1 monospace;
+        text-shadow: 0 2px 3px #142b29;
+        transform: translate(-50%, -50%);
+      }
+      #target-label {
+        position: absolute;
+        top: calc(50% + 28px);
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 11px;
+        background: #152b27b3;
+        padding: 4px 8px;
+        border-radius: 6px;
+        text-align: center;
+        white-space: nowrap;
+      }
+      #mine-progress {
+        position: absolute;
+        top: calc(50% + 17px);
+        left: calc(50% - 25px);
+        width: 50px;
+        height: 3px;
+        appearance: none;
+      }
+      #mine-progress::-webkit-progress-value {
+        background: #d6e6a5;
+      }
+      #mine-progress::-webkit-progress-bar {
+        background: #203d32;
+      }
+      #bottom {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(96%, 590px);
+        text-align: center;
+      }
+      #selected-label {
+        font-size: 12px;
+        text-shadow: 0 1px 4px black;
+        margin-bottom: 8px;
+      }
+      #hotbar {
+        display: flex;
+        gap: 4px;
+        justify-content: center;
+        pointer-events: auto;
+      }
+      .slot {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #152c28ce;
+        border: 1px solid #91a88a78;
+        width: 54px;
+        height: 55px;
+        padding: 4px;
+        border-radius: 7px;
+      }
+      .slot.selected {
+        border: 2px solid #e4e9b3;
+        background: #577653ce;
+      }
+      .slot .tile {
+        width: 25px;
+        height: 25px;
+        background: var(--c);
+        border: 2px solid #ffffff28;
+        box-shadow: inset -5px -5px #12281a25;
+        transform: rotate(-5deg);
+      }
+      .slot .tool {
+        border-radius: 40% 0 40% 0;
+        transform: rotate(-35deg);
+        width: 9px;
+        height: 30px;
+      }
+      .slot b {
+        position: absolute;
+        right: 4px;
+        bottom: 3px;
+        font-size: 10px;
+        color: #f5f7e1;
+      }
+      .slot small {
+        position: absolute;
+        left: 4px;
+        top: 2px;
+        font-size: 9px;
+        opacity: 0.65;
+      }
+      .slot em {
+        position: absolute;
+        left: 5px;
+        bottom: 3px;
+        font-size: 8px;
+        font-style: normal;
+      }
+      #hint {
+        font-size: 10px;
+        color: #e1e5ca;
+        margin-top: 7px;
+        text-shadow: 0 1px 3px black;
+      }
+      #toast {
+        position: absolute;
+        left: 50%;
+        top: 23%;
+        transform: translateX(-50%);
+        padding: 12px 18px;
+        border-radius: 9px;
+        background: #1b3d2ceb;
+        border: 1px solid #c0d59c;
+        color: #e9f4ce;
+        max-width: 88%;
+        text-align: center;
+        z-index: 20;
+        pointer-events: none;
+        font-size: 12px;
+      }
+      .inventory-card {
+        width: min(900px, 100%);
+      }
+      .inventory-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+      .inventory-grid {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        gap: 4px;
+      }
+      .inventory-grid .slot {
+        width: 100%;
+        height: 48px;
+      }
+      .recipe-list {
+        display: grid;
+        gap: 7px;
+        max-height: 300px;
+        overflow: auto;
+        padding: 3px;
+      }
+      .recipe {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+      }
+      .recipe span {
+        display: grid;
+        gap: 3px;
+      }
+      .recipe small {
+        font-size: 10px;
+        color: #b7cab7;
+      }
+      .recipe button {
+        font-size: 11px;
+        padding: 8px;
+      }
+      .item-info {
+        min-height: 45px;
+        background: #29473b;
+        padding: 10px;
+        margin: 12px 0;
+        border-radius: 6px;
+        font-size: 12px;
+      }
+      .quest {
+        border-left: 2px solid #839c72;
+        padding: 10px 14px;
+        margin: 10px 0;
+        background: #2a423633;
+        font-size: 12px;
+      }
+      .quest.done {
+        border-color: #c7df97;
+      }
+      .quest strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+      #touch-controls {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .touch-group {
+        position: absolute;
+        bottom: 105px;
+        display: grid;
+        grid-template-columns: repeat(3, 42px);
+        gap: 4px;
+        pointer-events: auto;
+      }
+      .touch-group.move {
+        left: 14px;
+      }
+      .touch-group.act {
+        right: 14px;
+      }
+      .touch-group button {
+        padding: 9px 0;
+        touch-action: none;
+        background: #14332ab5;
+        font-size: 12px;
+      }
+      .touch-group .wide {
+        grid-column: span 2;
+      }
+      #damage {
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 80px #c9493677;
+        opacity: 0;
+        pointer-events: none;
+      }
+      #loadingbar {
+        height: 5px;
+        background: #35513f;
+        margin: 20px 0;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      #loadingbar div {
+        height: 100%;
+        background: #d1de9d;
+        width: 0;
+      }
+      #status-note {
+        font-size: 11px;
+        line-height: 1.6;
+        color: #d5c696;
+      }
+      #confirm {
+        font-size: 12px;
+      }
+      #death .card {
+        text-align: center;
+      }
+      @media (max-width: 760px) {
+        .menu-layout {
+          grid-template-columns: 1fr;
+          gap: 18px;
+          max-width: 520px;
+        }
+        .menu-copy p {
+          margin: 10px 0;
+        }
+        .brand {
+          font-size: 44px;
+          margin-bottom: 10px;
+        }
+        .overlay {
+          padding: 14px;
+        }
+        .card {
+          padding: 18px;
+        }
+        .menu-actions {
+          grid-template-columns: 1fr 1fr;
+        }
+        .menu-actions .primary {
+          grid-column: span 2;
+        }
+        .menu-actions button {
+          font-size: 12px;
+          padding: 11px;
+        }
+        .menu-actions small {
+          display: none;
+        }
+        .inventory-layout {
+          grid-template-columns: 1fr;
+        }
+        .recipe-list {
+          max-height: 180px;
+        }
+        .help-grid {
+          gap: 5px;
+        }
+        #topline {
+          padding: 8px;
+        }
+        .hud-panel {
+          padding: 7px;
+          font-size: 10px;
+        }
+        #map {
+          width: 75px;
+          height: 75px;
+        }
+        .slot {
+          height: 45px;
+          width: 45px;
+        }
+        .slot .tile {
+          width: 21px;
+          height: 21px;
+        }
+        #hint {
+          display: none;
+        }
+        #vitals {
+          gap: 8px;
+        }
+        .chips {
+          gap: 5px;
+        }
+        .chip {
+          font-size: 10px;
+        }
+        #hud-buttons button {
+          padding: 5px;
+          font-size: 10px;
+        }
+      }
+      @media (max-height: 520px) {
+        .brand {
+          font-size: 36px;
+        }
+        .menu-copy p {
+          font-size: 12px;
+        }
+        .chips {
+          display: none;
+        }
+        .menu-layout {
+          gap: 12px;
+        }
+        .menu-actions {
+          gap: 6px;
+        }
+        .menu-actions button {
+          padding: 8px;
+        }
+        .footer-note {
+          margin-top: 10px;
+        }
+        .card {
+          padding: 16px;
+        }
+        .help-grid {
+          font-size: 11px;
+        }
+        .overlay {
+          align-items: flex-start;
+        }
+        #map {
+          height: 65px;
+          width: 65px;
+        }
+        #bottom {
+          bottom: 7px;
+        }
+        .slot {
+          height: 42px;
+        }
+        .touch-group {
+          bottom: 78px;
+        }
+        .inventory-layout {
+          gap: 10px;
+        }
+        .recipe-list {
+          max-height: 140px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas
+      id="view"
+      aria-label="Blok Diyarı üç boyutlu oyun dünyası"
+      tabindex="0"
+    ></canvas>
+    <div id="hud" class="hidden">
+      <div id="topline">
+        <div class="hud-panel">
+          <div id="world-label"></div>
+          <div id="location"></div>
+          <div id="vitals"></div>
+          <div id="clock"></div>
+        </div>
+        <div>
+          <canvas
+            id="map"
+            width="104"
+            height="104"
+            aria-label="Dünya haritası"
+          ></canvas>
+          <div id="hud-buttons">
+            <button id="bag-btn">Çanta</button
+            ><button id="quest-btn">Hedefler</button
+            ><button id="pause-btn">Menü</button>
+          </div>
+        </div>
+      </div>
+      <div id="crosshair">+</div>
+      <div id="target-label"></div>
+      <progress id="mine-progress" max="1" value="0"></progress>
+      <div id="bottom">
+        <div id="selected-label"></div>
+        <div id="hotbar"></div>
+        <div id="hint">
+          WASD hareket · Sol tık kaz · Sağ tık yerleştir · E çanta · F etkileşim
+          · Esc menü
+        </div>
+      </div>
+      <div id="touch-controls" class="hidden">
+        <div class="touch-group move">
+          <span></span><button data-key="KeyW" aria-label="İleri">↑</button
+          ><span></span><button data-key="KeyA" aria-label="Sola">←</button
+          ><button data-key="KeyS" aria-label="Geri">↓</button
+          ><button data-key="KeyD" aria-label="Sağa">→</button
+          ><button data-key="ShiftLeft" class="wide">Koş</button
+          ><button data-key="Space">Zıpla</button>
+        </div>
+        <div class="touch-group act">
+          <button id="touch-mine">Kaz</button
+          ><button id="touch-place" class="wide">Yerleştir</button
+          ><button id="touch-use" class="wide">Kullan / F</button
+          ><button data-key="KeyQ">Uç ↓</button>
+        </div>
+      </div>
+      <div id="damage"></div>
+    </div>
+    <div id="menu" class="overlay">
+      <div class="menu-layout">
+        <div class="menu-copy">
+          <p class="eyebrow">KUTARYA · ÖZGÜR BİR DÜNYA</p>
+          <h1 class="brand">Blok<br /><span>Diyarı.</span></h1>
+          <p>
+            Bir kıyıya uyan. İlk barınağını kur, derinlere in ve unutulmuş
+            kulenin ışığını yeniden yak.
+          </p>
+          <div class="chips">
+            <span class="chip">Tohumlu dünya</span
+            ><span class="chip">Üretim & keşif</span
+            ><span class="chip">Çevrimdışı</span>
+          </div>
+          <p class="footer-note">
+            Özgün voxel macerası · 0.1.0<br />Minecraft’tan ilham alan bağımsız
+            bir Kutarya oyunu.
+          </p>
+        </div>
+        <div class="card">
+          <div class="menu-actions">
+            <button id="continue-btn" class="primary">
+              Dünyama devam et <small>→</small></button
+            ><button id="new-btn" class="primary">
+              Yeni dünya oluştur <small>+</small></button
+            ><button id="import-menu">
+              Kaydı içe aktar <small>JSON</small></button
+            ><button id="settings-menu">
+              Ayarlar <small>Görüntü & ses</small></button
+            ><button id="help-menu">
+              Nasıl oynanır? <small>Kontroller</small>
+            </button>
+          </div>
+          <p id="status-note"></p>
+        </div>
+      </div>
+    </div>
+    <div id="new-world" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">YENİ BİR BAŞLANGIÇ</p>
+        <h2>Dünyanı seç.</h2>
+        <div class="fields">
+          <label
+            >Dünya adı<input
+              id="world-name"
+              maxlength="40"
+              value="Benim Blok Diyarı’m" /></label
+          ><label
+            >Dünya tohumu<input
+              id="world-seed"
+              maxlength="40"
+              value="kutarya-vadi"
+              placeholder="Aynı tohum, aynı dünya" /></label
+          ><label
+            >Oyun modu<select id="world-mode">
+              <option value="survival">
+                Hayatta kalma — topla, üret, keşfet
+              </option>
+              <option value="creative">Yaratıcı — sınırsız blok, uçuş</option>
+            </select></label
+          >
+        </div>
+        <p id="confirm">
+          160 × 160 blok, 64 katman. Başlangıç kampında tezgâh, yatak ve sandık
+          var. Yeni dünya mevcut kaydın yerine geçer; önce eski kaydı dışa
+          aktarabilirsin.
+        </p>
+        <div class="row">
+          <button id="create-btn" class="primary">Dünyayı oluştur</button
+          ><button data-back>Geri</button>
+        </div>
+      </div>
+    </div>
+    <div id="loading" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">ARAZİ HAZIRLANIYOR</p>
+        <h2>Bir dünya şekilleniyor.</h2>
+        <div id="loadingbar"><div></div></div>
+        <p id="loading-text">Vadiler, mağaralar ve ormanlar…</p>
+      </div>
+    </div>
+    <div id="pause" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">KISA BİR MOLA</p>
+        <h2 id="pause-title">Dünya bekleyebilir.</h2>
+        <div class="menu-actions">
+          <button id="resume-btn" class="primary">Oyuna dön</button
+          ><button id="save-btn">Kaydet</button
+          ><button id="export-btn">Kaydı indir</button
+          ><button id="settings-pause">Ayarlar</button
+          ><button id="help-pause">Nasıl oynanır?</button
+          ><button id="return-menu">Ana menü</button>
+        </div>
+        <p id="save-note"></p>
+      </div>
+    </div>
+    <div id="settings" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">OYUNU KENDİNE UYARLA</p>
+        <h2>Ayarlar</h2>
+        <div class="fields">
+          <label
+            >Görüş uzaklığı<select id="distance">
+              <option value="2">Yakın · düşük yük</option>
+              <option value="3" selected>Dengeli</option>
+              <option value="4">Uzak · daha fazla yük</option>
+            </select></label
+          ><label
+            >Çizim çözünürlüğü<select id="quality">
+              <option value="0">Tasarruf</option>
+              <option value="1" selected>Dengeli</option>
+              <option value="2">Yüksek</option>
+            </select></label
+          ><label
+            >Fare hassasiyeti<input
+              id="sensitivity"
+              type="range"
+              min="1"
+              max="10"
+              value="4" /></label
+          ><label class="row"
+            ><input type="checkbox" id="touch-toggle" /> Dokunmatik hareket
+            düğmeleri</label
+          ><label class="row"
+            ><input type="checkbox" id="sound-toggle" /> Oyun sesleri</label
+          >
+        </div>
+        <p>
+          Fare kilidi desteklenmiyorsa dünyada basılı tutup sürükleyerek bak.
+          Dokunmatik ekranda sağdaki boş alanda sürükle.
+        </p>
+        <button data-back class="primary">Tamam</button>
+      </div>
+    </div>
+    <div id="help" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">KÜÇÜK BİR REHBER</p>
+        <h2>İlk geceden önce.</h2>
+        <div class="help-grid">
+          <div>
+            <kbd>W A S D</kbd> hareket<br /><kbd>Space</kbd> zıpla / yüz / uç<br /><kbd
+              >Shift</kbd
+            >
+            koş · <kbd>Q</kbd> uçuşta alçal
+          </div>
+          <div>
+            Sol tık: kaz / saldır<br />Sağ tık: blok yerleştir<br /><kbd
+              >1–9</kbd
+            >
+            / tekerlek: hızlı yuva
+          </div>
+          <div>
+            <kbd>E</kbd> çanta / üretim<br /><kbd>F</kbd> sandık, tezgâh, fırın,
+            yatak, kule<br /><kbd>R</kbd> seçili yiyeceği ye
+          </div>
+          <div>
+            <kbd>Esc</kbd> duraklat<br /><kbd>M</kbd> hedefler<br /><kbd>V</kbd>
+            yaratıcıda uçuş
+          </div>
+        </div>
+        <p>
+          Kütükten tahta ve çubuk üret. Tezgâhın yakınına gelerek tahta kazma
+          yap; taş kazmayla demiri, demir kazmayla kristali çıkar. Fırında
+          kömürle demiri erit. Tohumu çimen/toprak üstüne yerleştir; buğday
+          büyüyünce hasat et.
+        </p>
+        <p>
+          Haritadaki altın kareler sandıkları, mint renkli yıldız kuleyi
+          gösterir. Kuleyi 5 demir külçesi ve 3 kristalle etkinleştir. Gece
+          gölgelerden korun; yatağı kullanarak sabaha geç. Ölürsen envanterin
+          korunarak kampta doğarsın.
+        </p>
+        <p>
+          Tek oyunculu ve sonlu dünya. Kalıcı kayıt için ayrı sekmede aç veya
+          JSON kaydını indir. Tam bir Minecraft sürümü değildir.
+        </p>
+        <button data-back class="primary">Anladım</button>
+      </div>
+    </div>
+    <div id="inventory" class="overlay hidden">
+      <div class="card inventory-card">
+        <div class="row spread">
+          <div>
+            <p class="eyebrow">TOPLA · ÜRET · İNŞA ET</p>
+            <h2>Çantan</h2>
+          </div>
+          <button id="close-bag">Oyuna dön · E</button>
+        </div>
+        <div class="inventory-layout">
+          <div>
+            <div id="inventory-grid" class="inventory-grid"></div>
+            <div id="item-info" class="item-info">
+              İki yuvaya sırayla tıklayarak yerlerini değiştir.
+            </div>
+            <div class="row">
+              <button id="eat-btn">Seçili yiyeceği ye</button
+              ><button id="creative-next" class="hidden">
+                Blok kataloğu →
+              </button>
+            </div>
+            <p id="inventory-note"></p>
+          </div>
+          <div>
+            <h3 id="station-label">El üretimi</h3>
+            <div id="recipes" class="recipe-list"></div>
+            <p id="smelting"></p>
+            <p>
+              Tezgâh ve fırın tarifleri ilgili bloğa 4 blok yakınken açılır. Bir
+              işlemi üretmek malzemeyi tüketir.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="quests" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">KEŞFE BİR YÖN VER</p>
+        <h2>Kayıp kulenin ışığı</h2>
+        <div id="quest-list"></div>
+        <p id="stats"></p>
+        <button id="close-quests" class="primary">Keşfe dön</button>
+      </div>
+    </div>
+    <div id="death" class="overlay hidden">
+      <div class="card">
+        <p class="eyebrow">YENİDEN DENE</p>
+        <h2>Kampa geri dön.</h2>
+        <p>
+          Envanterin korunur. Yeni bir barınak, biraz yemek ve daha iyi bir
+          kazma fark yaratabilir.
+        </p>
+        <button id="respawn-btn" class="primary">Kampta doğ</button>
+      </div>
+    </div>
+    <div id="toast" class="hidden" role="status"></div>
+    <input
+      id="import-file"
+      type="file"
+      accept=".json,application/json"
+      class="hidden"
+    />
+    <script>
+      // Blok Diyarı: dünya, envanter ve kayıt kuralları. Tarayıcıdan bağımsızdır.
+const SIZE = 160,
+  HEIGHT = 64,
+  SEA = 21;
+const BLOCKS = {
+  1: { name: "Çimen", color: "#6f9647", hard: 0.65 },
+  2: { name: "Toprak", color: "#896044", hard: 0.6 },
+  3: { name: "Taş", color: "#838b87", hard: 2, tier: 1 },
+  4: { name: "Kum", color: "#dac593", hard: 0.5 },
+  5: { name: "Su", color: "#438eae", hard: 0 },
+  6: { name: "Kütük", color: "#786046", hard: 1.3 },
+  7: { name: "Yaprak", color: "#46815a", hard: 0.25 },
+  8: { name: "Tahta", color: "#c39963", hard: 0.8 },
+  9: { name: "Kömür cevheri", color: "#536162", hard: 2, tier: 1, drop: 21 },
+  10: { name: "Demir cevheri", color: "#b39c83", hard: 2.5, tier: 2, drop: 22 },
+  11: { name: "Kristal cevheri", color: "#52d7c1", hard: 3, tier: 3, drop: 24 },
+  12: { name: "Kar", color: "#d6e8e2", hard: 0.7 },
+  13: { name: "Taş tuğla", color: "#6d807a", hard: 1.5, tier: 1 },
+  14: { name: "Cam", color: "#a7d9d4", hard: 0.3 },
+  15: { name: "Üretim tezgâhı", color: "#ae7751", hard: 1 },
+  16: { name: "Fırın", color: "#4e5b60", hard: 2, tier: 1 },
+  17: { name: "Meşale", color: "#f1bb55", hard: 0.1 },
+  18: { name: "Fide", color: "#70b85c", hard: 0.1, drop: 26 },
+  19: { name: "Olgun buğday", color: "#dfc366", hard: 0.1, drop: 27 },
+  20: { name: "Ana kaya", color: "#303d3b", hard: Infinity },
+  28: { name: "Yatak", color: "#b16c55", hard: 0.7 },
+  29: { name: "Harabe sandığı", color: "#9c794c", hard: 0.8 },
+  40: { name: "İşaret kulesi", color: "#76e1c0", hard: Infinity },
+};
+const ITEMS = {
+  ...BLOCKS,
+  21: { name: "Kömür", color: "#363e40" },
+  22: { name: "Ham demir", color: "#b99a80" },
+  23: { name: "Demir külçesi", color: "#bbc9c8" },
+  24: { name: "Kristal", color: "#55e5bf" },
+  25: { name: "Çubuk", color: "#ab895d" },
+  26: { name: "Tohum", color: "#8ec66c" },
+  27: { name: "Buğday", color: "#e0c474" },
+  30: { name: "Tahta kazma", color: "#b59770", tier: 1, durability: 65 },
+  31: { name: "Taş kazma", color: "#9baca6", tier: 2, durability: 140 },
+  32: { name: "Demir kazma", color: "#c4e2de", tier: 3, durability: 280 },
+  33: { name: "Taş kılıç", color: "#a6bcb3", damage: 6, durability: 130 },
+  34: { name: "Ekmek", color: "#d8a764", food: 7 },
+  35: { name: "Elma", color: "#df7366", food: 4 },
+  36: { name: "Pusula", color: "#a3d8d0" },
+};
+const RECIPES = [
+  {
+    id: "plank",
+    name: "4 tahta",
+    out: [8, 4],
+    costs: [[6, 1]],
+    station: "hand",
+  },
+  {
+    id: "stick",
+    name: "4 çubuk",
+    out: [25, 4],
+    costs: [[8, 2]],
+    station: "hand",
+  },
+  {
+    id: "bench",
+    name: "Üretim tezgâhı",
+    out: [15, 1],
+    costs: [[8, 4]],
+    station: "hand",
+  },
+  {
+    id: "woodpick",
+    name: "Tahta kazma",
+    out: [30, 1],
+    costs: [
+      [8, 3],
+      [25, 2],
+    ],
+    station: "bench",
+  },
+  {
+    id: "stonepick",
+    name: "Taş kazma",
+    out: [31, 1],
+    costs: [
+      [3, 3],
+      [25, 2],
+    ],
+    station: "bench",
+  },
+  {
+    id: "ironpick",
+    name: "Demir kazma",
+    out: [32, 1],
+    costs: [
+      [23, 3],
+      [25, 2],
+    ],
+    station: "bench",
+  },
+  {
+    id: "sword",
+    name: "Taş kılıç",
+    out: [33, 1],
+    costs: [
+      [3, 2],
+      [25, 1],
+    ],
+    station: "bench",
+  },
+  {
+    id: "furnace",
+    name: "Fırın",
+    out: [16, 1],
+    costs: [[3, 8]],
+    station: "bench",
+  },
+  {
+    id: "torch",
+    name: "4 meşale",
+    out: [17, 4],
+    costs: [
+      [21, 1],
+      [25, 1],
+    ],
+    station: "hand",
+  },
+  {
+    id: "iron",
+    name: "Demir erit",
+    out: [23, 1],
+    costs: [
+      [22, 1],
+      [21, 1],
+    ],
+    station: "furnace",
+    seconds: 6,
+  },
+  {
+    id: "glass",
+    name: "2 cam",
+    out: [14, 2],
+    costs: [
+      [4, 2],
+      [21, 1],
+    ],
+    station: "furnace",
+    seconds: 5,
+  },
+  {
+    id: "brick",
+    name: "4 taş tuğla",
+    out: [13, 4],
+    costs: [[3, 4]],
+    station: "bench",
+  },
+  {
+    id: "bread",
+    name: "Ekmek",
+    out: [34, 1],
+    costs: [[27, 3]],
+    station: "hand",
+  },
+  {
+    id: "bed",
+    name: "Yatak",
+    out: [28, 1],
+    costs: [
+      [8, 6],
+      [7, 8],
+    ],
+    station: "bench",
+  },
+  {
+    id: "compass",
+    name: "Pusula",
+    out: [36, 1],
+    costs: [
+      [23, 2],
+      [24, 1],
+    ],
+    station: "bench",
+  },
+];
+function hash(x, y, z, s = 1) {
+  let n =
+    Math.imul(x | 0, 374761393) ^
+    Math.imul(y | 0, 668265263) ^
+    Math.imul(z | 0, 2147483647) ^
+    Math.imul(s | 0, 1274126177);
+  n = Math.imul(n ^ (n >>> 13), 1274126177);
+  return ((n ^ (n >>> 16)) >>> 0) / 4294967296;
+}
+function seedNumber(text) {
+  let n = 2166136261;
+  for (const c of String(text)) n = Math.imul(n ^ c.charCodeAt(0), 16777619);
+  return n >>> 0;
+}
+function noise(x, z, scale, seed) {
+  x /= scale;
+  z /= scale;
+  const ix = Math.floor(x),
+    iz = Math.floor(z);
+  const f = (t) => t * t * (3 - 2 * t),
+    u = f(x - ix),
+    v = f(z - iz);
+  const a = hash(ix, 0, iz, seed),
+    b = hash(ix + 1, 0, iz, seed),
+    c = hash(ix, 0, iz + 1, seed),
+    d = hash(ix + 1, 0, iz + 1, seed);
+  return (a + (b - a) * u) * (1 - v) + (c + (d - c) * u) * v;
+}
+const index = (x, y, z) => (y * SIZE + z) * SIZE + x;
+function inside(x, y, z) {
+  return x >= 0 && z >= 0 && y >= 0 && x < SIZE && z < SIZE && y < HEIGHT;
+}
+function get(world, x, y, z) {
+  x = Math.floor(x);
+  y = Math.floor(y);
+  z = Math.floor(z);
+  return inside(x, y, z) ? world.blocks[index(x, y, z)] : y < 0 ? 20 : 0;
+}
+const solid = (id) =>
+  id > 0 && id !== 5 && id !== 17 && id !== 18 && id !== 19;
+function set(world, x, y, z, id, record = true) {
+  if (!inside(x, y, z) || !Number.isInteger(id) || !(id === 0 || BLOCKS[id]))
+    return false;
+  const i = index(x, y, z);
+  if (world.blocks[i] === id) return false;
+  world.blocks[i] = id;
+  if (record) world.edits.set(i, id);
+  world.dirty.add(`${x >> 4},${z >> 4}`);
+  for (const [dx, dz] of [
+    [-1, 0],
+    [1, 0],
+    [0, -1],
+    [0, 1],
+  ])
+    if (x >> 4 !== (x + dx) >> 4 || z >> 4 !== (z + dz) >> 4)
+      world.dirty.add(`${(x + dx) >> 4},${(z + dz) >> 4}`);
+  return true;
+}
+function surface(world, x, z) {
+  for (let y = HEIGHT - 1; y > 0; y--)
+    if (solid(get(world, x, y, z)) && get(world, x, y, z) !== 7) return y + 1;
+  return 1;
+}
+function terrain(x, z, seed) {
+  const region = noise(x, z, 55, seed + 91),
+    hills = noise(x, z, 35, seed),
+    detail = noise(x, z, 9, seed + 3);
+  let h = Math.floor(13 + hills * 26 + detail * 5);
+  const camp = Math.max(
+    SEA + 3,
+    Math.floor(
+      13 + noise(80, 80, 35, seed) * 26 + noise(80, 80, 9, seed + 3) * 5,
+    ),
+  );
+  const dist = Math.hypot(x - 80, z - 80);
+  if (dist < 10) h = camp;
+  else if (dist < 15)
+    h = Math.round((h * (dist - 10)) / 5 + (camp * (15 - dist)) / 5);
+  const biome =
+    dist < 15
+      ? "Yeşil ova"
+      : h > 38
+        ? "Kar zirveleri"
+        : region > 0.65
+          ? "Kum vadisi"
+          : region < 0.35
+            ? "Çam ormanı"
+            : "Yeşil ova";
+  return {
+    h,
+    biome,
+    top:
+      h <= SEA + 1 || biome === "Kum vadisi"
+        ? 4
+        : biome === "Kar zirveleri"
+          ? 12
+          : 1,
+  };
+}
+function* generate(seed) {
+  const w = {
+    seed,
+    blocks: new Uint8Array(SIZE * SIZE * HEIGHT),
+    edits: new Map(),
+    dirty: new Set(),
+    spawn: [80.5, terrain(80, 80, seed).h + 1, 80.5],
+    ruin: [112, 0, 100],
+    crops: new Map(),
+  };
+  const put = (x, y, z, id) => {
+    if (inside(x, y, z)) w.blocks[index(x, y, z)] = id;
+  };
+  for (let z = 0; z < SIZE; z++) {
+    for (let x = 0; x < SIZE; x++) {
+      const { h, top } = terrain(x, z, seed);
+      for (let y = 0; y <= Math.max(h, SEA); y++) {
+        let id =
+          y === 0
+            ? 20
+            : y > h
+              ? 5
+              : y === h
+                ? top
+                : y > h - 4
+                  ? top === 4
+                    ? 4
+                    : 2
+                  : 3;
+        if (id === 3 && y > 3 && y < h - 6) {
+          // Dalga tünelleri yüzeyin altında bağlanan mağara ağı oluşturur.
+          const cave =
+            Math.sin(x * 0.18 + (seed % 11)) +
+            Math.sin(z * 0.15) +
+            Math.sin(y * 0.48 + x * 0.08);
+          if (cave > 2.25) id = 0;
+          else {
+            const r = hash(x, y, z, seed);
+            if (r < 0.027) id = 9;
+            else if (r < 0.044 && y < 26) id = 10;
+            else if (r < 0.048 && y < 16) id = 11;
+          }
+        }
+        put(x, y, z, id);
+      }
+    }
+    if (z % 8 === 0) yield { progress: (z / SIZE) * 0.75 };
+  }
+  for (let z = 4; z < SIZE - 4; z++)
+    for (let x = 4; x < SIZE - 4; x++) {
+      const t = terrain(x, z, seed);
+      if (t.top !== 1 || t.h <= SEA + 1 || Math.hypot(x - 80, z - 80) < 13)
+        continue;
+      if (hash(x, 1, z, seed) > (t.biome === "Çam ormanı" ? 0.987 : 0.996)) {
+        const h = 4 + Math.floor(hash(x, 2, z, seed) * 3);
+        for (let y = 1; y <= h; y++) put(x, t.h + y, z, 6);
+        for (let dy = h - 2; dy <= h + 1; dy++)
+          for (let dz = -2; dz <= 2; dz++)
+            for (let dx = -2; dx <= 2; dx++)
+              if (
+                Math.abs(dx) + Math.abs(dz) < 4 &&
+                (!dx && !dz ? dy > h : true)
+              )
+                put(x + dx, t.h + dy, z + dz, 7);
+      }
+    }
+  // Başlangıç kampı ve keşfedilecek iki yapı tamamen bu oyuna aittir.
+  const sy = w.spawn[1];
+  put(83, sy, 80, 15);
+  put(83, sy, 82, 29);
+  put(78, sy, 83, 28);
+  const ry = Math.max(SEA + 2, terrain(112, 100, seed).h + 1);
+  w.ruin = [112, ry, 100];
+  for (let z = 96; z <= 104; z++)
+    for (let x = 108; x <= 116; x++) {
+      for (let y = ry; y < ry + 7; y++) put(x, y, z, 0);
+      put(x, ry - 1, z, 13);
+      if ((x === 108 || x === 116) && (z === 96 || z === 104))
+        for (let y = ry; y < ry + 5; y++) put(x, y, z, 13);
+    }
+  put(112, ry, 100, 40);
+  put(110, ry, 100, 29);
+  const cy = Math.max(SEA + 2, terrain(56, 65, seed).h + 1);
+  for (let z = 62; z <= 68; z++)
+    for (let x = 53; x <= 59; x++)
+      for (let y = cy - 1; y <= cy + 4; y++) {
+        let id = y === cy - 1 || y === cy + 4 ? 8 : 0;
+        if (
+          (x === 53 || x === 59 || z === 62 || z === 68) &&
+          y >= cy &&
+          y < cy + 4
+        )
+          id = 6;
+        if (x === 56 && z === 68 && y < cy + 2 && y >= cy) id = 0;
+        if ((x === 53 || x === 59) && z === 65 && y === cy + 2) id = 14;
+        put(x, y, z, id);
+      }
+  put(55, cy, 64, 16);
+  put(57, cy, 64, 29);
+  for (let z = 0; z < 10; z++)
+    for (let x = 0; x < 10; x++) w.dirty.add(`${x},${z}`);
+  yield { progress: 1, world: w };
+  return w;
+}
+const newInventory = () => Array.from({ length: 27 }, () => null);
+function addItem(inv, id, count = 1) {
+  if (!ITEMS[id] || !Number.isInteger(count) || count < 1) return false;
+  const copy = inv.map((s) => (s ? { ...s } : null)),
+    max = ITEMS[id].durability ? 1 : 64;
+  let left = count;
+  for (let i = 0; i < copy.length && left; i++)
+    if (copy[i]?.id === id && copy[i].count < max) {
+      const n = Math.min(left, max - copy[i].count);
+      copy[i].count += n;
+      left -= n;
+    }
+  for (let i = 0; i < copy.length && left; i++)
+    if (!copy[i]) {
+      const n = Math.min(left, max);
+      copy[i] = {
+        id,
+        count: n,
+        ...(ITEMS[id].durability ? { wear: ITEMS[id].durability } : {}),
+      };
+      left -= n;
+    }
+  if (left) return false;
+  inv.splice(0, inv.length, ...copy);
+  return true;
+}
+const countItem = (inv, id) =>
+  inv.reduce((n, s) => n + (s?.id === id ? s.count : 0), 0);
+function consume(inv, id, n = 1) {
+  if (countItem(inv, id) < n) return false;
+  for (let i = 0; i < inv.length && n; i++)
+    if (inv[i]?.id === id) {
+      const take = Math.min(n, inv[i].count);
+      inv[i].count -= take;
+      n -= take;
+      if (!inv[i].count) inv[i] = null;
+    }
+  return true;
+}
+function craft(inv, recipe, station = "hand", creative = false) {
+  if (recipe.station !== "hand" && recipe.station !== station)
+    return {
+      ok: false,
+      message:
+        "Gerekli istasyona yaklaş: " +
+        (recipe.station === "bench" ? "tezgâh" : "fırın"),
+    };
+  if (!creative && recipe.costs.some(([id, n]) => countItem(inv, id) < n))
+    return { ok: false, message: "Malzeme eksik." };
+  const copy = inv.map((s) => (s ? { ...s } : null));
+  if (!creative) for (const [id, n] of recipe.costs) consume(copy, id, n);
+  if (!addItem(copy, ...recipe.out))
+    return { ok: false, message: "Envanter dolu." };
+  inv.splice(0, inv.length, ...copy);
+  return { ok: true };
+}
+function raycast(world, origin, dir, max = 6) {
+  // Voxel DDA: ince sınır geçişlerinde komşu blok doğru bulunur.
+  let [x, y, z] = origin.map(Math.floor),
+    last = [x, y, z],
+    dist = 0;
+  const p = [x, y, z],
+    step = dir.map((v) => (v >= 0 ? 1 : -1)),
+    delta = dir.map((v) => (v ? Math.abs(1 / v) : Infinity));
+  const next = dir.map((v, i) =>
+    v ? (p[i] + (v >= 0 ? 1 : 0) - origin[i]) / v : Infinity,
+  );
+  while (dist <= max) {
+    const id = get(world, ...p);
+    if (id && id !== 5)
+      return { x: p[0], y: p[1], z: p[2], id, previous: last, distance: dist };
+    let a =
+      next[0] < next[1]
+        ? next[0] < next[2]
+          ? 0
+          : 2
+        : next[1] < next[2]
+          ? 1
+          : 2;
+    last = [...p];
+    dist = next[a];
+    p[a] += step[a];
+    next[a] += delta[a];
+  }
+  return null;
+}
+function collides(world, x, y, z) {
+  for (let xx = Math.floor(x - 0.29); xx <= Math.floor(x + 0.29); xx++)
+    for (let zz = Math.floor(z - 0.29); zz <= Math.floor(z + 0.29); zz++)
+      for (let yy = Math.floor(y + 0.02); yy <= Math.floor(y + 1.72); yy++)
+        if (solid(get(world, xx, yy, zz))) return true;
+  return false;
+}
+function validateSave(data) {
+  if (
+    !data ||
+    data.format !== "kutarya-blok-1" ||
+    !Number.isInteger(data.seed) ||
+    data.seed < 0 ||
+    data.seed > 4294967295 ||
+    !["survival", "creative"].includes(data.mode)
+  )
+    throw Error("Geçerli Blok Diyarı kaydı değil.");
+  if (
+    typeof data.name !== "string" ||
+    data.name.length > 40 ||
+    !Array.isArray(data.inventory) ||
+    data.inventory.length !== 27
+  )
+    throw Error("Kayıt alanları geçersiz.");
+  for (const s of data.inventory)
+    if (
+      s &&
+      (!ITEMS[s.id] ||
+        !Number.isInteger(s.count) ||
+        s.count < 1 ||
+        s.count > (ITEMS[s.id].durability ? 1 : 64) ||
+        (ITEMS[s.id].durability &&
+          (!Number.isFinite(s.wear) ||
+            s.wear < 1 ||
+            s.wear > ITEMS[s.id].durability)))
+    )
+      throw Error("Envanter geçersiz.");
+  if (!Array.isArray(data.edits) || data.edits.length > SIZE * SIZE * HEIGHT)
+    throw Error("Blok kayıtları geçersiz.");
+  for (const e of data.edits)
+    if (
+      !Array.isArray(e) ||
+      e.length !== 2 ||
+      !Number.isInteger(e[0]) ||
+      e[0] < 0 ||
+      e[0] >= SIZE * SIZE * HEIGHT ||
+      !Number.isInteger(e[1]) ||
+      !(e[1] === 0 || BLOCKS[e[1]])
+    )
+      throw Error("Blok verisi geçersiz.");
+  if (
+    !Array.isArray(data.position) ||
+    data.position.length !== 3 ||
+    data.position.some(
+      (v, i) =>
+        !Number.isFinite(v) || v < 0 || v > (i === 1 ? HEIGHT + 5 : SIZE - 1),
+    )
+  )
+    throw Error("Konum geçersiz.");
+  for (const k of ["time", "health", "hunger", "yaw", "pitch"])
+    if (!Number.isFinite(data[k])) throw Error("Oyuncu durumu geçersiz.");
+  if (
+    data.health < 0 ||
+    data.health > 20 ||
+    data.hunger < 0 ||
+    data.hunger > 20 ||
+    data.time < 0 ||
+    data.time > 1e7 ||
+    Math.abs(data.yaw) > 1e6 ||
+    Math.abs(data.pitch) > 1.56
+  )
+    throw Error("Oyuncu değerleri sınır dışında.");
+  if (
+    !data.stats ||
+    ["mined", "placed", "crafted", "kills", "days"].some(
+      (k) =>
+        !Number.isInteger(data.stats[k]) ||
+        data.stats[k] < 0 ||
+        data.stats[k] > 1e7,
+    )
+  )
+    throw Error("İlerleme geçersiz.");
+  if (typeof data.beacon !== "boolean") throw Error("Hedef kaydı geçersiz.");
+  if (
+    data.crops !== undefined &&
+    (!Array.isArray(data.crops) ||
+      data.crops.length > 10000 ||
+      data.crops.some(
+        (e) =>
+          !Array.isArray(e) ||
+          e.length !== 2 ||
+          !Number.isInteger(e[0]) ||
+          e[0] < 0 ||
+          e[0] >= SIZE * SIZE * HEIGHT ||
+          !Number.isFinite(e[1]) ||
+          e[1] < 0,
+      ))
+  )
+    throw Error("Tarım kaydı geçersiz.");
+  if (
+    data.smelt !== undefined &&
+    data.smelt !== null &&
+    (!Array.isArray(data.smelt.out) ||
+      !RECIPES.some(
+        (r) =>
+          r.seconds &&
+          r.out[0] === data.smelt.out[0] &&
+          r.out[1] === data.smelt.out[1],
+      ) ||
+      !Number.isFinite(data.smelt.left) ||
+      data.smelt.left < 0 ||
+      data.smelt.left > 6)
+  )
+    throw Error("Fırın kaydı geçersiz.");
+  return structuredClone(data);
+}
+
+    </script>
+    <script>
+      // Bağımsız WebGL çizimi; dokular koddan üretilir, ağdan varlık indirilmez.
+
+const faces = [
+  {
+    n: [1, 0, 0],
+    v: [
+      [1, 0, 1],
+      [1, 0, 0],
+      [1, 1, 0],
+      [1, 1, 1],
+    ],
+    s: 0.83,
+  },
+  {
+    n: [-1, 0, 0],
+    v: [
+      [0, 0, 0],
+      [0, 0, 1],
+      [0, 1, 1],
+      [0, 1, 0],
+    ],
+    s: 0.7,
+  },
+  {
+    n: [0, 1, 0],
+    v: [
+      [0, 1, 1],
+      [1, 1, 1],
+      [1, 1, 0],
+      [0, 1, 0],
+    ],
+    s: 1,
+  },
+  {
+    n: [0, -1, 0],
+    v: [
+      [0, 0, 0],
+      [1, 0, 0],
+      [1, 0, 1],
+      [0, 0, 1],
+    ],
+    s: 0.5,
+  },
+  {
+    n: [0, 0, 1],
+    v: [
+      [0, 0, 1],
+      [1, 0, 1],
+      [1, 1, 1],
+      [0, 1, 1],
+    ],
+    s: 0.9,
+  },
+  {
+    n: [0, 0, -1],
+    v: [
+      [1, 0, 0],
+      [0, 0, 0],
+      [0, 1, 0],
+      [1, 1, 0],
+    ],
+    s: 0.76,
+  },
+];
+function face(data, x, y, z, id, f) {
+  let tile = id;
+  if (id === 1 && f.n[1] === 0) tile = 41;
+  if (id === 1 && f.n[1] < 0) tile = 2;
+  if (id === 6 && f.n[1]) tile = 42;
+  const u = (tile % 8) / 8,
+    v = Math.floor(tile / 8) / 8,
+    eps = 0.001;
+  const uv = [
+    [u + eps, v + 0.125 - eps],
+    [u + 0.125 - eps, v + 0.125 - eps],
+    [u + 0.125 - eps, v + eps],
+    [u + eps, v + eps],
+  ];
+  for (const i of [0, 1, 2, 0, 2, 3])
+    data.push(
+      x + f.v[i][0],
+      y + f.v[i][1],
+      z + f.v[i][2],
+      ...uv[i],
+      id === 17 || id === 40 ? 1.4 : f.s,
+      id === 5 ? 0.68 : 1,
+    );
+}
+function matrix(eye, yaw, pitch, aspect) {
+  const f = [
+    Math.sin(yaw) * Math.cos(pitch),
+    Math.sin(pitch),
+    -Math.cos(yaw) * Math.cos(pitch),
+  ];
+  const s = [Math.cos(yaw), 0, Math.sin(yaw)],
+    u = [-s[2] * f[1], s[2] * f[0] - s[0] * f[2], s[0] * f[1]];
+  const dot = (a, b) => a.reduce((n, v, i) => n + v * b[i], 0);
+  const v = [
+    s[0],
+    u[0],
+    -f[0],
+    0,
+    s[1],
+    u[1],
+    -f[1],
+    0,
+    s[2],
+    u[2],
+    -f[2],
+    0,
+    -dot(s, eye),
+    -dot(u, eye),
+    dot(f, eye),
+    1,
+  ];
+  const t = 1 / Math.tan(Math.PI / 5.5),
+    near = 0.08,
+    far = 220;
+  const p = [
+    t / aspect,
+    0,
+    0,
+    0,
+    0,
+    t,
+    0,
+    0,
+    0,
+    0,
+    (far + near) / (near - far),
+    -1,
+    0,
+    0,
+    (2 * far * near) / (near - far),
+    0,
+  ];
+  const out = new Float32Array(16);
+  for (let c = 0; c < 4; c++)
+    for (let r = 0; r < 4; r++)
+      for (let k = 0; k < 4; k++) out[c * 4 + r] += p[k * 4 + r] * v[c * 4 + k];
+  return out;
+}
+class Renderer {
+  constructor(canvas) {
+    const gl = canvas.getContext("webgl", {
+      alpha: false,
+      antialias: false,
+      powerPreference: "high-performance",
+    });
+    if (!gl)
+      throw Error(
+        "WebGL açılamadı. Tarayıcıda donanım hızlandırmasını açıp tekrar dene.",
+      );
+    this.gl = gl;
+    this.canvas = canvas;
+    this.chunks = new Map();
+    this.distance = 3;
+    this.quality = 1;
+    this.drawn = 0;
+    const vs = `attribute vec3 aPos;attribute vec2 aUV;attribute float aShade;attribute float aAlpha;uniform mat4 uVP;uniform vec3 uOffset;uniform vec3 uScale;uniform vec3 uEye;varying vec2 vUV;varying float vShade;varying float vAlpha;varying float vDistance;void main(){vec3 p=aPos*uScale+uOffset;gl_Position=uVP*vec4(p,1.);vUV=aUV;vShade=aShade;vAlpha=aAlpha;vDistance=length(p-uEye);}`;
+    const fs = `precision mediump float;uniform sampler2D uTex;uniform vec3 uSky;uniform float uLight;uniform float uFog;uniform vec4 uColor;varying vec2 vUV;varying float vShade;varying float vAlpha;varying float vDistance;void main(){vec4 t=texture2D(uTex,vUV);vec3 c=t.rgb*vShade*max(uLight,.24);if(vShade>1.1)c=t.rgb;float a=vAlpha;if(uColor.a>0.){c=uColor.rgb;a=uColor.a;}float fog=smoothstep(uFog*.5,uFog,vDistance);gl_FragColor=vec4(mix(c,uSky,fog),a);}`;
+    const shader = (type, src) => {
+      const s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS))
+        throw Error(gl.getShaderInfoLog(s));
+      return s;
+    };
+    const p = gl.createProgram();
+    gl.attachShader(p, shader(gl.VERTEX_SHADER, vs));
+    gl.attachShader(p, shader(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS))
+      throw Error(gl.getProgramInfoLog(p));
+    gl.useProgram(p);
+    this.program = p;
+    this.a = {};
+    for (const n of ["Pos", "UV", "Shade", "Alpha"])
+      this.a[n] = gl.getAttribLocation(p, "a" + n);
+    this.u = {};
+    for (const n of [
+      "VP",
+      "Offset",
+      "Scale",
+      "Eye",
+      "Tex",
+      "Sky",
+      "Light",
+      "Fog",
+      "Color",
+    ])
+      this.u[n] = gl.getUniformLocation(p, "u" + n);
+    const atlas = document.createElement("canvas");
+    atlas.width = atlas.height = 128;
+    const ctx = atlas.getContext("2d");
+    let state = 719;
+    const random = () => {
+      state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+      return state / 4294967296;
+    };
+    const colors = {
+      ...Object.fromEntries(
+        Object.entries(BLOCKS).map(([id, b]) => [id, b.color]),
+      ),
+      41: "#896044",
+      42: "#b49a6c",
+      48: "#6c8064",
+      49: "#405350",
+      50: "#da9a70",
+      51: "#d4b878",
+      52: "#b7d8d1",
+    };
+    for (let i = 0; i < 64; i++) {
+      const x = (i % 8) * 16,
+        y = (i >> 3) * 16;
+      ctx.fillStyle = colors[i] || "#7d9c96";
+      ctx.fillRect(x, y, 16, 16);
+      for (let px = 0; px < 16; px++)
+        for (let py = 0; py < 16; py++) {
+          ctx.fillStyle =
+            random() > 0.5
+              ? `rgba(255,255,235,${random() * 0.12})`
+              : `rgba(0,20,15,${random() * 0.15})`;
+          ctx.fillRect(x + px, y + py, 1, 1);
+        }
+      ctx.fillStyle = "rgba(0,20,15,.18)";
+      if ([3, 9, 10, 11, 13, 16].includes(i))
+        for (let k = 0; k < 8; k++)
+          ctx.fillRect(
+            x + Math.floor(random() * 14),
+            y + Math.floor(random() * 14),
+            2,
+            2,
+          );
+      if (i === 9 || i === 10 || i === 11) {
+        ctx.fillStyle = i === 9 ? "#293b3b" : i === 10 ? "#d9aa83" : "#91ffe1";
+        for (let k = 0; k < 6; k++)
+          ctx.fillRect(
+            x + 2 + Math.floor(random() * 11),
+            y + 2 + Math.floor(random() * 11),
+            2,
+            2,
+          );
+      }
+      if (i === 6)
+        for (let k = 2; k < 16; k += 4) ctx.fillRect(x + k, y, 1, 16);
+      if (i === 8 || i === 15) {
+        for (let k = 3; k < 16; k += 4) ctx.fillRect(x, y + k, 16, 1);
+        ctx.fillRect(x + 7, y, 1, 16);
+      }
+      if (i === 13) {
+        ctx.fillRect(x, y + 7, 16, 1);
+        ctx.fillRect(x + 7, y, 1, 7);
+        ctx.fillRect(x + 3, y + 8, 1, 8);
+      }
+      if (i === 41) {
+        ctx.fillStyle = "#6f9647";
+        ctx.fillRect(x, y, 16, 4);
+        for (let k = 0; k < 16; k += 3) ctx.fillRect(x + k, y + 4, 2, 2);
+      }
+      if (i === 42) {
+        ctx.strokeStyle = "#786046";
+        ctx.strokeRect(x + 2, y + 2, 12, 12);
+        ctx.strokeRect(x + 5, y + 5, 6, 6);
+      }
+      if (i === 17) {
+        ctx.fillStyle = "#935c35";
+        ctx.fillRect(x + 5, y + 6, 6, 10);
+        ctx.fillStyle = "#ffe092";
+        ctx.fillRect(x + 3, y + 1, 10, 7);
+      }
+      if (i === 18 || i === 19) {
+        ctx.fillStyle = i === 18 ? "#397446" : "#987530";
+        for (let k = 2; k < 16; k += 4) ctx.fillRect(x + k, y, 1, 16);
+      }
+      if (i === 29) {
+        ctx.fillRect(x, y + 5, 16, 2);
+        ctx.fillStyle = "#ffdc8b";
+        ctx.fillRect(x + 6, y + 5, 4, 5);
+      }
+      if (i === 48 || i === 50) {
+        ctx.fillStyle = "#263c35";
+        ctx.fillRect(x + 3, y + 6, 3, 2);
+        ctx.fillRect(x + 10, y + 6, 3, 2);
+        ctx.fillRect(x + 6, y + 11, 4, 1);
+      }
+      if (i === 40) {
+        ctx.fillStyle = "#ccffe8";
+        ctx.fillRect(x + 6, y, 4, 16);
+        ctx.fillRect(x, y + 6, 16, 4);
+      }
+    }
+    this.texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, this.texture);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, atlas);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    this.cubes = {};
+    for (const id of [48, 49, 50, 51, 52]) {
+      const data = [];
+      for (const f of faces) face(data, 0, 0, 0, id, f);
+      this.cubes[id] = this.buffer(data);
+    }
+    const lines = [];
+    for (const a of [
+      [0, 0, 0],
+      [1, 0, 0],
+      [0, 0, 1],
+      [1, 0, 1],
+      [0, 1, 0],
+      [1, 1, 0],
+      [0, 1, 1],
+      [1, 1, 1],
+    ])
+      for (let i = 0; i < 3; i++)
+        if (a[i] === 0) {
+          const b = [...a];
+          b[i] = 1;
+          lines.push(...a, 0, 0, 1, 1, ...b, 0, 0, 1, 1);
+        }
+    this.outline = this.buffer(lines);
+    gl.enable(gl.DEPTH_TEST);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  }
+  buffer(data) {
+    const gl = this.gl,
+      b = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, b);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(data), gl.STATIC_DRAW);
+    return { buffer: b, count: data.length / 7 };
+  }
+  clear() {
+    for (const c of this.chunks.values()) {
+      this.gl.deleteBuffer(c.land.buffer);
+      this.gl.deleteBuffer(c.water.buffer);
+    }
+    this.chunks.clear();
+  }
+  chunk(world, cx, cz) {
+    const land = [],
+      water = [];
+    for (let z = cz * 16; z < Math.min(cz * 16 + 16, SIZE); z++)
+      for (let x = cx * 16; x < Math.min(cx * 16 + 16, SIZE); x++)
+        for (let y = 0; y < HEIGHT; y++) {
+          const id = get(world, x, y, z);
+          if (!id) continue;
+          for (const f of faces) {
+            const n = get(world, x + f.n[0], y + f.n[1], z + f.n[2]);
+            if (n === 0 || (id !== 5 && n === 5))
+              face(id === 5 ? water : land, x, y, z, id, f);
+          }
+        }
+    const key = `${cx},${cz}`,
+      old = this.chunks.get(key);
+    if (old) {
+      this.gl.deleteBuffer(old.land.buffer);
+      this.gl.deleteBuffer(old.water.buffer);
+    }
+    this.chunks.set(key, {
+      cx,
+      cz,
+      land: this.buffer(land),
+      water: this.buffer(water),
+    });
+    world.dirty.delete(key);
+  }
+  update(world, pos, budget = 2) {
+    const cx = pos[0] >> 4,
+      cz = pos[2] >> 4,
+      queue = [];
+    for (
+      let z = Math.max(0, cz - this.distance);
+      z <= Math.min(9, cz + this.distance);
+      z++
+    )
+      for (
+        let x = Math.max(0, cx - this.distance);
+        x <= Math.min(9, cx + this.distance);
+        x++
+      ) {
+        const key = `${x},${z}`;
+        if (!this.chunks.has(key) || world.dirty.has(key))
+          queue.push([x, z, Math.hypot(x - cx, z - cz)]);
+      }
+    queue.sort((a, b) => a[2] - b[2]);
+    for (const [x, z] of queue.slice(0, budget)) this.chunk(world, x, z);
+    for (const [key, c] of this.chunks)
+      if (
+        Math.max(Math.abs(c.cx - cx), Math.abs(c.cz - cz)) >
+        this.distance + 1
+      ) {
+        this.gl.deleteBuffer(c.land.buffer);
+        this.gl.deleteBuffer(c.water.buffer);
+        this.chunks.delete(key);
+      }
+    return queue.length;
+  }
+  draw(buf, offset = [0, 0, 0], scale = [1, 1, 1], color = [0, 0, 0, 0], mode) {
+    const gl = this.gl;
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf.buffer);
+    for (const [n, size, offset] of [
+      ["Pos", 3, 0],
+      ["UV", 2, 12],
+      ["Shade", 1, 20],
+      ["Alpha", 1, 24],
+    ]) {
+      gl.enableVertexAttribArray(this.a[n]);
+      gl.vertexAttribPointer(this.a[n], size, gl.FLOAT, false, 28, offset);
+    }
+    gl.uniform3fv(this.u.Offset, offset);
+    gl.uniform3fv(this.u.Scale, scale);
+    gl.uniform4fv(this.u.Color, color);
+    gl.drawArrays(mode || gl.TRIANGLES, 0, buf.count);
+  }
+  render(player, time, mobs, target, beacon = false) {
+    const gl = this.gl,
+      c = this.canvas,
+      ratio = Math.min(
+        devicePixelRatio || 1,
+        this.quality === 2 ? 1.7 : this.quality === 0 ? 0.7 : 1,
+      );
+    const w = Math.max(1, Math.round(c.clientWidth * ratio)),
+      h = Math.max(1, Math.round(c.clientHeight * ratio));
+    if (c.width !== w || c.height !== h) {
+      c.width = w;
+      c.height = h;
+    }
+    gl.viewport(0, 0, w, h);
+    const day = (time % 480) / 480,
+      light = Math.max(0.27, Math.sin(day * Math.PI * 2) * 0.76 + 0.35),
+      sky = [0.11 + 0.43 * light, 0.17 + 0.51 * light, 0.23 + 0.52 * light];
+    const eye = [player.x, player.y + 1.62, player.z];
+    gl.clearColor(...sky, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.useProgram(this.program);
+    gl.uniformMatrix4fv(
+      this.u.VP,
+      false,
+      matrix(eye, player.yaw, player.pitch, w / h),
+    );
+    gl.uniform3fv(this.u.Eye, eye);
+    gl.uniform3fv(this.u.Sky, sky);
+    gl.uniform1f(this.u.Light, light);
+    gl.uniform1f(this.u.Fog, this.distance * 16 + 13);
+    gl.uniform1i(this.u.Tex, 0);
+    const chunks = [...this.chunks.values()].filter(
+      (q) =>
+        Math.hypot(q.cx * 16 + 8 - player.x, q.cz * 16 + 8 - player.z) <
+        this.distance * 16 + 20,
+    );
+    this.drawn = chunks.length;
+    for (const q of chunks) this.draw(q.land);
+    for (const m of mobs) {
+      const t = m.hostile ? 48 : 50,
+        walk = Math.sin(m.phase) * 0.13;
+      this.draw(
+        this.cubes[t],
+        [m.x - 0.25, m.y + 1.05, m.z - 0.25],
+        [0.5, 0.5, 0.5],
+      );
+      this.draw(
+        this.cubes[m.hostile ? 49 : 51],
+        [m.x - 0.3, m.y + 0.42, m.z - 0.2],
+        [0.6, 0.65, 0.4],
+      );
+      this.draw(
+        this.cubes[49],
+        [m.x - 0.27, m.y, m.z - 0.15 + walk],
+        [0.22, 0.45, 0.3],
+      );
+      this.draw(
+        this.cubes[49],
+        [m.x + 0.05, m.y, m.z - 0.15 - walk],
+        [0.22, 0.45, 0.3],
+      );
+    }
+    gl.depthMask(false);
+    chunks.sort(
+      (a, b) =>
+        Math.hypot(b.cx * 16 - player.x, b.cz * 16 - player.z) -
+        Math.hypot(a.cx * 16 - player.x, a.cz * 16 - player.z),
+    );
+    for (const q of chunks) this.draw(q.water);
+    gl.depthMask(true);
+    if (target)
+      this.draw(
+        this.outline,
+        [target.x - 0.003, target.y - 0.003, target.z - 0.003],
+        [1.006, 1.006, 1.006],
+        [0.98, 0.94, 0.71, 1],
+        gl.LINES,
+      );
+    if (beacon && this.ruin)
+      this.draw(
+        this.cubes[52],
+        [this.ruin[0] + 0.35, this.ruin[1] + 1, this.ruin[2] + 0.35],
+        [0.3, 35, 0.3],
+        [0.46, 1, 0.78, 0.55],
+      );
+  }
+}
+
+    </script>
+    <script>
+      
+
+const $ = (id) => document.getElementById(id),
+  canvas = $("view");
+const panels = [
+  "menu",
+  "new-world",
+  "loading",
+  "pause",
+  "settings",
+  "help",
+  "inventory",
+  "quests",
+  "death",
+];
+let renderer,
+  world,
+  mode = "survival",
+  name = "Benim Blok Diyarı’m",
+  inventory = newInventory(),
+  selected = 0,
+  screen = "menu",
+  returnScreen = "menu",
+  saved = null;
+let player = {
+  x: 80.5,
+  y: 26,
+  z: 80.5,
+  yaw: 1.2,
+  pitch: -0.25,
+  vy: 0,
+  health: 20,
+  hunger: 20,
+  ground: false,
+  flying: false,
+  breath: 10,
+};
+let time = 90,
+  stats = { mined: 0, placed: 0, crafted: 0, kills: 0, days: 0 },
+  beacon = false,
+  mobs = [],
+  target = null;
+let keys = new Set(),
+  drag = null,
+  mining = false,
+  mineValue = 0,
+  mineGrace = 0,
+  mineKey = "",
+  invMove = -1,
+  toastTimer = 0,
+  damageFlash = 0,
+  lastAttack = 0;
+let smelt = null,
+  hungerClock = 0,
+  healClock = 0,
+  mobClock = 0,
+  cropClock = 0,
+  saveClock = 0,
+  hudClock = 0,
+  mapClock = 0,
+  last = 0,
+  creativePage = 0;
+let settings = {
+    distance: 3,
+    quality: 1,
+    sensitivity: 4,
+    touch: matchMedia("(pointer:coarse)").matches,
+    sound: false,
+  },
+  storageOK = false,
+  audio = null;
+const STORE = "kutarya-blok-diyari-v1";
+try {
+  localStorage.setItem(STORE + "-probe", "1");
+  localStorage.removeItem(STORE + "-probe");
+  storageOK = true;
+  const raw = localStorage.getItem(STORE);
+  if (raw) saved = validateSave(JSON.parse(raw));
+  const opt = JSON.parse(localStorage.getItem(STORE + "-settings") || "null");
+  if (opt) {
+    for (const k of ["distance", "quality", "sensitivity"])
+      if (Number.isFinite(opt[k])) settings[k] = opt[k];
+    settings.touch = !!opt.touch;
+    settings.sound = !!opt.sound;
+  }
+} catch {
+  saved = null;
+}
+settings.distance = Math.max(2, Math.min(4, settings.distance));
+settings.quality = Math.max(0, Math.min(2, settings.quality));
+settings.sensitivity = Math.max(1, Math.min(10, settings.sensitivity));
+function toast(text) {
+  $("toast").textContent = text;
+  $("toast").classList.remove("hidden");
+  toastTimer = 3.8;
+}
+function beep(freq = 330, duration = 0.06) {
+  if (!settings.sound) return;
+  try {
+    audio ??= new (window.AudioContext || window.webkitAudioContext)();
+    if (audio.state === "suspended") audio.resume();
+    const o = audio.createOscillator(),
+      g = audio.createGain();
+    o.frequency.value = freq;
+    o.type = "triangle";
+    g.gain.setValueAtTime(0.045, audio.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + duration);
+    o.connect(g);
+    g.connect(audio.destination);
+    o.start();
+    o.stop(audio.currentTime + duration);
+  } catch {
+    settings.sound = false;
+  }
+}
+function show(id) {
+  screen = id;
+  for (const p of panels) $(p).classList.toggle("hidden", p !== id);
+  $("hud").classList.toggle("hidden", id !== "playing");
+  keys.clear();
+  mining = false;
+  drag = null;
+  if (id !== "playing" && document.pointerLockElement)
+    document.exitPointerLock();
+  if (id === "menu") {
+    $("continue-btn").disabled = !saved && (!world || world.preview);
+    $("status-note").textContent = storageOK
+      ? "Dünya bu tarayıcıya otomatik kaydedilir. Ek güvence için menüden JSON kaydını indir."
+      : "Bu korumalı alanda otomatik kayıt kapalı. Menüdeki “Kaydı indir” ile dünyanı sakla; ayrı sekmede otomatik kayıt kullanabilirsin.";
+  }
+  if (id === "pause") {
+    $("save-note").textContent = storageOK
+      ? "Aynı tarayıcıda devam edebilirsin."
+      : "Bu oyun alanında yerel kayıt kullanılamıyor. Kaydı indirerek ilerlemeni koru.";
+    $("save-btn").disabled = !storageOK;
+  }
+  if (id === "inventory") drawInventory();
+  if (id === "quests") drawQuests();
+  if (id === "settings") syncSettings();
+}
+function syncSettings() {
+  for (const k of ["distance", "quality", "sensitivity"])
+    $(k).value = settings[k];
+  $("touch-toggle").checked = settings.touch;
+  $("sound-toggle").checked = settings.sound;
+}
+function applySettings() {
+  for (const k of ["distance", "quality", "sensitivity"])
+    settings[k] = Number($(k).value);
+  settings.touch = $("touch-toggle").checked;
+  settings.sound = $("sound-toggle").checked;
+  if (renderer) {
+    renderer.distance = settings.distance;
+    renderer.quality = settings.quality;
+  }
+  $("touch-controls").classList.toggle("hidden", !settings.touch);
+  try {
+    localStorage.setItem(STORE + "-settings", JSON.stringify(settings));
+  } catch {}
+}
+function serialize() {
+  return {
+    format: "kutarya-blok-1",
+    name,
+    seed: world.seed,
+    mode,
+    inventory: inventory.map((s) => (s ? { ...s } : null)),
+    edits: [...world.edits],
+    position: [player.x, Math.max(0, Math.min(HEIGHT + 5, player.y)), player.z],
+    yaw: player.yaw,
+    pitch: player.pitch,
+    health: player.health,
+    hunger: player.hunger,
+    time,
+    stats: { ...stats },
+    beacon,
+    crops: [...world.crops],
+  };
+}
+function save(notify = false) {
+  if (!world || world.preview || screen === "loading") return;
+  const data = serialize();
+  data.smelt = smelt ? { out: [...smelt.out], left: smelt.left } : null;
+  saved = data;
+  if (storageOK)
+    try {
+      localStorage.setItem(STORE, JSON.stringify(data));
+      if (notify) toast("Dünya bu tarayıcıya kaydedildi.");
+    } catch {
+      storageOK = false;
+      if (notify) toast("Tarayıcı kaydı kullanılamıyor. Kaydı indir.");
+    }
+  else if (notify) toast("Kaydı indir seçeneğini kullan.");
+}
+function downloadSave() {
+  if (!world || world.preview) return;
+  save();
+  const blob = new Blob([JSON.stringify(saved)], { type: "application/json" }),
+    url = URL.createObjectURL(blob),
+    a = document.createElement("a");
+  a.href = url;
+  a.download = "kutarya-blok-diyari-kayit.json";
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast("Dünya kaydı hazır. İçe aktararak devam edebilirsin.");
+}
+async function createWorld(data = null) {
+  show("loading");
+  $("loadingbar").firstElementChild.style.width = "0%";
+  try {
+    if (!renderer) renderer = new Renderer(canvas);
+    renderer.distance = settings.distance;
+    renderer.quality = settings.quality;
+    renderer.clear();
+    const seed = data
+      ? data.seed
+      : seedNumber($("world-seed").value || "kutarya-vadi");
+    const gen = generate(seed);
+    for (let item = gen.next(); !item.done; item = gen.next()) {
+      $("loadingbar").firstElementChild.style.width =
+        Math.floor(item.value.progress * 85) + "%";
+      if (item.value.world) world = item.value.world;
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+    }
+    mode = data?.mode || $("world-mode").value;
+    name = data?.name || $("world-name").value.trim() || "Blok Diyarı";
+    inventory = data
+      ? data.inventory.map((s) => (s ? { ...s } : null))
+      : newInventory();
+    time = data?.time ?? 90;
+    stats = data
+      ? { ...data.stats }
+      : { mined: 0, placed: 0, crafted: 0, kills: 0, days: 0 };
+    beacon = data?.beacon || false;
+    if (data) {
+      for (const [i, id] of data.edits) {
+        world.blocks[i] = id;
+        world.edits.set(i, id);
+      }
+      world.crops = new Map(data.crops || []);
+    }
+    const p = data?.position || world.spawn;
+    player = {
+      x: p[0],
+      y: p[1],
+      z: p[2],
+      yaw: data?.yaw ?? 1.2,
+      pitch: data?.pitch ?? -0.25,
+      vy: 0,
+      health: data?.health || 20,
+      hunger: data?.hunger ?? 20,
+      ground: false,
+      flying: false,
+      breath: 10,
+    };
+    if (collides(world, player.x, player.y, player.z)) {
+      player.y = surface(world, player.x | 0, player.z | 0);
+      toast("Güvenli yüzey konumuna taşındın.");
+    }
+    if (!data) {
+      if (mode === "creative")
+        for (const id of [1, 3, 6, 8, 13, 14, 17, 28, 32])
+          addItem(inventory, id, ITEMS[id].durability ? 1 : 64);
+      else {
+        addItem(inventory, 6, 4);
+        addItem(inventory, 35, 4);
+        addItem(inventory, 26, 5);
+        addItem(inventory, 17, 4);
+      }
+    }
+    selected = 0;
+    smelt = data?.smelt
+      ? { out: [...data.smelt.out], left: data.smelt.left }
+      : null;
+    hungerClock = healClock = mobClock = cropClock = saveClock = 0;
+    mining = false;
+    mineValue = 0;
+    renderer.ruin = world.ruin;
+    mobs = [];
+    for (const [dx, dz] of [
+      [5, 7],
+      [-7, 4],
+      [8, -6],
+    ])
+      spawnMob(false, player.x + dx, player.z + dz);
+    for (let i = 0; i < 10; i++) {
+      renderer.update(world, [player.x, player.y, player.z], 3);
+      $("loadingbar").firstElementChild.style.width = 85 + i * 1.5 + "%";
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+    }
+    applySettings();
+    drawHotbar();
+    updateHUD();
+    show("playing");
+    save();
+    toast(
+      mode === "creative"
+        ? "Yaratıcı dünya hazır. V ile uç, E ile blok kataloğunu aç."
+        : "Kamp sandığını F ile aç. Tezgâh yanında E ile kazma üret.",
+    );
+  } catch (e) {
+    show("menu");
+    toast("Dünya açılamadı: " + e.message);
+  }
+}
+function direction() {
+  return [
+    Math.sin(player.yaw) * Math.cos(player.pitch),
+    Math.sin(player.pitch),
+    -Math.cos(player.yaw) * Math.cos(player.pitch),
+  ];
+}
+function aim() {
+  return raycast(world, [player.x, player.y + 1.62, player.z], direction(), 6);
+}
+function nearestStation() {
+  for (let y = Math.floor(player.y) - 2; y <= player.y + 3; y++)
+    for (let z = Math.floor(player.z) - 4; z <= player.z + 4; z++)
+      for (let x = Math.floor(player.x) - 4; x <= player.x + 4; x++)
+        if (
+          Math.hypot(x + 0.5 - player.x, y - player.y, z + 0.5 - player.z) <=
+            4 &&
+          get(world, x, y, z) === 16
+        )
+          return "furnace";
+  for (let y = Math.floor(player.y) - 2; y <= player.y + 3; y++)
+    for (let z = Math.floor(player.z) - 4; z <= player.z + 4; z++)
+      for (let x = Math.floor(player.x) - 4; x <= player.x + 4; x++)
+        if (
+          Math.hypot(x + 0.5 - player.x, y - player.y, z + 0.5 - player.z) <=
+            4 &&
+          get(world, x, y, z) === 15
+        )
+          return "bench";
+  return "hand";
+}
+function stationAvailable(station) {
+  if (station === "hand") return true;
+  for (let z = Math.floor(player.z) - 4; z <= player.z + 4; z++)
+    for (let x = Math.floor(player.x) - 4; x <= player.x + 4; x++)
+      for (let y = Math.floor(player.y) - 2; y <= player.y + 3; y++)
+        if (
+          Math.hypot(x + 0.5 - player.x, y - player.y, z + 0.5 - player.z) <=
+            4 &&
+          get(world, x, y, z) === (station === "bench" ? 15 : 16)
+        )
+          return true;
+  return false;
+}
+function slotHTML(slot, i, sel) {
+  const item = slot && ITEMS[slot.id];
+  return `<button class="slot ${sel ? "selected" : ""}" data-slot="${i}" title="${item ? item.name + " · " + slot.count : "Boş yuva"}" aria-label="${i + 1}. yuva: ${item ? item.name + " " + slot.count : "boş"}"><small>${i < 9 ? i + 1 : ""}</small>${item ? `<span class="tile ${item.durability ? "tool" : ""}" style="--c:${item.color}"></span><b>${slot.count}</b>${slot.wear ? "<em>" + Math.ceil((slot.wear / item.durability) * 100) + "%</em>" : ""}` : ""}</button>`;
+}
+function drawHotbar() {
+  $("hotbar").innerHTML = inventory
+    .slice(0, 9)
+    .map((s, i) => slotHTML(s, i, i === selected))
+    .join("");
+  $("selected-label").textContent = inventory[selected]
+    ? ITEMS[inventory[selected].id].name
+    : "Boş el";
+}
+function drawInventory() {
+  $("inventory-grid").innerHTML = inventory
+    .map((s, i) => slotHTML(s, i, i === invMove || i === selected))
+    .join("");
+  $("inventory-note").textContent =
+    mode === "creative"
+      ? "Yaratıcı: malzemeler sınırsız. Katalogdan bir bloğu hızlı yuvana alabilirsin."
+      : "Hızlı yuvalar ilk satırdır. Yiyeceği hızlı yuvada seçip R ile yiyebilirsin.";
+  $("creative-next").classList.toggle("hidden", mode !== "creative");
+  const stations = [
+    "hand",
+    ...(stationAvailable("bench") ? ["bench"] : []),
+    ...(stationAvailable("furnace") ? ["furnace"] : []),
+  ];
+  $("station-label").textContent =
+    "Üretim · " +
+    stations
+      .map((s) => ({ hand: "El", bench: "Tezgâh", furnace: "Fırın" })[s])
+      .join(" + ");
+  if (mode === "creative") {
+    const ids = Object.keys(ITEMS)
+        .map(Number)
+        .filter((id) => id !== 5 && id !== 20 && id !== 40),
+      chunk = ids.slice(creativePage * 12, creativePage * 12 + 12);
+    $("recipes").innerHTML = chunk
+      .map(
+        (id) =>
+          `<div class="recipe"><span>${ITEMS[id].name}<small>Hızlı yuvana al</small></span><button data-creative="${id}">Al</button></div>`,
+      )
+      .join("");
+  } else
+    $("recipes").innerHTML = RECIPES.map((r) => {
+      const available =
+        stations.includes(r.station) &&
+        r.costs.every(([id, n]) => countItem(inventory, id) >= n) &&
+        (!r.seconds || !smelt);
+      return `<div class="recipe"><span>${r.name}<small>${r.costs.map(([id, n]) => n + " " + ITEMS[id].name).join(" · ")}${r.seconds ? " · " + r.seconds + " sn" : ""}</small></span><button data-recipe="${r.id}" ${available ? "" : "disabled"}>Üret</button></div>`;
+    }).join("");
+  $("smelting").textContent = smelt
+    ? "Fırın çalışıyor: " + Math.ceil(smelt.left) + " sn"
+    : "";
+}
+function makeRecipe(id) {
+  const r = RECIPES.find((r) => r.id === id);
+  if (!r) return;
+  const station = stationAvailable(r.station) ? r.station : "hand";
+  if (r.seconds) {
+    if (smelt) return;
+    const copy = inventory.map((s) => (s ? { ...s } : null)),
+      result = craft(copy, r, station);
+    if (!result.ok) return toast(result.message);
+    for (const [item, n] of r.costs) consume(inventory, item, n);
+    smelt = { out: r.out, left: r.seconds };
+    toast("Fırın çalışmaya başladı.");
+  } else {
+    const result = craft(inventory, r, station);
+    if (!result.ok) return toast(result.message);
+    stats.crafted++;
+    beep(520);
+    toast(r.name + " üretildi.");
+  }
+  drawInventory();
+  drawHotbar();
+  save();
+}
+function wearTool() {
+  const item = inventory[selected];
+  if (item?.wear && mode !== "creative") {
+    item.wear--;
+    if (item.wear <= 0) {
+      toast(ITEMS[item.id].name + " kırıldı.");
+      inventory[selected] = null;
+    }
+  }
+}
+function addDrop(id, n = 1) {
+  if (mode === "creative") return true;
+  const ok = addItem(inventory, id, n);
+  if (!ok) toast("Çanta dolu. Önce bir yuva boşalt.");
+  return ok;
+}
+function hitMob() {
+  const dir = direction();
+  const m = mobs.find((m) => {
+    const dx = m.x - player.x,
+      dy = m.y + 0.9 - player.y - 1.62,
+      dz = m.z - player.z,
+      dist = Math.hypot(dx, dy, dz);
+    return (
+      dist < 3.5 && (dx * dir[0] + dy * dir[1] + dz * dir[2]) / dist > 0.86
+    );
+  });
+  if (!m || time - lastAttack < 0.45) return false;
+  lastAttack = time;
+  m.hp -= ITEMS[inventory[selected]?.id]?.damage || 2;
+  m.x = Math.max(1, Math.min(SIZE - 2, m.x + dir[0] * 0.6));
+  m.z = Math.max(1, Math.min(SIZE - 2, m.z + dir[2] * 0.6));
+  wearTool();
+  beep(180);
+  if (m.hp <= 0) {
+    if (m.hostile) {
+      stats.kills++;
+      addDrop(21);
+      toast("Gece gölgesi dağıldı.");
+    } else {
+      addDrop(35, 2);
+      toast("2 elma toplandı.");
+    }
+    mobs = mobs.filter((v) => v !== m);
+  }
+  drawHotbar();
+  return true;
+}
+function mineStep(dt, force = false) {
+  if (force) mineGrace = 1.5;
+  if (!world || screen !== "playing") return;
+  if (hitMob()) {
+    mineValue = 0;
+    return;
+  }
+  target = aim();
+  if (!target) {
+    mineValue = 0;
+    return;
+  }
+  const b = BLOCKS[target.id],
+    key = `${target.x},${target.y},${target.z}`;
+  if (key !== mineKey) {
+    mineValue = 0;
+    mineKey = key;
+  }
+  if (!Number.isFinite(b.hard)) {
+    if (force)
+      toast(
+        target.id === 40 ? "Kuleyi F ile etkinleştir." : "Ana kaya kırılamaz.",
+      );
+    return;
+  }
+  const tool = ITEMS[inventory[selected]?.id],
+    tier = tool?.tier || 0;
+  if (mode !== "creative" && b.tier && tier < b.tier) {
+    if (force) toast("Daha iyi bir kazma gerekiyor.");
+    return;
+  }
+  mineValue +=
+    mode === "creative"
+      ? 1
+      : ((force ? 0.45 : dt) * (tier ? 1.7 + tier * 0.45 : 1)) /
+        Math.max(0.2, b.hard);
+  if (mineValue < 1) return;
+  let drop = b.drop || target.id;
+  if (target.id === 1) drop = 2;
+  if (target.id === 19) {
+    const copy = inventory.map((s) => (s ? { ...s } : null));
+    if (
+      mode !== "creative" &&
+      (!addItem(copy, 27, 2) || !addItem(copy, 26, 2))
+    ) {
+      toast("Hasat için çantada yer aç.");
+      return;
+    }
+    if (mode !== "creative") inventory = copy;
+  } else if (target.id === 29) {
+    interact();
+    mineValue = 0;
+    return;
+  } else if (!addDrop(drop)) {
+    mineValue = 0;
+    return;
+  }
+  if (
+    target.id === 7 &&
+    mode !== "creative" &&
+    hash(target.x, target.y, target.z, world.seed) > 0.65
+  )
+    addDrop(26);
+  set(world, target.x, target.y, target.z, 0);
+  world.crops.delete(index(target.x, target.y, target.z));
+  stats.mined++;
+  wearTool();
+  mineValue = 0;
+  beep(230);
+  drawHotbar();
+}
+function place() {
+  if (screen !== "playing") return;
+  target = aim();
+  const s = inventory[selected];
+  if (!target || !s)
+    return toast("Bir yüzeye nişan al ve hızlı yuvadan blok seç.");
+  let id = s.id;
+  if (id === 26) id = 18;
+  if (!BLOCKS[id] || [5, 19, 20, 29, 40].includes(id))
+    return toast("Bu eşya blok olarak yerleştirilemez.");
+  const [x, y, z] = target.previous;
+  if (!(
+    x >= 1 &&
+    x < SIZE - 1 &&
+    z >= 1 &&
+    z < SIZE - 1 &&
+    y >= 1 &&
+    y < HEIGHT - 1
+  ))
+    return toast("Dünya sınırına ulaştın.");
+  if (
+    x >= Math.floor(player.x - 0.29) &&
+    x <= Math.floor(player.x + 0.29) &&
+    z >= Math.floor(player.z - 0.29) &&
+    z <= Math.floor(player.z + 0.29) &&
+    y >= Math.floor(player.y) &&
+    y <= Math.floor(player.y + 1.72)
+  )
+    return toast("Kendi bulunduğun yere blok koyamazsın.");
+  if (id === 18 && ![1, 2].includes(get(world, x, y - 1, z)))
+    return toast("Tohumu toprak veya çimen üstüne ek.");
+  if (get(world, x, y, z) !== 0 && get(world, x, y, z) !== 5) return;
+  set(world, x, y, z, id);
+  if (id === 18) world.crops.set(index(x, y, z), time);
+  if (mode !== "creative") consume(inventory, s.id);
+  stats.placed++;
+  beep(360);
+  drawHotbar();
+}
+function eat() {
+  const s = inventory[selected],
+    b = ITEMS[s?.id];
+  if (!b?.food) return toast("Hızlı yuvada bir elma veya ekmek seç.");
+  if (player.hunger >= 20) return toast("Şu an toksun.");
+  player.hunger = Math.min(20, player.hunger + b.food);
+  if (mode !== "creative") consume(inventory, s.id);
+  drawHotbar();
+  if (screen === "inventory") drawInventory();
+  toast(b.name + " yedin.");
+  beep(440);
+}
+function interact() {
+  if (screen !== "playing") return;
+  target = aim();
+  if (!target) return eat();
+  const id = target.id;
+  if (id === 15 || id === 16) {
+    show("inventory");
+    return;
+  }
+  if (id === 29) {
+    const copy = inventory.map((s) => (s ? { ...s } : null)),
+      loot = [
+        [35, 3],
+        [21, 3],
+        [26, 4],
+        [3, 6],
+      ];
+    if (mode !== "creative" && loot.some(([id, n]) => !addItem(copy, id, n)))
+      return toast("Sandık için çantada yer aç.");
+    if (mode !== "creative") inventory = copy;
+    set(world, target.x, target.y, target.z, 8);
+    drawHotbar();
+    toast("Sandık: elma, kömür, tohum ve taş topladın.");
+    save();
+    return;
+  }
+  if (id === 28) {
+    if ((time % 480) / 480 < 0.48)
+      return toast("Gündüz. Gece olunca yatakta dinlenebilirsin.");
+    time = (Math.floor(time / 480) + 1) * 480 + 30;
+    player.health = 20;
+    player.hunger = Math.max(12, player.hunger);
+    mobs = mobs.filter((m) => !m.hostile);
+    stats.days++;
+    toast("Günaydın. Yeni bir keşif seni bekliyor.");
+    save();
+    return;
+  }
+  if (id === 40) {
+    if (beacon) return toast("Kulenin ışığı yanıyor. Dünya artık senin.");
+    if (
+      mode !== "creative" &&
+      (countItem(inventory, 23) < 5 || countItem(inventory, 24) < 3)
+    )
+      return toast("Kule için 5 demir külçesi ve 3 kristal gerekiyor.");
+    if (mode !== "creative") {
+      consume(inventory, 23, 5);
+      consume(inventory, 24, 3);
+    }
+    beacon = true;
+    drawHotbar();
+    save();
+    beep(660, 0.5);
+    toast(
+      "Kulenin ışığı yandı! Macerayı tamamladın; inşa etmeye devam edebilirsin.",
+    );
+    return;
+  }
+  if (id === 19) {
+    mineValue = 1;
+    mineStep(0.1, true);
+    return;
+  }
+  eat();
+}
+function damage(n) {
+  if (mode === "creative" || screen !== "playing") return;
+  player.health = Math.max(0, player.health - n);
+  damageFlash = 0.65;
+  beep(110, 0.13);
+  if (player.health === 0) {
+    save();
+    show("death");
+  }
+}
+function spawnMob(hostile, x, z) {
+  x = Math.max(2, Math.min(SIZE - 3, x));
+  z = Math.max(2, Math.min(SIZE - 3, z));
+  const y = surface(world, Math.floor(x), Math.floor(z));
+  if (get(world, x, y - 1, z) === 5 || y < SEA) return;
+  mobs.push({
+    hostile,
+    x,
+    y,
+    z,
+    hp: hostile ? 12 : 6,
+    phase: Math.random() * 8,
+    angle: Math.random() * Math.PI * 2,
+    attack: 0,
+  });
+}
+function movePlayer(dt) {
+  const f = (keys.has("KeyW") ? 1 : 0) - (keys.has("KeyS") ? 1 : 0),
+    s = (keys.has("KeyD") ? 1 : 0) - (keys.has("KeyA") ? 1 : 0),
+    run = keys.has("ShiftLeft") && player.hunger > 2;
+  let dx = Math.sin(player.yaw) * f + Math.cos(player.yaw) * s,
+    dz = -Math.cos(player.yaw) * f + Math.sin(player.yaw) * s;
+  const len = Math.hypot(dx, dz) || 1,
+    speed = player.flying ? 9 : run ? 6.3 : 4.2;
+  const water = get(world, player.x, player.y + 0.8, player.z) === 5;
+  dx = (dx / len) * speed * dt * (water ? 0.62 : 1);
+  dz = (dz / len) * speed * dt * (water ? 0.62 : 1);
+  if (player.flying) {
+    player.x = Math.max(1, Math.min(SIZE - 2, player.x + dx));
+    player.z = Math.max(1, Math.min(SIZE - 2, player.z + dz));
+    player.y = Math.max(
+      1,
+      Math.min(
+        HEIGHT + 3,
+        player.y +
+          ((keys.has("Space") ? 1 : 0) - (keys.has("KeyQ") ? 1 : 0)) *
+            speed *
+            dt,
+      ),
+    );
+    player.vy = 0;
+  } else {
+    const nx = Math.max(1, Math.min(SIZE - 2, player.x + dx));
+    if (!collides(world, nx, player.y, player.z)) player.x = nx;
+    const nz = Math.max(1, Math.min(SIZE - 2, player.z + dz));
+    if (!collides(world, player.x, player.y, nz)) player.z = nz;
+    if (keys.has("Space") && (player.ground || water)) {
+      player.vy = water ? 3 : 7.6;
+      player.ground = false;
+    }
+    player.vy = Math.max(-25, player.vy - (water ? 5 : 22) * dt);
+    if (water) player.vy = Math.max(-3, player.vy);
+    const steps = Math.max(1, Math.ceil(Math.abs(player.vy * dt) / 0.18)),
+      dy = (player.vy * dt) / steps;
+    player.ground = false;
+    for (let i = 0; i < steps; i++) {
+      if (collides(world, player.x, player.y + dy, player.z)) {
+        if (dy < 0) {
+          player.ground = true;
+          if (player.vy < -12 && !water)
+            damage(Math.ceil((-player.vy - 12) * 0.7));
+        }
+        player.vy = 0;
+        break;
+      }
+      player.y += dy;
+    }
+  }
+  if (player.y < 0.5) {
+    player.x = world.spawn[0];
+    player.z = world.spawn[2];
+    player.y = world.spawn[1];
+    player.vy = 0;
+    damage(5);
+  }
+  if (mode === "survival") {
+    hungerClock += dt * (f || s ? (run ? 2 : 1) : 0.35);
+    if (hungerClock >= 22) {
+      hungerClock = 0;
+      player.hunger = Math.max(0, player.hunger - 1);
+    }
+    healClock += dt;
+    if (healClock > 5) {
+      healClock = 0;
+      if (player.hunger >= 14 && player.health < 20) {
+        player.health++;
+        player.hunger--;
+      } else if (player.hunger === 0 && player.health > 1) damage(1);
+    }
+    if (get(world, player.x, player.y + 1.62, player.z) === 5) {
+      player.breath -= dt;
+      if (player.breath <= 0) {
+        player.breath = 1;
+        damage(2);
+      }
+    } else player.breath = Math.min(10, player.breath + dt * 3);
+  }
+}
+function updateMobs(dt) {
+  const night = time % 480 > 250;
+  mobClock += dt;
+  if (mobClock > 8) {
+    mobClock = 0;
+    if (
+      night &&
+      mode === "survival" &&
+      mobs.filter((m) => m.hostile).length < 7
+    ) {
+      const a = Math.random() * Math.PI * 2;
+      spawnMob(true, player.x + Math.sin(a) * 16, player.z + Math.cos(a) * 16);
+    }
+    if (!night) mobs = mobs.filter((m) => !m.hostile);
+  }
+  for (const m of mobs) {
+    m.phase += dt * 4;
+    m.attack -= dt;
+    let a = m.angle;
+    const dist = Math.hypot(player.x - m.x, player.z - m.z);
+    if (m.hostile && dist < 22) a = Math.atan2(player.x - m.x, player.z - m.z);
+    else if (Math.random() < dt * 0.6) m.angle += Math.random() * 2 - 1;
+    const speed = m.hostile ? 1.5 : 0.55,
+      nx = Math.max(1, Math.min(SIZE - 2, m.x + Math.sin(a) * speed * dt)),
+      nz = Math.max(1, Math.min(SIZE - 2, m.z + Math.cos(a) * speed * dt)),
+      y = surface(world, nx | 0, nz | 0);
+    if (
+      Math.abs(y - m.y) <= 1 &&
+      get(world, nx, y - 1, nz) !== 5 &&
+      Math.hypot(nx - player.x, nz - player.z) > 0.7
+    ) {
+      m.x = nx;
+      m.z = nz;
+      m.y = y;
+    } else m.angle += dt;
+    if (
+      m.hostile &&
+      dist < 1.5 &&
+      Math.abs(m.y - player.y) < 2 &&
+      m.attack <= 0
+    ) {
+      m.attack = 1.4;
+      damage(2);
+    }
+  }
+}
+function drawMap() {
+  const ctx = $("map").getContext("2d"),
+    s = 104;
+  for (let z = 0; z < s; z++)
+    for (let x = 0; x < s; x++) {
+      const t = terrain((x / s) * SIZE, (z / s) * SIZE, world.seed);
+      ctx.fillStyle =
+        t.h < SEA
+          ? "#407b92"
+          : t.top === 4
+            ? "#c6b784"
+            : t.top === 12
+              ? "#d9e8dd"
+              : t.biome === "Çam ormanı"
+                ? "#456b45"
+                : "#80965b";
+      ctx.fillRect(x, z, 1, 1);
+    }
+  ctx.fillStyle = "#e5c787";
+  for (const p of [
+    [83, 82],
+    [56, 65],
+  ])
+    ctx.fillRect((p[0] / SIZE) * s - 2, (p[1] / SIZE) * s - 2, 4, 4);
+  ctx.fillStyle = "#a3ffe0";
+  ctx.fillRect(
+    (world.ruin[0] / SIZE) * s - 2,
+    (world.ruin[2] / SIZE) * s - 2,
+    5,
+    5,
+  );
+  ctx.save();
+  ctx.translate((player.x / SIZE) * s, (player.z / SIZE) * s);
+  ctx.rotate(player.yaw);
+  ctx.fillStyle = "#fff7c9";
+  ctx.beginPath();
+  ctx.moveTo(0, -5);
+  ctx.lineTo(-3, 3);
+  ctx.lineTo(3, 3);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+function updateHUD() {
+  if (!world) return;
+  if (inventory[selected]?.id === 36) {
+    const distance = Math.round(
+      Math.hypot(world.ruin[0] - player.x, world.ruin[2] - player.z),
+    );
+    const angle = Math.atan2(
+      world.ruin[0] - player.x,
+      -(world.ruin[2] - player.z),
+    );
+    const relative = Math.atan2(
+      Math.sin(angle - player.yaw),
+      Math.cos(angle - player.yaw),
+    );
+    $("selected-label").textContent =
+      `Pusula · Kule ${distance} blok · ${Math.abs(relative) < 0.35 ? "önünde" : relative > 0 ? "sağında" : "solunda"}`;
+  }
+  $("world-label").textContent =
+    name + " · " + (mode === "creative" ? "Yaratıcı" : "Hayatta kalma");
+  $("location").textContent =
+    terrain(player.x, player.z, world.seed).biome +
+    " · " +
+    Math.floor(player.x) +
+    ", " +
+    Math.floor(player.y) +
+    ", " +
+    Math.floor(player.z);
+  $("vitals").innerHTML =
+    `<span>♥ ${player.health}/20</span><span>◒ ${player.hunger}/20</span>${player.breath < 9 ? "<span>≈ " + Math.ceil(player.breath) + "/10</span>" : ""}`;
+  const hour = Math.floor(((time % 480) / 480) * 24 + 6) % 24;
+  $("clock").textContent =
+    "Gün " +
+    (Math.floor(time / 480) + 1) +
+    " · " +
+    String(hour).padStart(2, "0") +
+    ":" +
+    String(Math.floor(((time % 20) / 20) * 60)).padStart(2, "0") +
+    (player.flying ? " · Uçuş" : "");
+  $("target-label").textContent = target
+    ? BLOCKS[target.id].name +
+      ([15, 16, 28, 29, 40].includes(target.id) ? " · F" : "")
+    : "";
+  $("mine-progress").value = mineValue;
+}
+function drawQuests() {
+  const tier = Math.max(0, ...inventory.map((s) => ITEMS[s?.id]?.tier || 0));
+  const tasks = [
+    ["İlk kaynaklar", "6 blok çıkar.", stats.mined >= 6],
+    [
+      "Üretmeye başla",
+      "En az 3 üretim yap; tezgâhın yanına yaklaş.",
+      stats.crafted >= 3,
+    ],
+    [
+      "Derinlere in",
+      "Taş veya demir kazma üret ve maden bul.",
+      tier >= 2 || beacon,
+    ],
+    [
+      "Kuleyi uyandır",
+      "Harabe: " +
+        world.ruin[0] +
+        ", " +
+        world.ruin[1] +
+        ", " +
+        world.ruin[2] +
+        ". 5 demir külçesi ve 3 kristal götür.",
+      beacon,
+    ],
+  ];
+  $("quest-list").innerHTML = tasks
+    .map(
+      ([title, desc, done], i) =>
+        `<div class="quest ${done ? "done" : ""}"><strong>${done ? "✓" : String(i + 1).padStart(2, "0")} · ${title}</strong>${desc}</div>`,
+    )
+    .join("");
+  $("stats").textContent =
+    `${stats.mined} blok kazıldı · ${stats.placed} blok yerleştirildi · ${stats.crafted} üretim · ${stats.kills} gece gölgesi` +
+    (beacon ? " · Kule etkin" : "");
+}
+function resume() {
+  show("playing");
+  drawHotbar();
+  canvas.focus();
+}
+function unlock() {
+  if (document.pointerLockElement) document.exitPointerLock();
+}
+function requestLock() {
+  try {
+    const p = canvas.requestPointerLock?.();
+    p?.catch?.(() => {});
+  } catch {}
+}
+function look(dx, dy) {
+  player.yaw += dx * 0.001 * settings.sensitivity;
+  player.yaw %= Math.PI * 2;
+  player.pitch = Math.max(
+    -1.5,
+    Math.min(1.5, player.pitch - dy * 0.001 * settings.sensitivity),
+  );
+}
+function clearInput() {
+  keys.clear();
+  mining = false;
+  drag = null;
+}
+canvas.addEventListener("contextmenu", (e) => e.preventDefault());
+let hadPointerLock = false;
+document.addEventListener("pointerlockchange", () => {
+  const locked = document.pointerLockElement === canvas;
+  if (hadPointerLock && !locked && screen === "playing") show("pause");
+  hadPointerLock = locked;
+});
+canvas.addEventListener("pointerdown", (e) => {
+  if (screen !== "playing") return;
+  e.preventDefault();
+  canvas.focus();
+  if (e.button === 2) {
+    place();
+    return;
+  }
+  if (e.pointerType === "touch") {
+    drag = { id: e.pointerId, x: e.clientX, y: e.clientY };
+    canvas.setPointerCapture(e.pointerId);
+    return;
+  }
+  drag = { id: e.pointerId, x: e.clientX, y: e.clientY };
+  mining = true;
+  if (mode === "creative") mineStep(0.1, true);
+  requestLock();
+});
+document.addEventListener("pointermove", (e) => {
+  if (screen !== "playing") return;
+  if (document.pointerLockElement === canvas) {
+    look(e.movementX, e.movementY);
+    return;
+  }
+  if (drag && drag.id === e.pointerId) {
+    look(e.clientX - drag.x, e.clientY - drag.y);
+    drag.x = e.clientX;
+    drag.y = e.clientY;
+    mining = false;
+  }
+});
+document.addEventListener("pointerup", () => {
+  drag = null;
+  mining = false;
+});
+document.addEventListener("pointercancel", clearInput);
+canvas.addEventListener(
+  "wheel",
+  (e) => {
+    if (screen !== "playing") return;
+    e.preventDefault();
+    selected = (selected + (e.deltaY > 0 ? 1 : 8)) % 9;
+    drawHotbar();
+  },
+  { passive: false },
+);
+document.addEventListener("keydown", (e) => {
+  if (["INPUT", "SELECT", "TEXTAREA"].includes(e.target.tagName)) return;
+  const k = e.code;
+  if (k === "Escape") {
+    e.preventDefault();
+    if (screen === "playing") show("pause");
+    else if (["inventory", "quests", "pause"].includes(screen)) resume();
+    else if (["help", "settings", "new-world"].includes(screen))
+      show(returnScreen);
+    return;
+  }
+  if (
+    (k === "KeyE" || k === "KeyM") &&
+    ["playing", "inventory", "quests"].includes(screen)
+  ) {
+    e.preventDefault();
+    if (e.repeat) return;
+    if (screen !== "playing") resume();
+    else show(k === "KeyE" ? "inventory" : "quests");
+    return;
+  }
+  if (screen !== "playing") return;
+  if (
+    ["Space", "KeyW", "KeyA", "KeyS", "KeyD", "ShiftLeft", "KeyQ"].includes(k)
+  ) {
+    e.preventDefault();
+    keys.add(k);
+  }
+  if (e.repeat) return;
+  if (/^Digit[1-9]$/.test(k)) {
+    selected = Number(k.slice(-1)) - 1;
+    drawHotbar();
+  }
+  if (k === "KeyF") interact();
+  if (k === "KeyR") eat();
+  if (k === "KeyV" && mode === "creative") {
+    player.flying = !player.flying;
+    player.vy = 0;
+    toast(player.flying ? "Uçuş açık. Space yüksel, Q alçal." : "Uçuş kapalı.");
+  }
+});
+document.addEventListener("keyup", (e) => keys.delete(e.code));
+window.addEventListener("blur", () => {
+  clearInput();
+  if (screen === "playing") show("pause");
+});
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    clearInput();
+    if (screen === "playing") show("pause");
+    save();
+  }
+});
+window.addEventListener("pagehide", () => save());
+$("hotbar").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-slot]");
+  if (b) {
+    selected = Number(b.dataset.slot);
+    drawHotbar();
+  }
+});
+$("inventory-grid").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-slot]");
+  if (!b) return;
+  const i = Number(b.dataset.slot);
+  if (i < 9) selected = i;
+  if (invMove < 0) {
+    invMove = i;
+    $("item-info").textContent = inventory[i]
+      ? ITEMS[inventory[i].id].name + " · Başka bir yuvaya tıklayarak taşı."
+      : "Boş yuva seçildi. Bir eşya seçerek yerlerini değiştir.";
+  } else {
+    [inventory[i], inventory[invMove]] = [inventory[invMove], inventory[i]];
+    invMove = -1;
+    $("item-info").textContent = "Yuvalar değiştirildi.";
+    drawHotbar();
+    save();
+  }
+  drawInventory();
+});
+$("recipes").addEventListener("click", (e) => {
+  const recipe = e.target.closest("[data-recipe]"),
+    block = e.target.closest("[data-creative]");
+  if (recipe) makeRecipe(recipe.dataset.recipe);
+  if (block) {
+    const id = Number(block.dataset.creative);
+    inventory[selected] = {
+      id,
+      count: ITEMS[id].durability ? 1 : 64,
+      ...(ITEMS[id].durability ? { wear: ITEMS[id].durability } : {}),
+    };
+    drawInventory();
+    drawHotbar();
+    save();
+    toast(ITEMS[id].name + " hızlı yuvaya alındı.");
+  }
+});
+$("creative-next").onclick = () => {
+  const count = Object.keys(ITEMS).filter(
+    (id) => ![5, 20, 40].includes(Number(id)),
+  ).length;
+  creativePage = (creativePage + 1) % Math.ceil(count / 12);
+  drawInventory();
+};
+for (const button of document.querySelectorAll("[data-key]")) {
+  button.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    keys.add(button.dataset.key);
+    button.setPointerCapture(e.pointerId);
+  });
+  button.addEventListener("pointerup", () => keys.delete(button.dataset.key));
+  button.addEventListener("pointercancel", () =>
+    keys.delete(button.dataset.key),
+  );
+}
+$("touch-mine").onclick = () => mineStep(0.2, true);
+$("touch-place").onclick = place;
+$("touch-use").onclick = interact;
+$("new-btn").onclick = () => {
+  if (world && !world.preview) save();
+  returnScreen = "menu";
+  show("new-world");
+};
+$("create-btn").onclick = () => createWorld();
+$("continue-btn").onclick = () => {
+  if (world && !world.preview) resume();
+  else if (saved) createWorld(saved);
+};
+for (const [id, panel, back] of [
+  ["settings-menu", "settings", "menu"],
+  ["help-menu", "help", "menu"],
+  ["settings-pause", "settings", "pause"],
+  ["help-pause", "help", "pause"],
+])
+  $(id).onclick = () => {
+    returnScreen = back;
+    show(panel);
+  };
+for (const button of document.querySelectorAll("[data-back]"))
+  button.onclick = () => {
+    if (screen === "settings") applySettings();
+    show(returnScreen);
+  };
+$("bag-btn").onclick = () => show("inventory");
+$("quest-btn").onclick = () => show("quests");
+$("pause-btn").onclick = () => show("pause");
+$("close-bag").onclick = resume;
+$("close-quests").onclick = resume;
+$("resume-btn").onclick = resume;
+$("save-btn").onclick = () => save(true);
+$("export-btn").onclick = downloadSave;
+$("eat-btn").onclick = eat;
+$("return-menu").onclick = () => {
+  save();
+  show("menu");
+};
+$("respawn-btn").onclick = () => {
+  player.x = world.spawn[0];
+  player.z = world.spawn[2];
+  player.y = surface(world, 80, 80);
+  player.vy = 0;
+  player.health = 20;
+  player.hunger = 14;
+  player.breath = 10;
+  player.flying = false;
+  mobs = mobs.filter((m) => !m.hostile);
+  resume();
+  save();
+};
+$("import-menu").onclick = () => $("import-file").click();
+$("import-file").addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  e.target.value = "";
+  if (!file) return;
+  try {
+    if (file.size > 12 * 1024 * 1024) throw Error("Kayıt dosyası çok büyük.");
+    const data = validateSave(JSON.parse(await file.text()));
+    await createWorld(data);
+  } catch (error) {
+    toast("Kayıt yüklenmedi: " + error.message);
+  }
+});
+function frame(now) {
+  const dt = Math.min(0.045, Math.max(0, (now - last) / 1000));
+  last = now;
+  if (toastTimer > 0) {
+    toastTimer -= dt;
+    if (toastTimer <= 0) $("toast").classList.add("hidden");
+  }
+  if (world && renderer && screen !== "loading") {
+    if (screen === "playing") {
+      const previousDay = Math.floor(time / 480);
+      time += dt;
+      if (Math.floor(time / 480) > previousDay) stats.days++;
+      movePlayer(dt);
+      updateMobs(dt);
+      target = aim();
+      mineGrace = Math.max(0, mineGrace - dt);
+      if (mining) mineStep(dt);
+      else if (mineGrace === 0) mineValue = 0;
+      cropClock += dt;
+      if (cropClock > 3) {
+        cropClock = 0;
+        for (const [i, planted] of world.crops)
+          if (time - planted > 80) {
+            const y = Math.floor(i / (SIZE * SIZE)),
+              z = Math.floor(i / SIZE) % SIZE,
+              x = i % SIZE;
+            if (get(world, x, y, z) === 18) set(world, x, y, z, 19);
+            world.crops.delete(i);
+          }
+      }
+      saveClock += dt;
+      if (saveClock > 25) {
+        saveClock = 0;
+        save();
+      }
+      hudClock += dt;
+      if (hudClock > 0.15) {
+        hudClock = 0;
+        updateHUD();
+      }
+      mapClock += dt;
+      if (mapClock > 0.4) {
+        mapClock = 0;
+        drawMap();
+      }
+    }
+    if (smelt && ["playing", "inventory"].includes(screen)) {
+      smelt.left -= dt;
+      if (smelt.left <= 0) {
+        if (addItem(inventory, ...smelt.out)) {
+          stats.crafted++;
+          toast(ITEMS[smelt.out[0]].name + " hazır.");
+          smelt = null;
+          drawHotbar();
+          if (screen === "inventory") drawInventory();
+          save();
+        } else {
+          smelt.left = 0;
+          $("smelting").textContent = "Ürün hazır. Çantada yer aç.";
+        }
+      } else if (screen === "inventory")
+        $("smelting").textContent =
+          "Fırın çalışıyor: " + Math.ceil(smelt.left) + " sn";
+    }
+    damageFlash = Math.max(0, damageFlash - dt);
+    $("damage").style.opacity = damageFlash;
+    renderer.update(world, [player.x, player.y, player.z]);
+    renderer.render(
+      player,
+      time,
+      mobs,
+      screen === "playing" ? target : null,
+      beacon,
+    );
+  }
+  requestAnimationFrame(frame);
+}
+show("menu");
+syncSettings();
+requestAnimationFrame(frame);
+// Menüde aynı çizim motorundan gerçek dünya önizlemesi; bağımsız görsel gerekmez.
+$("new-btn").disabled = true;
+$("continue-btn").disabled = true;
+(async () => {
+  try {
+    renderer = new Renderer(canvas);
+    renderer.distance = settings.distance;
+    renderer.quality = settings.quality;
+    const gen = generate(seedNumber("kutarya-vadi"));
+    for (let item = gen.next(); !item.done; item = gen.next()) {
+      if (item.value.world) {
+        world = item.value.world;
+        world.preview = true;
+      }
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+    }
+    renderer.ruin = world.ruin;
+    for (let i = 0; i < 8; i++) {
+      player.y = world.spawn[1] + 7;
+      player.z = 88;
+      player.yaw = 0.6;
+      player.pitch = -0.35;
+      renderer.update(world, [player.x, player.y, player.z], 3);
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+    }
+    $("continue-btn").disabled = !saved;
+    $("new-btn").disabled = false;
+  } catch (e) {
+    toast(e.message);
+    $("new-btn").disabled = true;
+  }
+})();
+
+    </script>
+  </body>
+</html>

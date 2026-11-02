@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { readFile, writeFile } from 'node:fs/promises';
+import { out } from './roulette-paths.mjs';
+assert.equal(await readFile('roulette-server/rules.mjs', 'utf8'), await readFile('games-src/rus-ruleti/rules.mjs', 'utf8'));
+const child = spawn(process.execPath, ['--require', './scripts/no-listeners.cjs', '--test', '--test-reporter=tap', 'roulette-server/test/rules.test.mjs'], { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true });
+let log = ''; child.stdout.on('data', b => { log += b; }); child.stderr.on('data', b => { log += b; });
+const code = await new Promise((done, fail) => { child.on('exit', done); child.on('error', fail); });
+await writeFile(`${out}/rules-test.log`, log); assert.equal(code, 0, log); assert(log.includes('# pass 15'));
+await writeFile(`${out}/rules-acceptance.json`, JSON.stringify({ passed: true, tests: 15, serverAndBrowserRulesIdentical: true, gatewayHostAndCapacityCases: 2, listeningServerStarted: false, at: new Date().toISOString() }, null, 2));
+console.log('15/15 oyun kuralı testi geçti; istemci/sunucu kuralları aynı.');

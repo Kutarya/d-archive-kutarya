@@ -1,0 +1,8 @@
+{
+  "storage": [
+    {
+      "bucket": "kutarya-ai-3169.firebasestorage.app",
+      "rules": "artifacts/firebase-production-storage.rules"
+    }
+  ]
+}

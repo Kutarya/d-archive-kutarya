@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Kutarya Convert: dosyalarını tarayıcıda dönüştür. Görsel, PDF, belge, tablo ve ses; çoklu dosya ve toplu ZIP."
+    />
+    <title>Kutarya Convert — Dosyalarına yeni bir biçim.</title>
+  </head>
+  <body>
+    <a class="skip" href="#workspace">Çalışma alanına geç</a>
+    <header class="header">
+      <a
+        class="brand"
+        href="https://kutarya.com/proje/kutarya-convert"
+        id="back-link"
+        ><span class="brand-symbol" aria-hidden="true">K<span>↗</span></span
+        ><span>Kutarya <b>Convert</b><small>DOSYA DÖNÜŞTÜRÜCÜ</small></span></a
+      >
+      <nav aria-label="Uygulama menüsü">
+        <button class="plain" id="formats-button">Desteklenen türler</button
+        ><label class="theme-label"
+          ><span class="sr-only">Görünüm</span
+          ><select id="theme" aria-label="Görünüm">
+            <option value="light">Açık</option>
+            <option value="warm">Sıcak</option>
+            <option value="dark">Koyu</option>
+            <option value="system">Sistem</option>
+          </select></label
+        >
+      </nav>
+    </header>
+    <main id="workspace" class="shell">
+      <section class="hero">
+        <div>
+          <span class="eyebrow"><i></i> TARAYICINDA ÇALIŞIR</span>
+          <h1>Dosyalarına<br /><em>yeni bir biçim.</em></h1>
+          <p>
+            Görseller, belgeler, tablolar ve sesler.<br />Dosyalarını bırak,
+            çıktını seç, dönüştür.
+          </p>
+          <div class="hero-chips">
+            <span>↳ Çoklu dosya</span><span>◇ Yerel işlem</span
+            ><span>↓ Toplu ZIP</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orbit"></div>
+          <div class="format-card card-in">
+            <span>GİRDİ</span><strong>PNG <i>·</i> DOCX</strong
+            ><small>CSV · WAV · PDF</small>
+          </div>
+          <div class="conversion-arrow">⇄</div>
+          <div class="format-card card-out">
+            <span>ÇIKTI</span><strong>WebP <i>·</i> PDF</strong
+            ><small>XLSX · MP3 · TXT</small><b>✓ Yeniden kodlandı</b>
+          </div>
+        </div>
+      </section>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <div class="workspace-grid">
+        <section class="work-panel" aria-label="Dosya kuyruğu">
+          <div class="panel-heading">
+            <div class="segmented" role="group" aria-label="İşlem türü">
+              <button id="convert-mode" class="selected" aria-pressed="true">
+                Dönüştür</button
+              ><button id="merge-mode" aria-pressed="false">
+                PDF birleştir
+              </button>
+            </div>
+            <span class="local-pill"><i></i> Dosyaların cihazında</span>
+          </div>
+          <div class="drop-zone" id="drop-zone">
+            <span class="drop-icon" aria-hidden="true">↥</span>
+            <h2>Dosyalarını buraya bırak</h2>
+            <p>Birden fazla dosya seçebilir veya sürükleyebilirsin.</p>
+            <label class="primary file-label"
+              >Dosya seç<input
+                id="file-input"
+                type="file"
+                multiple
+                aria-label="Dönüştürülecek dosyaları seç"
+                accept=".png,.jpg,.jpeg,.webp,.gif,.bmp,.avif,.svg,.pdf,.docx,.txt,.md,.html,.htm,.csv,.tsv,.json,.xlsx,.mp3,.wav,.ogg,.flac,.m4a,.aac" /></label
+            ><small
+              >En fazla 20 dosya · dosya başına 25 MB · toplam 100 MB</small
+            >
+          </div>
+          <div id="queue-area" hidden>
+            <div class="queue-toolbar">
+              <div>
+                <strong id="queue-title">Dosyalar</strong
+                ><span id="queue-size"></span>
+              </div>
+              <button class="plain danger" id="clear-button">
+                Listeyi temizle
+              </button>
+            </div>
+            <div class="batch-bar" id="batch-bar">
+              <label for="batch-format">Toplu çıktı</label
+              ><select id="batch-format">
+                <option value="">Bir çıktı seç</option></select
+              ><button class="secondary small" id="apply-format">
+                Uygun dosyalara uygula
+              </button>
+            </div>
+            <p class="merge-hint" id="merge-hint" hidden>
+              PDF’ler listedeki sırayla birleştirilir. Sıralamayı oklarla
+              değiştirebilirsin.
+            </p>
+            <ul
+              class="queue-list"
+              id="queue-list"
+              aria-label="Seçilen dosyalar"
+            ></ul>
+          </div>
+          <div class="empty-state" id="empty-state">
+            <span>01</span>
+            <p>
+              İlk dosyanı ekle.<small
+                >Her dosya için uygun çıktı türleri açılacak.</small
+              >
+            </p>
+          </div>
+          <div class="action-bar">
+            <div>
+              <strong id="summary">Dönüştürmeye hazır</strong
+              ><span id="summary-sub">Kaynak dosyaların korunur.</span>
+            </div>
+            <button class="secondary" id="cancel-button" hidden>
+              İşlemi durdur</button
+            ><button class="primary" id="start-button" disabled>
+              Dönüştür <span>→</span>
+            </button>
+          </div>
+          <div class="progress-wrap" id="progress-wrap" hidden>
+            <progress
+              id="overall-progress"
+              max="100"
+              value="0"
+              aria-label="Toplam ilerleme"
+            ></progress
+            ><span id="progress-label" aria-live="polite"></span>
+          </div>
+          <section class="results" id="results" hidden>
+            <div class="results-heading">
+              <div>
+                <span class="eyebrow">HAZIR DOSYALAR</span>
+                <h2>Yeni biçimleri burada.</h2>
+              </div>
+              <button class="secondary" id="download-all">
+                Hepsini ZIP indir ↓
+              </button>
+            </div>
+            <ul id="result-list" aria-label="Dönüştürülen dosyalar"></ul>
+          </section>
+        </section>
+        <aside class="settings-panel" aria-label="Dönüştürme ayarları">
+          <div class="settings-heading">
+            <span class="eyebrow">İNCE AYAR</span>
+            <h2>Çıktıyı şekillendir.</h2>
+            <p>Ayarlar ilgili dosya türlerine uygulanır.</p>
+          </div>
+          <fieldset id="settings-fields">
+            <details open>
+              <summary><span>▧ Görseller</span><span>+</span></summary>
+              <div class="setting-content">
+                <label for="quality"
+                  >JPEG / WebP kalitesi
+                  <output id="quality-value">85%</output></label
+                ><input
+                  id="quality"
+                  type="range"
+                  min="10"
+                  max="100"
+                  value="85"
+                />
+                <div class="field-pair">
+                  <label
+                    >Azami genişlik<input
+                      id="image-width"
+                      type="number"
+                      min="0"
+                      max="8192"
+                      value="0"
+                      inputmode="numeric"
+                    /><small>0 = orijinal</small></label
+                  ><label
+                    >Azami yükseklik<input
+                      id="image-height"
+                      type="number"
+                      min="0"
+                      max="8192"
+                      value="0"
+                      inputmode="numeric"
+                    /><small>0 = orijinal</small></label
+                  >
+                </div>
+                <label class="check"
+                  ><input type="checkbox" id="downscale" checked /> Yalnız
+                  küçült, oranı koru</label
+                >
+                <div class="field-pair">
+                  <label
+                    >Döndür<select id="image-rotation">
+                      <option value="0">Döndürme</option>
+                      <option value="90">90°</option>
+                      <option value="180">180°</option>
+                      <option value="270">270°</option>
+                    </select></label
+                  ><label
+                    >JPEG arka planı<input
+                      id="image-background"
+                      type="color"
+                      value="#ffffff"
+                  /></label>
+                </div>
+                <p class="setting-note">
+                  PNG kayıpsızdır. JPEG şeffaflığı arka plan rengine dönüştürür.
+                  GIF’in ilk karesi işlenir.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary><span>▤ Belgeler & PDF</span><span>+</span></summary>
+              <div class="setting-content">
+                <div class="field-pair">
+                  <label
+                    >Yeni PDF boyutu<select id="paper">
+                      <option value="a4">A4</option>
+                      <option value="letter">Letter</option>
+                    </select></label
+                  ><label
+                    >Yazı boyutu<input
+                      id="font-size"
+                      type="number"
+                      min="9"
+                      max="18"
+                      value="11"
+                  /></label>
+                </div>
+                <label
+                  >PDF sayfaları<input
+                    id="pdf-pages"
+                    placeholder="Tümü veya 1-3,5"
+                    maxlength="160" /></label
+                ><label
+                  >PDF sayfalarını döndür<select id="pdf-rotation">
+                    <option value="0">Döndürme</option>
+                    <option value="90">90°</option>
+                    <option value="180">180°</option>
+                    <option value="270">270°</option>
+                  </select></label
+                ><label
+                  >PDF görsel çözünürlüğü<select id="pdf-scale">
+                    <option value="1">72 DPI</option>
+                    <option value="1.5" selected>108 DPI</option>
+                    <option value="2">144 DPI</option>
+                  </select></label
+                >
+                <p class="setting-note">
+                  PDF’den metin çıkarma OCR yapmaz. Belgeden PDF/DOCX çıktısı
+                  metin odaklıdır; özgün sayfa düzeni birebir taşınmaz. PDF
+                  birleştirme ve ayırma mevcut sayfaları korur.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary><span>▦ Tablolar & veri</span><span>+</span></summary>
+              <div class="setting-content">
+                <label
+                  >CSV girdi ayırıcısı<select id="separator">
+                    <option value="auto">Otomatik</option>
+                    <option value=",">Virgül</option>
+                    <option value=";">Noktalı virgül</option>
+                    <option value="tab">Sekme</option>
+                  </select></label
+                ><label
+                  >CSV çıktı ayırıcısı<select id="output-separator">
+                    <option value=",">Virgül</option>
+                    <option value=";">Noktalı virgül</option>
+                  </select></label
+                ><label class="check"
+                  ><input id="table-headers" type="checkbox" checked /> İlk
+                  satır sütun başlıkları</label
+                ><label class="check"
+                  ><input id="safe-csv" type="checkbox" checked /> CSV’de formül
+                  metinlerini güvenli yaz</label
+                >
+                <p class="setting-note">
+                  Hücre değerleri taşınır; Excel biçimleri ve formül mantığı
+                  taşınmaz. Çok sayfalı CSV/TSV sonuçlarını toplu ZIP olarak
+                  indirebilirsin.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary><span>♫ Ses</span><span>+</span></summary>
+              <div class="setting-content">
+                <div class="field-pair">
+                  <label
+                    >Örnekleme<select id="sample-rate">
+                      <option value="16000">16.000 Hz</option>
+                      <option value="22050">22.050 Hz</option>
+                      <option value="44100" selected>44.100 Hz</option>
+                      <option value="48000">48.000 Hz</option>
+                    </select></label
+                  ><label
+                    >Kanal<select id="audio-channels">
+                      <option value="2">Stereo</option>
+                      <option value="1">Mono</option>
+                    </select></label
+                  >
+                </div>
+                <label
+                  >MP3 bit hızı<select id="bitrate">
+                    <option value="128">128 kbps</option>
+                    <option value="192" selected>192 kbps</option>
+                    <option value="256">256 kbps</option>
+                    <option value="320">320 kbps</option>
+                  </select></label
+                >
+                <div class="field-pair">
+                  <label
+                    >Başlangıç (sn)<input
+                      id="audio-start"
+                      type="number"
+                      min="0"
+                      max="300"
+                      step="0.1"
+                      value="0" /></label
+                  ><label
+                    >Bitiş (sn)<input
+                      id="audio-end"
+                      type="number"
+                      min="0"
+                      max="300"
+                      step="0.1"
+                      value="0"
+                    /><small>0 = sesin sonu</small></label
+                  >
+                </div>
+                <label
+                  >Ses seviyesi <output id="gain-value">100%</output
+                  ><input id="gain" type="range" min="0" max="200" value="100"
+                /></label>
+                <p class="setting-note">
+                  En fazla 5 dakikalık ses. Girdi kodekinin açılması tarayıcı
+                  desteğine bağlıdır. MP3 yeniden kodlama kayıplıdır.
+                </p>
+              </div>
+            </details>
+          </fieldset>
+          <div class="privacy-card">
+            <span aria-hidden="true">◇</span
+            ><strong>Dosyaların sende kalır.</strong>
+            <p>
+              Dönüştürme bu sekmede yapılır. Kapatınca dosya kuyruğu ve çıktılar
+              temizlenir.
+            </p>
+          </div>
+        </aside>
+      </div>
+      <section class="format-overview">
+        <div>
+          <span class="eyebrow">TEK ÇALIŞMA ALANI</span>
+          <h2>Dört tür. Aynı kolaylık.</h2>
+        </div>
+        <div class="format-grid">
+          <article>
+            <span>▧</span>
+            <h3>Görseller</h3>
+            <p>PNG, JPEG, WebP, GIF, BMP, SVG, AVIF → PNG, JPEG, WebP, PDF</p>
+          </article>
+          <article>
+            <span>▤</span>
+            <h3>Belgeler</h3>
+            <p>TXT, Markdown, HTML, DOCX, PDF → PDF, DOCX, HTML, TXT</p>
+          </article>
+          <article>
+            <span>▦</span>
+            <h3>Veriler</h3>
+            <p>CSV, TSV, JSON, XLSX → yeni tablo ve yapılandırılmış veri</p>
+          </article>
+          <article>
+            <span>♫</span>
+            <h3>Sesler</h3>
+            <p>MP3, WAV, OGG, FLAC, M4A, AAC → WAV veya MP3</p>
+          </article>
+        </div>
+      </section>
+      <footer>
+        <span>Kutarya Convert <small>v1.0.0</small></span
+        ><span>Kaynakları korur. İçeriği dönüştürür.</span
+        ><button class="plain" id="licenses-button">Bileşen lisansları</button>
+      </footer>
+    </main>
+    <dialog id="info-dialog">
+      <div class="dialog-head">
+        <h2 id="dialog-title"></h2>
+        <button
+          class="icon-button"
+          id="close-dialog"
+          aria-label="Pencereyi kapat"
+        >
+          ×
+        </button>
+      </div>
+      <div id="dialog-content"></div>
+    </dialog>
+    <!-- KUTARYA_STYLE -->
+    <!-- KUTARYA_APP -->
+  </body>
+</html>

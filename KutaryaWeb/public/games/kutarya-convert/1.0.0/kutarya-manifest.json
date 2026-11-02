@@ -1,0 +1,33 @@
+{
+  "gameId": "kutarya-convert",
+  "version": "1.0.0",
+  "entry": "/games/kutarya-convert/1.0.0/index.html",
+  "kind": "web",
+  "compression": "none",
+  "totalBytes": 8661305,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 5618881,
+      "sha256": "49d5ccfdc3c84f31c7d8298743c8ec5ce9b9c48e0962a25af88d2943cc0a1a63"
+    },
+    {
+      "path": "lamejs-source.zip",
+      "bytes": 2973279,
+      "sha256": "ef92276e7cc1f8af11b2b332039d95551919df230e6af94a100da8a873c6cdca"
+    },
+    {
+      "path": "LISANSLAR.txt",
+      "bytes": 68657,
+      "sha256": "8d63c09d803894d5fbafba9993e1598b71a1f3fa80fa9b5cdf565c10c2fa23c0"
+    },
+    {
+      "path": "OKU.txt",
+      "bytes": 488,
+      "sha256": "214b827f20ab7cbff6d1b67ad856f0e9fc8aff0f22667cff040398cd0f607c82"
+    }
+  ],
+  "verified": false,
+  "createdAt": "2026-10-05T17:12:18.679Z",
+  "note": "Dosya bütünlüğü kontrol edildi. Gerçek tarayıcı kabulü henüz yapılmadı."
+}

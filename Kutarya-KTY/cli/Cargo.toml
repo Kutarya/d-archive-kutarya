@@ -1,0 +1,11 @@
+[package]
+name = "kty_cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+kty_motor = { path = "../motor" }
+
+[[bin]]
+name = "kty"
+path = "src/main.rs"

@@ -1,0 +1,18 @@
+{
+  "updatedAt": "2026-09-12T16:53:40.042Z",
+  "status": "in_progress",
+  "currentTask": "Çalışan motor korunarak bütün mekânlarda sahne üzerinden etkileşim",
+  "scopeLimit": "Yalnız erişim, sahne çizimi ve hover. Motor/save biçimi korunur; yerel çalışma.",
+  "durableRules": [
+    "Her yeni varlik ve bagimlilik yayinlanabilirlik ile lisans kaynagi acisindan kontrol edilir.",
+    "Uygun ve kullanim hakki acik yerel kaynak varsa once o kullanilir; uygun kaynak yoksa lisansi dogrulanmis kaynak secilir.",
+    "Gorsel ve tasarimlar sonradan animasyon eklenebilecek ayri katmanlar ve donusumler halinde hazirlanir.",
+    "Her ise baslarken ve is biterken bu dosya guncellenir."
+  ],
+  "completedChecks": [
+    "Ana plan, kök DEVIR ve mevcut kaynak envanteri okundu; paralel oyun, sanat ve denetim işleri başladı."
+  ],
+  "resumeFrom": "Ortak SceneInteraction, HomeScene ve 8 iç mekân çizimi hazırlanıyor. Önce baseline test/build; her mekân UI doğrulamasıyla checkpoint.",
+  "engineBaselineSha256": "63947A3ACF600AEB751649E6DA4DD0E5C432FFD02727B346D5762C9D4B8F55A4",
+  "checkpoint": "SCENE-UX-CHECKPOINT.md"
+}
